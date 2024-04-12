@@ -25,6 +25,18 @@
 	<link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .form-check-label {
+            font-size: 14px;
+        }
+
+
+        .room {
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
 
@@ -52,19 +64,19 @@
                             <div class="form-check" style="text-align:left;">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">
-                                    Tour du lịch Huế
+                                    Thừa Thiên Huế
                                 </label>
                             </div>
                             <div class="form-check" style="text-align:left;">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">
-                                    Tour du lịch Đà Nẵng
+                                   Đà Nẵng
                                 </label>
                             </div>
                             <div class="form-check" style="text-align:left;">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">
-                                    Tour du lịch Hội An
+                                    Hội An
                                 </label>
                             </div>
                         </form>
@@ -134,23 +146,24 @@
                     <div class="row">
                         <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
                             <div class="room">
-                                <a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 300px;">
+                                <a href="@Url.Action("DetailTour","Tour")" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 250px;">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </div>
                                 </a>
-                                <div class="text p-3 text-center">
+                                <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
                                     <h3 class="mb-3" style="display: -webkit-box;
 							                                -webkit-box-orient: vertical;
 							                                -webkit-line-clamp: 2;
 							                                overflow: hidden;
 							                                text-overflow: ellipsis;
 							                                font-family: Arial, Helvetica, sans-serif;
-                                                            font-weight: 600;">
+                                                            font-weight: 600;
+                                                            font-size:16px;">
                                         <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
                                     </h3>
                                     <p>
-                                        <span class="price mr-2">120.00 ₫</span>
+                                        <span class="price mr-2" style="font-size: 22px; color: red;">120.00 ₫</span>
                                         <ul class="list" style="text-align: left;">
                                             <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> NDSGN3383-014-130424VN-D</li>
                                             <li><span>Ngày đi:</span> 27/04/2024</li>
@@ -163,23 +176,24 @@
                         </div>
                         <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
                             <div class="room">
-                                <a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 300px;">
+                                <a href="@Url.Action("DetailTour","Tour")" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 250px;">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </div>
                                 </a>
-                                <div class="text p-3 text-center">
+                                <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
                                     <h3 class="mb-3" style="display: -webkit-box;
 							                                -webkit-box-orient: vertical;
 							                                -webkit-line-clamp: 2;
 							                                overflow: hidden;
 							                                text-overflow: ellipsis;
 							                                font-family: Arial, Helvetica, sans-serif;
-                                                            font-weight: 600;">
+                                                            font-weight: 600;
+                                                            font-size:16px;">
                                         <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
                                     </h3>
                                     <p>
-                                        <span class="price mr-2">120.00 ₫</span>
+                                        <span class="price mr-2" style="font-size: 22px; color: red;">120.00 ₫</span>
                                         <ul class="list" style="text-align: left;">
                                             <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> NDSGN3383-014-130424VN-D</li>
                                             <li><span>Ngày đi:</span> 27/04/2024</li>
@@ -192,23 +206,24 @@
                         </div>
                         <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
                             <div class="room">
-                                <a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 300px;">
+                                <a href="@Url.Action("DetailTour","Tour")" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 250px;">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </div>
                                 </a>
-                                <div class="text p-3 text-center">
+                                <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
                                     <h3 class="mb-3" style="display: -webkit-box;
 							                                -webkit-box-orient: vertical;
 							                                -webkit-line-clamp: 2;
 							                                overflow: hidden;
 							                                text-overflow: ellipsis;
 							                                font-family: Arial, Helvetica, sans-serif;
-                                                            font-weight: 600;">
+                                                            font-weight: 600;
+                                                            font-size:16px;">
                                         <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
                                     </h3>
                                     <p>
-                                        <span class="price mr-2">120.00 ₫</span>
+                                        <span class="price mr-2" style="font-size: 22px; color: red;">120.00 ₫</span>
                                         <ul class="list" style="text-align: left;">
                                             <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> NDSGN3383-014-130424VN-D</li>
                                             <li><span>Ngày đi:</span> 27/04/2024</li>
@@ -221,23 +236,24 @@
                         </div>
                         <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
                             <div class="room">
-                                <a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 300px;">
+                                <a href="@Url.Action("DetailTour","Tour")" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 250px;">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </div>
                                 </a>
-                                <div class="text p-3 text-center">
+                                <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
                                     <h3 class="mb-3" style="display: -webkit-box;
 							                                -webkit-box-orient: vertical;
 							                                -webkit-line-clamp: 2;
 							                                overflow: hidden;
 							                                text-overflow: ellipsis;
 							                                font-family: Arial, Helvetica, sans-serif;
-                                                            font-weight: 600;">
+                                                            font-weight: 600;
+                                                            font-size:16px;">
                                         <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
                                     </h3>
                                     <p>
-                                        <span class="price mr-2">120.00 ₫</span>
+                                        <span class="price mr-2" style="font-size: 22px; color: red;">120.00 ₫</span>
                                         <ul class="list" style="text-align: left;">
                                             <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> NDSGN3383-014-130424VN-D</li>
                                             <li><span>Ngày đi:</span> 27/04/2024</li>
@@ -250,23 +266,24 @@
                         </div>
                         <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
                             <div class="room">
-                                <a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 300px;">
+                                <a href="@Url.Action("DetailTour","Tour")" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 250px;">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </div>
                                 </a>
-                                <div class="text p-3 text-center">
+                                <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
                                     <h3 class="mb-3" style="display: -webkit-box;
 							                                -webkit-box-orient: vertical;
 							                                -webkit-line-clamp: 2;
 							                                overflow: hidden;
 							                                text-overflow: ellipsis;
 							                                font-family: Arial, Helvetica, sans-serif;
-                                                            font-weight: 600;">
+                                                            font-weight: 600;
+                                                            font-size:16px;">
                                         <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
                                     </h3>
                                     <p>
-                                        <span class="price mr-2">120.00 ₫</span>
+                                        <span class="price mr-2" style="font-size: 22px; color: red;">120.00 ₫</span>
                                         <ul class="list" style="text-align: left;">
                                             <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> NDSGN3383-014-130424VN-D</li>
                                             <li><span>Ngày đi:</span> 27/04/2024</li>
@@ -279,23 +296,24 @@
                         </div>
                         <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
                             <div class="room">
-                                <a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 300px;">
+                                <a href="@Url.Action("DetailTour","Tour")" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 250px;">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </div>
                                 </a>
-                                <div class="text p-3 text-center">
+                                <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
                                     <h3 class="mb-3" style="display: -webkit-box;
 							                                -webkit-box-orient: vertical;
 							                                -webkit-line-clamp: 2;
 							                                overflow: hidden;
 							                                text-overflow: ellipsis;
 							                                font-family: Arial, Helvetica, sans-serif;
-                                                            font-weight: 600;">
+                                                            font-weight: 600;
+                                                            font-size:16px;">
                                         <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
                                     </h3>
                                     <p>
-                                        <span class="price mr-2">120.00 ₫</span>
+                                        <span class="price mr-2" style="font-size: 22px; color: red;">120.00 ₫</span>
                                         <ul class="list" style="text-align: left;">
                                             <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> NDSGN3383-014-130424VN-D</li>
                                             <li><span>Ngày đi:</span> 27/04/2024</li>
@@ -308,23 +326,24 @@
                         </div>
                         <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
                             <div class="room">
-                                <a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 300px;">
+                                <a href="@Url.Action("DetailTour","Tour")" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 250px;">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </div>
                                 </a>
-                                <div class="text p-3 text-center">
+                                <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
                                     <h3 class="mb-3" style="display: -webkit-box;
 							                                -webkit-box-orient: vertical;
 							                                -webkit-line-clamp: 2;
 							                                overflow: hidden;
 							                                text-overflow: ellipsis;
 							                                font-family: Arial, Helvetica, sans-serif;
-                                                            font-weight: 600;">
+                                                            font-weight: 600;
+                                                            font-size:16px;">
                                         <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
                                     </h3>
                                     <p>
-                                        <span class="price mr-2">120.00 ₫</span>
+                                        <span class="price mr-2" style="font-size: 22px; color: red;">120.00 ₫</span>
                                         <ul class="list" style="text-align: left;">
                                             <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> NDSGN3383-014-130424VN-D</li>
                                             <li><span>Ngày đi:</span> 27/04/2024</li>
@@ -337,52 +356,24 @@
                         </div>
                         <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
                             <div class="room">
-                                <a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 300px;">
+                                <a href="@Url.Action("DetailTour","Tour")" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 250px;">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </div>
                                 </a>
-                                <div class="text p-3 text-center">
+                                <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
                                     <h3 class="mb-3" style="display: -webkit-box;
 							                                -webkit-box-orient: vertical;
 							                                -webkit-line-clamp: 2;
 							                                overflow: hidden;
 							                                text-overflow: ellipsis;
 							                                font-family: Arial, Helvetica, sans-serif;
-                                                            font-weight: 600;">
+                                                            font-weight: 600;
+                                                            font-size:16px;">
                                         <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
                                     </h3>
                                     <p>
-                                        <span class="price mr-2">120.00 ₫</span>
-                                        <ul class="list" style="text-align: left;">
-                                            <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> NDSGN3383-014-130424VN-D</li>
-                                            <li><span>Ngày đi:</span> 27/04/2024</li>
-                                            <li><span>Thời gian:</span> 4 ngày 3 đêm</li>
-                                        </ul>
-                                        <hr>
-                                    <p class="pt-1" style="margin: 0px; padding: 0px;"><a href="rooms-single.html" class="btn-custom">Đặt Ngay <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
-                            <div class="room">
-                                <a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/dndem.jpg); height: 300px;">
-                                    <div class="icon d-flex justify-content-center align-items-center">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                    </div>
-                                </a>
-                                <div class="text p-3 text-center">
-                                    <h3 class="mb-3" style="display: -webkit-box;
-							                                -webkit-box-orient: vertical;
-							                                -webkit-line-clamp: 2;
-							                                overflow: hidden;
-							                                text-overflow: ellipsis;
-							                                font-family: Arial, Helvetica, sans-serif;
-                                                            font-weight: 600;">
-                                        <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
-                                    </h3>
-                                    <p>
-                                        <span class="price mr-2">120.00 ₫</span>
+                                        <span class="price mr-2" style="font-size: 22px; color: red;">120.00 ₫</span>
                                         <ul class="list" style="text-align: left;">
                                             <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> NDSGN3383-014-130424VN-D</li>
                                             <li><span>Ngày đi:</span> 27/04/2024</li>
