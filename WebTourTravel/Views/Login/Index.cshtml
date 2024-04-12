@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="~/Content/Login/style.css" rel="stylesheet">
+    <style>
+        body {
+            padding : 0;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <!-- Form-->
+    <div class="form" style="margin: 200px auto;">
+        <div class="form-toggle"></div>
+        <div class="form-panel one">
+            <div class="form-header">
+                <h1>Đăng Nhập</h1>
+            </div>
+            <div class="form-content">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" type="text" name="username" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" name="password" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-remember">
+                            <input type="checkbox" />Remember Me
+                        </label><a class="form-recovery" href="#">Forgot Password?</a>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="form-panel two">
+            <div class="form-header">
+                <h1>Register Account</h1>
+            </div>
+            <div class="form-content">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" type="text" name="username" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" name="password" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="cpassword">Confirm Password</label>
+                        <input id="cpassword" type="password" name="cpassword" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input id="email" type="email" name="email" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+      <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              var panelOne = document.querySelector(".form-panel.two").offsetHeight,
+                  panelTwo = document.querySelector(".form-panel.two").scrollHeight;
+
+              document.querySelector(".form-panel.two")
+                  .addEventListener("click", function (e) {
+                      e.preventDefault();
+
+                      document.querySelector(".form-toggle").classList.add("visible");
+                      document.querySelector(".form-panel.one").classList.add("hidden");
+                      document.querySelector(".form-panel.two").classList.add("active");
+                      animateFormHeight(panelTwo);
+                  });
+
+              document.querySelector(".form-toggle").addEventListener("click", function (e) {
+                  e.preventDefault();
+                  this.classList.remove("visible");
+                  document.querySelector(".form-panel.one").classList.remove("hidden");
+                  document.querySelector(".form-panel.two").classList.remove("active");
+                  animateFormHeight(panelOne);
+              });
+
+              function animateFormHeight(height) {
+                  var form = document.querySelector(".form");
+                  var currentHeight = parseFloat(window.getComputedStyle(form).height.replace("px", ""));
+                  var targetHeight = height;
+                  var difference = targetHeight - currentHeight;
+                  var speed = 200; // Animation speed in milliseconds
+                  var intervalTime = 20; // Interval time in milliseconds
+                  var step = difference / (speed / intervalTime);
+
+                  var interval = setInterval(function () {
+                      currentHeight += step;
+                      form.style.height = currentHeight + "px";
+
+                      if (step > 0 && currentHeight >= targetHeight) {
+                          clearInterval(interval);
+                          form.style.height = targetHeight + "px";
+                      } else if (step < 0 && currentHeight <= targetHeight) {
+                          clearInterval(interval);
+                          form.style.height = targetHeight + "px";
+                      }
+                  }, intervalTime);
+              }
+          });
+
+
+      </script>
+</body>
+</html>
