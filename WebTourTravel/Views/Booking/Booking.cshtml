@@ -26,6 +26,12 @@
 
     <!-- Template Stylesheet -->
     <link href="~/Content/booking/style.css" rel="stylesheet">
+
+    <style>
+        .tour-info{
+            font-size: 14px;
+        }
+    </style>
    
 </head>
 
@@ -38,85 +44,72 @@
                     <h6 class="section-title text-center text-primary text-uppercase">Booking SJourney</h6>
                     <h1 class="mb-5">Book A <span class="text-primary text-uppercase">Travel Journey</span></h1>
                 </div>
-                <div class="row g-5">
-                    <div class="col-lg-6">
-                        <div class="row g-3">
-                            <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="img/about-1.jpg" style="margin-top: 25%;">
-                            </div>
-                            <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg">
-                            </div>
-                            <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="img/about-3.jpg">
-                            </div>
-                            <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
+                <div>
+                    <div style="display:flex; margin: 50px 0;">
+                        <div style="flex: 1;border-radius: 10px 0 0 10px;overflow: hidden;">
+                            <img src="/images/HBanner.jpg" alt="anhChuyenDi" style="width: 100%;height: 100%;object-fit: cover;object-position: center;">
+                        </div>
+                        <div style="flex: 2; padding: 15px 30px; background-color: #f9f9f9;">
+                            <h3 style="color: #2d4271;font-size: 22px;font-weight: 700;line-height: 28px;text-align: left;">Thái Lan: Bangkok - Pattaya (Khám phá Bảo tàng Sáp Louis Tussaud Pattaya, chùa Wat Arun, Tặng Buffet tại BaiYoke Sky) | Lễ Té nước</h3>
+                            <div style="text-align: left; padding-top:15px;">
+                                <p class="tour-info">Mã Tour <b>NNSGN1303-080-160424VU-V-F</b></p>
+                                <p class="tour-info">Khởi hành <b>16/04/2024</b></p>
+                                <p class="tour-info">Thời gian <b>5 ngày</b></p>
+                                <p class="tour-info">Nơi khởi hành <b>TP. Hồ Chí Minh</b></p>
+                                <p class="tour-info">Số chỗ còn nhận <b>6</b></p>
+                                <p class="tour-info">Dịch vụ tùy chọn <b>Bay Vietravel Airlines</b></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form>
+                    <div class="row">
+                        <div data-wow-delay="0.2s" style="width: 50%;" class="wow fadeInUp">
+                            <h3>Thông tin liên lạc</h3>
+                            <form style="margin-top: 25px;">
                                 <div class="row g-3">
-                                    <div class="col-md-6">
+                                    <div class="col-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="name" placeholder="Your Name">
                                             <label for="name">Họ và tên</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-6">
                                         <div class="form-floating">
                                             <input type="email" class="form-control" id="email" placeholder="Your Email">
                                             <label for="email">Email</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-6">
                                         <div class="form-floating date" id="date3" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
+                                            <input type="text" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker">
                                             <label for="checkin">Ngày đi (hiển thị từ DB)</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-6">
                                         <div class="form-floating date" id="date4" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
+                                            <input type="text" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker">
                                             <label for="checkout">Ngày về (hiển thị từ DB)</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                            <label for="email">Số lượng người lớn</label>
+                                    <div class="col-6">
+                                        <div class="input-group" style="margin:20px 0;">
+                                            <label for="soLuongNguoiLon">Số lượng người lớn</label>
+                                            <div style="display: flex;align-items: center;margin-top: 10px;">
+                                                <button class="btn btn-outline-secondary" type="button" id="minusButtonNguoiLon">-</button>
+                                                <input type="text" class="form-control" id="soLuongNguoiLon" value="0" readonly="" style="text-align: center;">
+                                                <button class="btn btn-outline-secondary" type="button" id="plusButtonNguoiLon">+</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                            <label for="email">Số lượng trẻ em (3 - 9 tuổi)</label>
+                                    <div class="col-6">
+                                        <div class="input-group" style="margin:20px 0;">
+                                            <label for="soLuongTreEm">Số lượng trẻ em (3 - 9 tuổi)</label>
+                                            <div style="display: flex;align-items: center;margin-top: 10px;">
+                                                <button class="btn btn-outline-secondary" type="button" id="minusButtonTreEm">-</button>
+                                                <input type="text" class="form-control" id="soLuongTreEm" value="0" readonly style="text-align: center;">
+                                                <button class="btn btn-outline-secondary" type="button" id="plusButtonTreEm">+</button>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <!-- <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="select1">
-                                              <option value="1">Adult 1</option>
-                                              <option value="2">Adult 2</option>
-                                              <option value="3">Adult 3</option>
-                                            </select>
-                                            <label for="select1">Người lớn</label>
-                                          </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="select2">
-                                              <option value="1">Child 1</option>
-                                              <option value="2">Child 2</option>
-                                              <option value="3">Child 3</option>
-                                            </select>
-                                            <label for="select2">Trẻ em (3 - 9 tuổi)</label>
-                                          </div>
-                                    </div> -->
-
                                     <div class="col-12">
                                         <div class="form-floating">
                                             <select class="form-select" id="select3">
@@ -133,11 +126,32 @@
                                             <label for="message">Ghi chú</label>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                   @* <div class="col-12">
                                         <button class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
-                                    </div>
+                                    </div>*@
                                 </div>
                             </form>
+                        </div>
+                        <div style="width:50% ; display: flex;justify-content: center;">
+                            <div style="width:70%; border:1px solid #b6b6b6;height: 100%;padding: 20px;border-radius: 5px;">
+                                <h3>Thanh toán</h3>
+                                <div style="margin-top: 35px;">
+                                    <h4 style="text-align: left;font-size: 17px;margin-bottom: 20px;">Hành khách</h4>
+                                    <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
+                                        <p>Người lớn</p>
+                                        <p style="margin-top: 0;"><span>1 x </span><b>13.990.000đ</b></p>
+                                    </div>
+                                    <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
+                                        <p>Trẻ em</p>
+                                        <p style="margin-top: 0;"><span>1 x </span><b>13.990.000đ</b></p>
+                                    </div>
+                                    <div style="display: flex;align-items: center;justify-content: space-between;margin: 30px 0;">
+                                        <p style="font-weight: bold;font-size: 20px;">Tổng tiền</p>
+                                        <p style="margin-top: 0;color: red;font-weight: bold;font-size: 20px;">13.000.000đ</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary w-100 py-3" type="submit" style="border-radius: 10px;background: red;">Đặt Ngay</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -156,6 +170,46 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script>
+        // Script for increasing/decreasing quantity for adults
+        document.getElementById('plusButtonNguoiLon').addEventListener('click', function () {
+            incrementValue('soLuongNguoiLon');
+        });
+
+        document.getElementById('minusButtonNguoiLon').addEventListener('click', function () {
+            decrementValue('soLuongNguoiLon');
+        });
+
+        // Script for increasing/decreasing quantity for children
+        document.getElementById('plusButtonTreEm').addEventListener('click', function () {
+            incrementValue('soLuongTreEm');
+        });
+
+        document.getElementById('minusButtonTreEm').addEventListener('click', function () {
+            decrementValue('soLuongTreEm');
+        });
+
+        // Function to increment the value
+        function incrementValue(id) {
+            var input = document.getElementById(id);
+            var value = parseInt(input.value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            input.value = value;
+        }
+
+        // Function to decrement the value
+        function decrementValue(id) {
+            var input = document.getElementById(id);
+            var value = parseInt(input.value, 10);
+            value = isNaN(value) ? 0 : value;
+            if (value > 0) {
+                value--;
+                input.value = value;
+            }
+        }
+
+    </script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
