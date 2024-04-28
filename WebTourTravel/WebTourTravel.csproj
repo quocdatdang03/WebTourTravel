@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -117,6 +125,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnhTour.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -125,12 +136,66 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TourController.cs" />
+    <Compile Include="DatabaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DiaDiem.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HoaDon.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HoatDong.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HuongDanVien.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LichTrinhTheoNgay.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModelLogin.cs" />
     <Compile Include="Models\ModelRegister.cs" />
+    <Compile Include="NguoiDung.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTinKhachHang.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTinLuuY.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tour.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TourMau.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\booking\bootstrap.min.css" />
@@ -163,6 +228,16 @@
     <Content Include="Content\Login\style.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\styleBooking.css" />
+    <Content Include="DatabaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\fl-bigmug-line.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -221,6 +296,74 @@
     <Content Include="images\HoianBanner.jpeg" />
     <Content Include="images\HueBanner.png" />
     <Content Include="images\ie8-panel\warning_bar_0000_us.jpg" />
+    <Content Include="images\images_tour\avata1.png" />
+    <Content Include="images\images_tour\avata10.png" />
+    <Content Include="images\images_tour\avata11.png" />
+    <Content Include="images\images_tour\avata12.png" />
+    <Content Include="images\images_tour\avata13.png" />
+    <Content Include="images\images_tour\avata14.png" />
+    <Content Include="images\images_tour\avata2.png" />
+    <Content Include="images\images_tour\avata3.png" />
+    <Content Include="images\images_tour\avata4.png" />
+    <Content Include="images\images_tour\avata5.png" />
+    <Content Include="images\images_tour\avata6.png" />
+    <Content Include="images\images_tour\avata7.png" />
+    <Content Include="images\images_tour\avata8.png" />
+    <Content Include="images\images_tour\avata9.png" />
+    <Content Include="images\images_tour\DaNang_BaNaHill_1.png" />
+    <Content Include="images\images_tour\DaNang_BaNaHill_2.png" />
+    <Content Include="images\images_tour\DaNang_BaNaHill_3.png" />
+    <Content Include="images\images_tour\DaNang_BaNaHill_4.png" />
+    <Content Include="images\images_tour\DaNang_BaNaHill_5.png" />
+    <Content Include="images\images_tour\DaNang_BaNaHill_6.png" />
+    <Content Include="images\images_tour\DaNang_BaNaHill_7.png" />
+    <Content Include="images\images_tour\DaNang_BaNaHill_8.png" />
+    <Content Include="images\images_tour\DaNang_BanDaoSonTra_1.png" />
+    <Content Include="images\images_tour\DaNang_BanDaoSonTra_2.png" />
+    <Content Include="images\images_tour\DaNang_CauRong_1.png" />
+    <Content Include="images\images_tour\DaNang_CauRong_2.png" />
+    <Content Include="images\images_tour\DaNang_CauRong_3.png" />
+    <Content Include="images\images_tour\DaNang_CauRong_4.png" />
+    <Content Include="images\images_tour\DaNang_ChuaLinhUng.jpg" />
+    <Content Include="images\images_tour\DaNang_ChuaLinhUng1.jpg" />
+    <Content Include="images\images_tour\DaNang_PhoCoHoiAn_.png" />
+    <Content Include="images\images_tour\DaNang_PhoCoHoiAn_1.png" />
+    <Content Include="images\images_tour\DaNang_PhoCoHoiAn_2.png" />
+    <Content Include="images\images_tour\DaNang_PhoCoHoiAn_3.png" />
+    <Content Include="images\images_tour\DaNang_PhoCoHoiAn_4.png" />
+    <Content Include="images\images_tour\DaNang_VuonTuongAoec.png" />
+    <Content Include="images\images_tour\DaNang_VuonTuongAoec_1.png" />
+    <Content Include="images\images_tour\DongPhongNha_1.png" />
+    <Content Include="images\images_tour\DongPhongNha_2.png" />
+    <Content Include="images\images_tour\DongPhongNha_3.png" />
+    <Content Include="images\images_tour\DongPhongNha_4.png" />
+    <Content Include="images\images_tour\DongThienDuong_1.png" />
+    <Content Include="images\images_tour\DongThienDuong_2.png" />
+    <Content Include="images\images_tour\DongThienDuong_3.png" />
+    <Content Include="images\images_tour\Hue_1.png" />
+    <Content Include="images\images_tour\Hue_2.png" />
+    <Content Include="images\images_tour\Hue_3.png" />
+    <Content Include="images\images_tour\Hue_4.png" />
+    <Content Include="images\images_tour\Hue_AnDinhCung_1.png" />
+    <Content Include="images\images_tour\Hue_chuaThienMu_1.png" />
+    <Content Include="images\images_tour\Hue_chuaThienMu_2.png" />
+    <Content Include="images\images_tour\Hue_chuaThienMu_3.png" />
+    <Content Include="images\images_tour\Hue_chuaThienMu_4.png" />
+    <Content Include="images\images_tour\Hue_DaiNoi_1.png" />
+    <Content Include="images\images_tour\Hue_DaiNoi_2.png" />
+    <Content Include="images\images_tour\Hue_DaiNoi_3.png" />
+    <Content Include="images\images_tour\Hue_DaiNoi_4.png" />
+    <Content Include="images\images_tour\Hue_DaiNoi_5.png" />
+    <Content Include="images\images_tour\Hue_DaiNoi_6.png" />
+    <Content Include="images\images_tour\Hue_DienKienTrung_1.png" />
+    <Content Include="images\images_tour\Hue_DienKienTrung_2.png" />
+    <Content Include="images\images_tour\Hue_LangHuong.png" />
+    <Content Include="images\images_tour\Hue_LangHuong_1.png" />
+    <Content Include="images\images_tour\Hue_LangHuong_2.png" />
+    <Content Include="images\images_tour\ThanhDiaLaVang.png" />
+    <Content Include="images\images_tour\ThanhDiaLaVang_1.png" />
+    <Content Include="images\images_tour\ThanhDiaLaVang_2.png" />
+    <Content Include="images\images_tour\ThanhDiaLaVang_3.png" />
     <Content Include="images\index-3-556x382.jpg" />
     <Content Include="images\intense_02.jpg" />
     <Content Include="images\intense_big_02.jpg" />
@@ -296,6 +439,13 @@
     <Content Include="Content\booking\css\.DS_Store" />
     <Content Include="Content\booking\css\bootstrap\.DS_Store" />
     <Content Include="Content\booking\css\css\.DS_Store" />
+    <EntityDeploy Include="DatabaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DatabaseModel.edmx.diagram">
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -342,6 +492,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

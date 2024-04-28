@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TourDuLichModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AnhTour">
+    <Key>
+      <PropertyRef Name="id_anh" />
+    </Key>
+    <Property Name="id_anh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_tourmau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TenAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DuongDan1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DuongDan2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DuongDan3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DuongDan4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DuongDan5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DuongDan6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DuongDan7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TourMau" Relationship="Self.FK__AnhTour__id_tour__440B1D61" FromRole="AnhTour" ToRole="TourMau" />
+  </EntityType>
+  <EntityType Name="DiaDiem">
+    <Key>
+      <PropertyRef Name="id_diadiem" />
+    </Key>
+    <Property Name="id_diadiem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenTinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenDuLich" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TourMau" Relationship="Self.DiaDiem_TourMau" FromRole="DiaDiem" ToRole="TourMau" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="id_hoadon" />
+    </Key>
+    <Property Name="id_hoadon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_tour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DichVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuongHanhKhach" Type="Int32" />
+    <Property Name="Ten_LienLac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT_LL" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="TenNganHang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrangThaiDonHang" Type="Int32" />
+    <Property Name="HinhThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NguoiDung" Relationship="Self.FK__HoaDon__Gmail__571DF1D5" FromRole="HoaDon" ToRole="NguoiDung" />
+    <NavigationProperty Name="Tour" Relationship="Self.FK__HoaDon__id_tour__5629CD9C" FromRole="HoaDon" ToRole="Tour" />
+    <NavigationProperty Name="ThongTinKhachHang" Relationship="Self.FK__ThongTinK__id_ho__59FA5E80" FromRole="HoaDon" ToRole="ThongTinKhachHang" />
+  </EntityType>
+  <EntityType Name="HoatDong">
+    <Key>
+      <PropertyRef Name="id_hoatdong" />
+    </Key>
+    <Property Name="id_hoatdong" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_lichtrinh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TenHoatDong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LichTrinhTheoNgay" Relationship="Self.FK__HoatDong__id_lic__3F466844" FromRole="HoatDong" ToRole="LichTrinhTheoNgay" />
+  </EntityType>
+  <EntityType Name="HuongDanVien">
+    <Key>
+      <PropertyRef Name="id_hdv" />
+    </Key>
+    <Property Name="id_hdv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NamKinhNghiem" Type="Int32" Nullable="false" />
+    <Property Name="NgoaiNgu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tour" Relationship="Self.FK__Tour__id_hdv__4E88ABD4" FromRole="HuongDanVien" ToRole="Tour" />
+  </EntityType>
+  <EntityType Name="LichTrinhTheoNgay">
+    <Key>
+      <PropertyRef Name="id_lichtrinh" />
+    </Key>
+    <Property Name="id_lichtrinh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_tourmau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TenLichTrinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoLuongNgay" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HoatDong" Relationship="Self.FK__HoatDong__id_lic__3F466844" FromRole="LichTrinhTheoNgay" ToRole="HoatDong" />
+    <NavigationProperty Name="TourMau" Relationship="Self.FK__LichTrinh__id_to__3C69FB99" FromRole="LichTrinhTheoNgay" ToRole="TourMau" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="Gmail" />
+    </Key>
+    <Property Name="Gmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="STK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenTK" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TrangThai" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__HoaDon__Gmail__571DF1D5" FromRole="NguoiDung" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tour">
+    <Key>
+      <PropertyRef Name="id_tour" />
+    </Key>
+    <Property Name="id_tour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_tourmau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_hdv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenTour" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KhoiHanh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TapTrung" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ThoiGian" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NoiKhoiHanh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoLuongToiDa" Type="Int32" Nullable="false" />
+    <Property Name="GiaNguoiLon" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="GiaTreEm" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DanhGia" Type="Double" />
+    <Property Name="Avata" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__HoaDon__id_tour__5629CD9C" FromRole="Tour" ToRole="HoaDon" />
+    <NavigationProperty Name="HuongDanVien" Relationship="Self.FK__Tour__id_hdv__4E88ABD4" FromRole="Tour" ToRole="HuongDanVien" />
+    <NavigationProperty Name="TourMau" Relationship="Self.FK__Tour__id_tourmau__4D94879B" FromRole="Tour" ToRole="TourMau" />
+  </EntityType>
+  <EntityType Name="TourMau">
+    <Key>
+      <PropertyRef Name="id_tourmau" />
+    </Key>
+    <Property Name="id_tourmau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenTourMau" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ThoiGian" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhuongTienDiChuyen" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DiemThamQuan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AmThuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KhachSan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianLyTuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DoiTuongThichHop" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UuDai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MoTaTourMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AnhTour" Relationship="Self.FK__AnhTour__id_tour__440B1D61" FromRole="TourMau" ToRole="AnhTour" />
+    <NavigationProperty Name="LichTrinhTheoNgay" Relationship="Self.FK__LichTrinh__id_to__3C69FB99" FromRole="TourMau" ToRole="LichTrinhTheoNgay" />
+    <NavigationProperty Name="Tour" Relationship="Self.FK__Tour__id_tourmau__4D94879B" FromRole="TourMau" ToRole="Tour" />
+    <NavigationProperty Name="ThongTinLuuY" Relationship="Self.FK__ThongTinL__id_to__398D8EEE" FromRole="TourMau" ToRole="ThongTinLuuY" />
+    <NavigationProperty Name="DiaDiem" Relationship="Self.DiaDiem_TourMau" FromRole="TourMau" ToRole="DiaDiem" />
+  </EntityType>
+  <EntityType Name="ThongTinKhachHang">
+    <Key>
+      <PropertyRef Name="id_khachhang" />
+    </Key>
+    <Property Name="id_khachhang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_hoadon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="Int32" />
+    <Property Name="LoaiKhachHang" Type="Int32" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__ThongTinK__id_ho__59FA5E80" FromRole="ThongTinKhachHang" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="ThongTinLuuY">
+    <Key>
+      <PropertyRef Name="id_thongtinluuy" />
+    </Key>
+    <Property Name="id_thongtinluuy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_tourmau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TenThongTin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TourMau" Relationship="Self.FK__ThongTinL__id_to__398D8EEE" FromRole="ThongTinLuuY" ToRole="TourMau" />
+  </EntityType>
+  <Association Name="FK__AnhTour__id_tour__440B1D61">
+    <End Role="TourMau" Type="Self.TourMau" Multiplicity="0..1" />
+    <End Role="AnhTour" Type="Self.AnhTour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TourMau">
+        <PropertyRef Name="id_tourmau" />
+      </Principal>
+      <Dependent Role="AnhTour">
+        <PropertyRef Name="id_tourmau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__Gmail__571DF1D5">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="Gmail" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="Gmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__id_tour__5629CD9C">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="id_tour" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="id_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongTinK__id_ho__59FA5E80">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="0..1" />
+    <End Role="ThongTinKhachHang" Type="Self.ThongTinKhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="id_hoadon" />
+      </Principal>
+      <Dependent Role="ThongTinKhachHang">
+        <PropertyRef Name="id_hoadon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoatDong__id_lic__3F466844">
+    <End Role="LichTrinhTheoNgay" Type="Self.LichTrinhTheoNgay" Multiplicity="0..1" />
+    <End Role="HoatDong" Type="Self.HoatDong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LichTrinhTheoNgay">
+        <PropertyRef Name="id_lichtrinh" />
+      </Principal>
+      <Dependent Role="HoatDong">
+        <PropertyRef Name="id_lichtrinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tour__id_hdv__4E88ABD4">
+    <End Role="HuongDanVien" Type="Self.HuongDanVien" Multiplicity="1" />
+    <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HuongDanVien">
+        <PropertyRef Name="id_hdv" />
+      </Principal>
+      <Dependent Role="Tour">
+        <PropertyRef Name="id_hdv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichTrinh__id_to__3C69FB99">
+    <End Role="TourMau" Type="Self.TourMau" Multiplicity="0..1" />
+    <End Role="LichTrinhTheoNgay" Type="Self.LichTrinhTheoNgay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TourMau">
+        <PropertyRef Name="id_tourmau" />
+      </Principal>
+      <Dependent Role="LichTrinhTheoNgay">
+        <PropertyRef Name="id_tourmau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tour__id_tourmau__4D94879B">
+    <End Role="TourMau" Type="Self.TourMau" Multiplicity="1" />
+    <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TourMau">
+        <PropertyRef Name="id_tourmau" />
+      </Principal>
+      <Dependent Role="Tour">
+        <PropertyRef Name="id_tourmau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongTinL__id_to__398D8EEE">
+    <End Role="TourMau" Type="Self.TourMau" Multiplicity="0..1" />
+    <End Role="ThongTinLuuY" Type="Self.ThongTinLuuY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TourMau">
+        <PropertyRef Name="id_tourmau" />
+      </Principal>
+      <Dependent Role="ThongTinLuuY">
+        <PropertyRef Name="id_tourmau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiaDiem_TourMau">
+    <End Role="DiaDiem" Type="Self.DiaDiem" Multiplicity="*" />
+    <End Role="TourMau" Type="Self.TourMau" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="TourDuLichEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AnhTour" EntityType="Self.AnhTour" />
+    <EntitySet Name="DiaDiem" EntityType="Self.DiaDiem" />
+    <EntitySet Name="HoaDon" EntityType="Self.HoaDon" />
+    <EntitySet Name="HoatDong" EntityType="Self.HoatDong" />
+    <EntitySet Name="HuongDanVien" EntityType="Self.HuongDanVien" />
+    <EntitySet Name="LichTrinhTheoNgay" EntityType="Self.LichTrinhTheoNgay" />
+    <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tour" EntityType="Self.Tour" />
+    <EntitySet Name="TourMau" EntityType="Self.TourMau" />
+    <EntitySet Name="ThongTinKhachHang" EntityType="Self.ThongTinKhachHang" />
+    <EntitySet Name="ThongTinLuuY" EntityType="Self.ThongTinLuuY" />
+    <AssociationSet Name="FK__AnhTour__id_tour__440B1D61" Association="Self.FK__AnhTour__id_tour__440B1D61">
+      <End Role="TourMau" EntitySet="TourMau" />
+      <End Role="AnhTour" EntitySet="AnhTour" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__Gmail__571DF1D5" Association="Self.FK__HoaDon__Gmail__571DF1D5">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__id_tour__5629CD9C" Association="Self.FK__HoaDon__id_tour__5629CD9C">
+      <End Role="Tour" EntitySet="Tour" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongTinK__id_ho__59FA5E80" Association="Self.FK__ThongTinK__id_ho__59FA5E80">
+      <End Role="HoaDon" EntitySet="HoaDon" />
+      <End Role="ThongTinKhachHang" EntitySet="ThongTinKhachHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoatDong__id_lic__3F466844" Association="Self.FK__HoatDong__id_lic__3F466844">
+      <End Role="LichTrinhTheoNgay" EntitySet="LichTrinhTheoNgay" />
+      <End Role="HoatDong" EntitySet="HoatDong" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tour__id_hdv__4E88ABD4" Association="Self.FK__Tour__id_hdv__4E88ABD4">
+      <End Role="HuongDanVien" EntitySet="HuongDanVien" />
+      <End Role="Tour" EntitySet="Tour" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichTrinh__id_to__3C69FB99" Association="Self.FK__LichTrinh__id_to__3C69FB99">
+      <End Role="TourMau" EntitySet="TourMau" />
+      <End Role="LichTrinhTheoNgay" EntitySet="LichTrinhTheoNgay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tour__id_tourmau__4D94879B" Association="Self.FK__Tour__id_tourmau__4D94879B">
+      <End Role="TourMau" EntitySet="TourMau" />
+      <End Role="Tour" EntitySet="Tour" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongTinL__id_to__398D8EEE" Association="Self.FK__ThongTinL__id_to__398D8EEE">
+      <End Role="TourMau" EntitySet="TourMau" />
+      <End Role="ThongTinLuuY" EntitySet="ThongTinLuuY" />
+    </AssociationSet>
+    <AssociationSet Name="DiaDiem_TourMau" Association="Self.DiaDiem_TourMau">
+      <End Role="DiaDiem" EntitySet="DiaDiem" />
+      <End Role="TourMau" EntitySet="TourMau" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TourDuLichModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TourDuLichModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

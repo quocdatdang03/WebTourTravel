@@ -26,13 +26,11 @@
 
     <!-- Template Stylesheet -->
     <link href="~/Content/booking/style.css" rel="stylesheet">
-
     <style>
         .tour-info{
             font-size: 14px;
         }
     </style>
-   
 </head>
 
 <body>
@@ -79,15 +77,19 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-floating date" id="date3" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker">
-                                            <label for="checkin">Ngày đi (hiển thị từ DB)</label>
+                                        <div class="form-floating">
+                                            <select class="form-select" id="select3">
+                                                <option value="1">Thanh toán bằng thẻ nội địa ATM</option>
+                                                <option value="2">Thanh toán bằng Zalo Pay</option>
+                                                <option value="3">Thanh toán bằng Momo</option>
+                                            </select>
+                                            <label for="select3">Phương thức thanh toán</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-floating date" id="date4" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker">
-                                            <label for="checkout">Ngày về (hiển thị từ DB)</label>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="sdt" placeholder="Your phone number">
+                                            <label for="sdt">Số điện thoại</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -110,25 +112,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="select3">
-                                                <option value="1">Thanh toán bằng thẻ nội địa ATM</option>
-                                                <option value="2">Thanh toán bằng Zalo Pay</option>
-                                                <option value="3">Thanh toán bằng Momo</option>
-                                            </select>
-                                            <label for="select3">Phương thức thanh toán</label>
-                                        </div>
-                                    </div>
+
                                     <div class="col-12">
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
                                             <label for="message">Ghi chú</label>
                                         </div>
                                     </div>
-                                   @* <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
-                                    </div>*@
+                                    @* <div class="col-12">
+            <button class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
+        </div>*@
                                 </div>
                             </form>
                         </div>

@@ -77,3 +77,7 @@ D:\Học Kỳ 2 năm 3\Thương mại điện tử\WebTourTravel\WebTourTravel\o
 D:\Học Kỳ 2 năm 3\Thương mại điện tử\WebTourTravel\WebTourTravel\obj\Debug\WebTourTravel.csproj.CopyComplete
 D:\Học Kỳ 2 năm 3\Thương mại điện tử\WebTourTravel\WebTourTravel\obj\Debug\WebTourTravel.dll
 D:\Học Kỳ 2 năm 3\Thương mại điện tử\WebTourTravel\WebTourTravel\obj\Debug\WebTourTravel.pdb
+D:\Học Kỳ 2 năm 3\Thương mại điện tử\WebTourTravel\WebTourTravel\bin\EntityFramework.dll
+D:\Học Kỳ 2 năm 3\Thương mại điện tử\WebTourTravel\WebTourTravel\bin\EntityFramework.SqlServer.dll
+D:\Học Kỳ 2 năm 3\Thương mại điện tử\WebTourTravel\WebTourTravel\bin\EntityFramework.xml
+D:\Học Kỳ 2 năm 3\Thương mại điện tử\WebTourTravel\WebTourTravel\bin\EntityFramework.SqlServer.xml

@@ -8,15 +8,23 @@ namespace WebTourTravel.Controllers
 {
     public class TourController : Controller
     {
+         private TourDuLichEntities tourEntity = new TourDuLichEntities();
         // GET: Tour
         public ActionResult Index()
         {
-            return View();
+            var tours = tourEntity.Tour.ToList();
+            return View("Index",tours);
         }
 
-        public ActionResult DetailTour()
+        public ActionResult DetailTour(string? idTour)
         {
-            return View();
+            if(idTour==null)
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            Tour tbTour = tourEntity.Tour.Find(idTour);
+            if (tbTour == null)
+                return HttpNotFound();
+            return View(tbTour);
         }
+
     }
 }
