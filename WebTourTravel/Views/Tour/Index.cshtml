@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<WebTourTravel.Tour>
+@{ ViewBag.Title = "TourDuLich";
+    int pageCount = ViewBag.TotalPages; // Số lượng phần tử từ ViewBag 
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +29,12 @@
     <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-Dx0NjHOKIjkaod5a7L2G75KAt7ERWp8H/jjgevyXZd0GdLPMln3PomwqBSJ9v+fq" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
 
     <style>
         .form-check-label {
@@ -37,6 +46,31 @@
             border-radius: 10px 10px 0 0;
             overflow: hidden;
         }
+
+        .block_paging {
+            text-align: center;
+        }
+
+        .link_paging {
+            display: inline-block;
+            padding: 5px 13px;
+            margin: 0 1px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #f9f9f9;
+            color: #333;
+            text-decoration: none;
+        }
+
+            .link_paging:hover {
+                background-color: #ddd;
+            }
+
+            .link_paging.active {
+                background-color: #007bff;
+                color: #fff;
+                border-color: #007bff;
+            }
     </style>
 </head>
 <body>
@@ -61,36 +95,45 @@
                 <div class="col-lg-3 sidebar" style="flex: 20%; max-width: 20%;">
                     <div class="sidebar-wrap bg-light ftco-animate">
                         <h3 class="heading" style="font-size: 17px; margin-bottom: 10px">Lọc theo tỉnh thành</h3>
-                        <form method="post" class="star-rating" style="font-size: 13px;">
-                            <div class="form-check" style="text-align:left;">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">
-                                    Thừa Thiên Huế
-                                </label>
-                            </div>
-                            <div class="form-check" style="text-align:left;">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">
-                                    Đà Nẵng
-                                </label>
-                            </div>
-                            <div class="form-check" style="text-align:left;">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">
-                                    Hội An
-                                </label>
-                            </div>
-                        </form>
+                 <form method="post" class="star-rating" style="font-size: 13px;">
+                        <div class="form-check" style="text-align:left;">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">
+                                Thừa Thiên Huế
+                            </label>
+                        </div>
+                        <div class="form-check" style="text-align:left;">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">
+                                Đà Nẵng
+                            </label>
+                        </div>
+                        <div class="form-check" style="text-align:left;">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">
+                                Hội An
+                            </label>
+                    </div>
+                  </form>
                     </div>
                     <div class="sidebar-wrap bg-light ftco-animate">
                         <h3 class="heading mb-4">Tìm kiếm nâng cao</h3>
+                        <form action="@Url.Action("FilterByDepartureDate", "Tour")" method="get">
+                            <div class="fields">
+                                <div class="form-group">
+                                    <p>Ngày đi</p>
+                                    <input type="date" name="departureDate" class="form-control" placeholder="Ngày đi">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Lọc</button>
+                                </div>
+                            </div>
+                        </form>
                         <form action="#">
                             <div class="fields">
                                 <div class="form-group">
+                                    <p>Ngày đi</p>
                                     <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="Ngày đi">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="checkin_date" class="form-control checkout_date" placeholder="Ngày về">
                                 </div>
                                 <div class="form-group">
                                     <div class="select-wrap one-third">
@@ -127,13 +170,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="range-slider">
-                                        <div>Mức giá</div>
-                                        <div style="margin: 0px; padding: 0px;">
-                                            <input style="width: 70px; border: solid black 1px;" type="number" value="0" min="0" max="20000000" />	-
-                                            <input style="width: 70px; border: solid black 1px;" type="number" value="1000000" min="0" max="20000000" />
-                                        </div>
-                                    </div>
+                                    @*<div class="range-slider">
+                        <div>Mức giá</div>
+                        <div style="margin: 0px; padding: 0px;">
+                            <input style="width: 70px; border: solid black 1px;" type="number" value="0" min="0" max="20000000" />	-
+                            <input style="width: 70px; border: solid black 1px;" type="number" value="1000000" min="0" max="20000000" />
+                        </div>
+                    </div>*@
+                                    <div id="price-range"></div>
+                                    <p>
+                                        Price Range: <span id="price-min"></span> - <span id="price-max"></span>
+                                    </p>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Tìm kiếm" class="btn btn-primary py-3 px-5">
@@ -145,18 +192,18 @@
 
                 <div class="col-lg-9" style="flex: 80%; max-width: 80%;">
                     <div class="row">
-                        @foreach(var item in Model)
+                        @foreach (var item in Model)
                         {
                             <!-- Item tour -->
                             <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="padding: 0px 5px;">
-                            <div class="room">
-                                <a href="@Url.Action("DetailTour", "Tour", new { id = item.id_tour })" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/images_tour/@Html.DisplayFor(modelItem => item.Avata)); height: 250px;">
-                                    <div class="icon d-flex justify-content-center align-items-center">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                    </div>
-                                </a>
-                                <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
-                                    <h3 class="mb-3" style="display: -webkit-box;
+                                <div class="room">
+                                    <a href="@Url.Action("DetailTour", "Tour", new { id = item.id_tour })" class="img d-flex justify-content-center align-items-center" style="background-image: url(../../images/images_tour/@Html.DisplayFor(modelItem => item.Avata)); height: 250px;">
+                                        <div class="icon d-flex justify-content-center align-items-center">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                    <div class="text p-3 text-center" style="border-radius:10px; overflow:hidden;">
+                                        <h3 class="mb-3" style="display: -webkit-box;
 							                                -webkit-box-orient: vertical;
 							                                -webkit-line-clamp: 2;
 							                                overflow: hidden;
@@ -164,81 +211,61 @@
 							                                font-family: Arial, Helvetica, sans-serif;
                                                             font-weight: 600;
                                                             font-size:16px;">
-                                        <a style="color: black;" href="@Url.Action("DetailTour", "Tour", new { id = item.id_tour })">
-                                            @Html.DisplayFor(modelItem => item.TenTour)
-                                        </a>
-                                    </h3>
-                                    <p>
-                                        <span class="price mr-2" style="font-size: 22px; color: red;"> @Html.DisplayFor(modelItem => item.GiaNguoiLon) ₫</span>
-                                        <ul class="list" style="text-align: left;">
-                                            <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> @Html.DisplayFor(modelItem => item.id_tourmau)</li>
-                                            <li><span>Ngày đi:</span>  @Html.DisplayFor(modelItem => item.KhoiHanh)</li>
-                                            <li><span>Thời gian:</span>  @Html.DisplayFor(modelItem => item.ThoiGian)</li>
-                                        </ul>
-                                        <hr>
-                                    <p class="pt-1" style="margin: 0px; padding: 0px;"><a href="rooms-single.html" class="btn-custom">Đặt Ngay <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
+                                            <a style="color: black;" href="@Url.Action("DetailTour", "Tour", new { id = item.id_tour })">
+                                                @Html.DisplayFor(modelItem => item.TenTour)
+                                            </a>
+                                        </h3>
+                                        <p>
+                                            <span class="price mr-2" style="font-size: 22px; color: red;"> @Html.DisplayFor(modelItem => item.GiaNguoiLon) ₫</span>
+                                            <ul class="list" style="text-align: left;">
+                                                <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> @Html.DisplayFor(modelItem => item.id_tourmau)</li>
+                                                <li><span>Ngày đi:</span>  @Html.DisplayFor(modelItem => item.KhoiHanh)</li>
+                                                <li><span>Thời gian:</span>  @Html.DisplayFor(modelItem => item.ThoiGian)</li>
+                                            </ul>
+                                            <hr>
+                                        <p class="pt-1" style="margin: 0px; padding: 0px;"><a href="@Url.Action("Booking", "Booking", new { id = item.id_tour })" class="btn-custom">Đặt Ngay <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         }
-                       
+
                     </div>
                     <div class="block_paging">
-                        <!--phân trang; chờ truyền DB vào rồi làm tiếp-->
+                        @if (ViewBag.HasPreviousPage)
+                        {
+                <a class="link_paging @(ViewBag.CurrentPage == 1 ? "active" : "")" href="@Url.Action("TourDuLich", new { page = ViewBag.CurrentPage - 1 })"><i class="fas fa-chevron-left"></i></a>}
+
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                <a class="link_paging @(ViewBag.CurrentPage == i ? "active" : "")" href="@Url.Action("TourDuLich", new { page = i })">@i</a>}
+
+                        @if (ViewBag.HasNextPage)
+                        {
+                <a class="link_paging @(ViewBag.CurrentPage == ViewBag.TotalPages ? "active" : "")" href="@Url.Action("TourDuLich", new { page = ViewBag.CurrentPage + 1 })"><i class="fas fa-chevron-right"></i></a>}
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section section-sm section-top-0 section-fluid section-relative bg-gray-4" style="margin-top: 10px">
+    <section class="section section-sm section-top-0 section-fluid section-relative bg-gray-4" style="margin-top: 50px">
         <div class="container-fluid">
-            <h2 style="font-family: Arial, Helvetica, sans-serif;"><span>Những địa điểm nổi tiếng</span></h2>
+            <h2 style="font-family: Arial, Helvetica, sans-serif; padding-top:20px;"><span>Những địa điểm nổi tiếng</span></h2>
             <!-- Owl Carousel-->
             <div class="owl-carousel owl-classic owl-dots-secondary" data-items="1" data-sm-items="2" data-md-items="3" data-lg-items="4" data-xl-items="5" data-xxl-items="6" data-stage-padding="15" data-xxl-stage-padding="0" data-margin="30" data-autoplay="true" data-nav="true" data-dots="true">
                 <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure">
-                        <img src="~/images/danang.jpg" alt="" width="270" height="195" />
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure">
-                        <img src="~/images/danang.jpg" alt="" width="270" height="195" />
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure">
-                        <img src="~/images/danang.jpg" alt="" width="270" height="195" />
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure">
-                        <img src="~/images/danang.jpg" alt="" width="270" height="195" />
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure">
-                        <img src="~/images/danang.jpg" alt="" width="270" height="195" />
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure">
-                        <img src="~/images/danang.jpg" alt="" width="270" height="195" />
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure">
-                        <img src="~/images/danang.jpg" alt="" width="270" height="195" />
-                    </div>
-                </article>
-            </div>
+                @{
+                    TourDuLichEntities tourEntity = new TourDuLichEntities();
+                }
+                @foreach (var item in tourEntity.AnhTour)
+                {
+                    <article class="thumbnail thumbnail-mary">
+                        <div class="thumbnail-mary-figure" style="width: 270px; height: 195px;">
+                            <img src="~/images/images_tour/@Html.DisplayFor(modelItem => item.DuongDan1)" alt="" style="height:100%; width:100%;" />
+                        </div>
+                    </article>
+                }
+                </div>
         </div>
     </section>
 
@@ -263,5 +290,23 @@
     <script src="~/js/bookingJS/google-map.js"></script>
     <script src="~/js/bookingJS/main.js"></script>
 
+    <script>
+        $(function () {
+            $("#price-range").slider({
+                range: true,
+                min: 0,
+                max: 1000,
+                values: [100, 500], // Giá trị mặc định cho thanh kéo
+                slide: function (event, ui) {
+                    $("#price-min").text("$" + ui.values[0]);
+                    $("#price-max").text("$" + ui.values[1]);
+                }
+            });
+
+            // Đặt giá trị mặc định cho vị trí của các cột hiển thị giá
+            $("#price-min").text("$" + $("#price-range").slider("values", 0));
+            $("#price-max").text("$" + $("#price-range").slider("values", 1));
+        });
+    </script>
 </body>
 </html>

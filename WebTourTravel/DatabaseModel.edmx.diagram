@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="1b88af30fbda47d5a2b0111b091ca8d8" Name="Diagram1" ZoomLevel="71">
         <EntityTypeShape EntityType="TourDuLichModel.AnhTour" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourDuLichModel.DiaDiem" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDuLichModel.DiaDiem" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TourDuLichModel.HoaDon" Width="1.5" PointX="10.5" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TourDuLichModel.HoatDong" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TourDuLichModel.HuongDanVien" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
