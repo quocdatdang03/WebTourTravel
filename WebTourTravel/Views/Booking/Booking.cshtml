@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@model WebTourTravel.Tour
+@{
+    ViewBag.Title = "BookingTour";
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Hotelier - Hotel HTML Template</title>
+    <title>@ViewBag.Title</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -21,137 +25,142 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-      <link href="~/Content/booking/bootstrap.min.css" rel="stylesheet">
-   
+    <link href="~/Content/booking/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="~/Content/booking/style.css" rel="stylesheet">
     <style>
-        .tour-info{
+        .tour-info {
             font-size: 14px;
         }
     </style>
 </head>
 
 <body>
-        <!-- Booking End -->
-        <!-- Booking Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title text-center text-primary text-uppercase">Booking SJourney</h6>
-                    <h1 class="mb-5">Book A <span class="text-primary text-uppercase">Travel Journey</span></h1>
-                </div>
-                <div>
-                    <div style="display:flex; margin: 50px 0;">
-                        <div style="flex: 1;border-radius: 10px 0 0 10px;overflow: hidden;">
-                            <img src="/images/HBanner.jpg" alt="anhChuyenDi" style="width: 100%;height: 100%;object-fit: cover;object-position: center;">
-                        </div>
-                        <div style="flex: 2; padding: 15px 30px; background-color: #f9f9f9;">
-                            <h3 style="color: #2d4271;font-size: 22px;font-weight: 700;line-height: 28px;text-align: left;">Thái Lan: Bangkok - Pattaya (Khám phá Bảo tàng Sáp Louis Tussaud Pattaya, chùa Wat Arun, Tặng Buffet tại BaiYoke Sky) | Lễ Té nước</h3>
-                            <div style="text-align: left; padding-top:15px;">
-                                <p class="tour-info">Mã Tour <b>NNSGN1303-080-160424VU-V-F</b></p>
-                                <p class="tour-info">Khởi hành <b>16/04/2024</b></p>
-                                <p class="tour-info">Thời gian <b>5 ngày</b></p>
-                                <p class="tour-info">Nơi khởi hành <b>TP. Hồ Chí Minh</b></p>
-                                <p class="tour-info">Số chỗ còn nhận <b>6</b></p>
-                                <p class="tour-info">Dịch vụ tùy chọn <b>Bay Vietravel Airlines</b></p>
-                            </div>
+    <!-- Booking End -->
+    <!-- Booking Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title text-center text-primary text-uppercase">Booking SJourney</h6>
+                <h1 class="mb-5">Book A <span class="text-primary text-uppercase">Travel Journey</span></h1>
+            </div>
+            <div>
+                <div style="display:flex; margin: 50px 0;">
+                    <div style="flex: 1;border-radius: 10px 0 0 10px;overflow: hidden;">
+                        <img src="~/images/images_tour/@Html.DisplayFor(model => model.Avata)" alt="anhChuyenDi" style="width: 100%;height: 100%;object-fit: cover;object-position: center;">
+                    </div>
+                    <div style="flex: 2; padding: 15px 30px; background-color: #f9f9f9;">
+                        <h3 style="color: #2d4271;font-size: 22px;font-weight: 700;line-height: 28px;text-align: left;">@Html.DisplayFor(model => model.TenTour)</h3>
+                        <div style="text-align: left; padding-top:15px;">
+                            <p class="tour-info">Mã Tour <b>@Html.DisplayFor(model => model.id_tour)</b></p>
+                            <p class="tour-info">Khởi hành <b>@Html.DisplayFor(model => model.KhoiHanh)</b></p>
+                            <p class="tour-info">Thời gian <b>@Html.DisplayFor(model => model.ThoiGian)</b></p>
+                            <p class="tour-info">Nơi khởi hành <b>@Html.DisplayFor(model => model.NoiKhoiHanh)</b></p>
+                            <p class="tour-info">Số chỗ còn nhận <b>@Html.DisplayFor(model => model.SoLuongToiDa)</b></p>
                         </div>
                     </div>
+                </div>
+                @{
+                    // Khai báo biến để lưu số lượng người lớn và trẻ em
+                    int soLuongNguoiLon = 1;
+                    int soLuongTreEm = 0;
+                }
+                <form style="margin-top: 25px;">
                     <div class="row">
-                        <div data-wow-delay="0.2s" style="width: 50%;" class="wow fadeInUp">
+                        <div style="width:50% ; display: flex;justify-content: center; flex-direction:column; align-items: center;">
                             <h3>Thông tin liên lạc</h3>
-                            <form style="margin-top: 25px;">
-                                <div class="row g-3">
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                            <label for="name">Họ và tên</label>
-                                        </div>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <label for="name">Họ và tên</label>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                            <label for="email">Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="select3">
-                                                <option value="1">Thanh toán bằng thẻ nội địa ATM</option>
-                                                <option value="2">Thanh toán bằng Zalo Pay</option>
-                                                <option value="3">Thanh toán bằng Momo</option>
-                                            </select>
-                                            <label for="select3">Phương thức thanh toán</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="sdt" placeholder="Your phone number">
-                                            <label for="sdt">Số điện thoại</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="input-group" style="margin:20px 0;">
-                                            <label for="soLuongNguoiLon">Số lượng người lớn</label>
-                                            <div style="display: flex;align-items: center;margin-top: 10px;">
-                                                <button class="btn btn-outline-secondary" type="button" id="minusButtonNguoiLon">-</button>
-                                                <input type="text" class="form-control" id="soLuongNguoiLon" value="0" readonly="" style="text-align: center;">
-                                                <button class="btn btn-outline-secondary" type="button" id="plusButtonNguoiLon">+</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="input-group" style="margin:20px 0;">
-                                            <label for="soLuongTreEm">Số lượng trẻ em (3 - 9 tuổi)</label>
-                                            <div style="display: flex;align-items: center;margin-top: 10px;">
-                                                <button class="btn btn-outline-secondary" type="button" id="minusButtonTreEm">-</button>
-                                                <input type="text" class="form-control" id="soLuongTreEm" value="0" readonly style="text-align: center;">
-                                                <button class="btn btn-outline-secondary" type="button" id="plusButtonTreEm">+</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
-                                            <label for="message">Ghi chú</label>
-                                        </div>
-                                    </div>
-                                    @* <div class="col-12">
-            <button class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
-        </div>*@
                                 </div>
-                            </form>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="select3">
+                                            <option value="1">Thanh toán bằng thẻ nội địa ATM</option>
+                                            <option value="2">Thanh toán bằng Zalo Pay</option>
+                                            <option value="3">Thanh toán bằng Momo</option>
+                                        </select>
+                                        <label for="select3">Phương thức thanh toán</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="sdt" placeholder="Your phone number">
+                                        <label for="sdt">Số điện thoại</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-group" style="margin:20px 0;">
+                                        <label for="soLuongNguoiLon">Số lượng người lớn</label>
+                                        <div style="display: flex;align-items: center;margin-top: 10px;">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', -1)">-</button>
+                                            <input type="text" class="form-control" id="soLuongNguoiLon" name="soLuongNguoiLon" value="@soLuongNguoiLon" readonly style="text-align: center;">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', 1)">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-group" style="margin:20px 0;">
+                                        <label for="soLuongTreEm">Số lượng trẻ em (3 - 9 tuổi)</label>
+                                        <div style="display: flex;align-items: center;margin-top: 10px;">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', -1)">-</button>
+                                            <input type="text" class="form-control" id="soLuongTreEm" name="soLuongTreEm" value="@soLuongTreEm" readonly style="text-align: center;">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', 1)">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Ghi chú</label>
+                                    </div>
+                                </div>
+                                @* <div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
+                                    </div>*@
+                            </div>
                         </div>
                         <div style="width:50% ; display: flex;justify-content: center;">
                             <div style="width:70%; border:1px solid #b6b6b6;height: 100%;padding: 20px;border-radius: 5px;">
                                 <h3>Thanh toán</h3>
                                 <div style="margin-top: 35px;">
                                     <h4 style="text-align: left;font-size: 17px;margin-bottom: 20px;">Hành khách</h4>
+                                    <!-- Hiển thị số lượng và giá của người lớn và trẻ em -->
                                     <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
                                         <p>Người lớn</p>
-                                        <p style="margin-top: 0;"><span>1 x </span><b>13.990.000đ</b></p>
+                                        <p style="margin-top: 0;"><span id="soLuongNguoiLonDisplay">@soLuongNguoiLon</span> x <b>@Html.DisplayFor(model => model.GiaNguoiLon)đ</b></p>
                                     </div>
                                     <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
                                         <p>Trẻ em</p>
-                                        <p style="margin-top: 0;"><span>1 x </span><b>13.990.000đ</b></p>
+                                        <p style="margin-top: 0;"><span id="soLuongTreEmDisplay">@soLuongTreEm</span> x <b>@Html.DisplayFor(model => model.GiaTreEm)đ</b></p>
                                     </div>
                                     <div style="display: flex;align-items: center;justify-content: space-between;margin: 30px 0;">
                                         <p style="font-weight: bold;font-size: 20px;">Tổng tiền</p>
-                                        <p style="margin-top: 0;color: red;font-weight: bold;font-size: 20px;">13.000.000đ</p>
+                                        <p style="margin-top: 0;color: red;font-weight: bold;font-size: 20px;" id="totalPrice">0đ</p>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary w-100 py-3" type="submit" style="border-radius: 10px;background: red;">Đặt Ngay</button>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        </div>
+                </form>
+
             </div>
         </div>
-        <!-- Booking End -->
+    </div>
 
+    <!-- Booking End -->
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -164,44 +173,98 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script>
-        // Script for increasing/decreasing quantity for adults
-        document.getElementById('plusButtonNguoiLon').addEventListener('click', function () {
-            incrementValue('soLuongNguoiLon');
-        });
-
-        document.getElementById('minusButtonNguoiLon').addEventListener('click', function () {
-            decrementValue('soLuongNguoiLon');
-        });
-
-        // Script for increasing/decreasing quantity for children
-        document.getElementById('plusButtonTreEm').addEventListener('click', function () {
-            incrementValue('soLuongTreEm');
-        });
-
-        document.getElementById('minusButtonTreEm').addEventListener('click', function () {
-            decrementValue('soLuongTreEm');
-        });
-
-        // Function to increment the value
-        function incrementValue(id) {
+        var soLuongToiDa = parseInt('@Model.SoLuongToiDa');
+      
+        function changeQuantity(id, change) {
+            var soLuongNL = parseInt(document.getElementById('soLuongNguoiLonDisplay').innerText);
+            var soLuongTE = parseInt(document.getElementById('soLuongTreEmDisplay').innerText);
+            console.log(soLuongNL);
+            console.log(soLuongTE);
+            var tongSoLuong = soLuongNL + soLuongTE;
             var input = document.getElementById(id);
             var value = parseInt(input.value, 10);
             value = isNaN(value) ? 0 : value;
-            value++;
+
+            if (id === "soLuongNguoiLon" && value <= 1 && change === -1) { // Đối với số lượng người lớn, giá trị tối thiểu là 1
+                value = 1;
+                alert("Số lượng người đặt tối thiểu là 1");
+            } else if (id === "soLuongTreEm" && value <= 0 && change === -1) { // Đối với số lượng trẻ em, giá trị tối thiểu là 0
+                value = 0;
+            } else {
+                value += change;
+            }
+
+            if (tongSoLuong >= soLuongToiDa && change === 1) {
+                alert("Số lượng đã đầy. Số lượng tối đa là " + soLuongToiDa);
+                return;
+            }
+
             input.value = value;
+
+            console.log("TONG " + tongSoLuong);
+            console.log("SL TOI DA: " + soLuongToiDa);
+            // Kiểm tra nếu số lượng tăng vượt quá số lượng tối đa
+            updateDisplayedQuantity(id, value); // Cập nhật số lượng hiển thị
+            calculateTotalPrice(); // Tính lại tổng tiền
         }
 
-        // Function to decrement the value
-        function decrementValue(id) {
-            var input = document.getElementById(id);
-            var value = parseInt(input.value, 10);
-            value = isNaN(value) ? 0 : value;
-            if (value > 0) {
-                value--;
+
+    function updateDisplayedQuantity(id, value) {
+        document.getElementById(id + "Display").textContent = value;
+    }
+
+        function calculateTotalPrice() {
+        var soLuongNguoiLon = parseInt(document.getElementById('soLuongNguoiLon').value);
+        var soLuongTreEm = parseInt(document.getElementById('soLuongTreEm').value);
+        var giaNguoiLon = parseInt('@Model.GiaNguoiLon');
+        var giaTreEm = parseInt('@Model.GiaTreEm');
+        var tongTienNguoiLon = soLuongNguoiLon * giaNguoiLon;
+        var tongTienTreEm = soLuongTreEm * giaTreEm;
+        var tongTien = tongTienNguoiLon + tongTienTreEm;
+        document.getElementById('totalPrice').textContent = formatCurrency(tongTien) + 'đ';
+    }
+
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('vi-VN').format(value);
+    }
+            // Script for increasing/decreasing quantity for adults
+            document.getElementById('plusButtonNguoiLon').addEventListener('click', function () {
+                incrementValue('soLuongNguoiLon');
+            });
+
+            document.getElementById('minusButtonNguoiLon').addEventListener('click', function () {
+                decrementValue('soLuongNguoiLon');
+            });
+
+            // Script for increasing/decreasing quantity for children
+            document.getElementById('plusButtonTreEm').addEventListener('click', function () {
+                incrementValue('soLuongTreEm');
+            });
+
+            document.getElementById('minusButtonTreEm').addEventListener('click', function () {
+                decrementValue('soLuongTreEm');
+            });
+
+            // Function to increment the value
+            function incrementValue(id) {
+                var input = document.getElementById(id);
+                var value = parseInt(input.value, 10);
+                value = isNaN(value) ? 0 : value;
+                value++;
                 input.value = value;
             }
-        }
 
+            // Function to decrement the value
+            function decrementValue(id) {
+                var input = document.getElementById(id);
+                var value = parseInt(input.value, 10);
+                value = isNaN(value) ? 0 : value;
+                if (value > 0) {
+                    value--;
+                    input.value = value;
+                }
+            }
+@**@
     </script>
 
     <!-- Template Javascript -->
