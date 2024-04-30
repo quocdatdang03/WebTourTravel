@@ -19,8 +19,8 @@ namespace WebTourTravel
         {
             this.AnhTour = new HashSet<AnhTour>();
             this.LichTrinhTheoNgay = new HashSet<LichTrinhTheoNgay>();
-            this.Tour = new HashSet<Tour>();
             this.ThongTinLuuY = new HashSet<ThongTinLuuY>();
+            this.Tour = new HashSet<Tour>();
             this.DiaDiem = new HashSet<DiaDiem>();
         }
     
@@ -41,9 +41,9 @@ namespace WebTourTravel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichTrinhTheoNgay> LichTrinhTheoNgay { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tour> Tour { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThongTinLuuY> ThongTinLuuY { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tour> Tour { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiaDiem> DiaDiem { get; set; }
     }

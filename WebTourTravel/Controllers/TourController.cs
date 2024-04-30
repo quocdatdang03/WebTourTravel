@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebTourTravel.Models;
+using WebTourTravel.Helper;
 
 namespace WebTourTravel.Controllers
 {
@@ -19,6 +20,8 @@ namespace WebTourTravel.Controllers
 
         public ActionResult DetailTour(string idTour)
         {
+
+            
             var tourDetails = (from tour in tourEntity.Tour
                                join tourMau in tourEntity.TourMau on tour.id_tourmau equals tourMau.id_tourmau
                                join anhTour in tourEntity.AnhTour on tourMau.id_tourmau equals anhTour.id_tourmau
@@ -49,8 +52,9 @@ namespace WebTourTravel.Controllers
                                    DuongDan5 = anhTour.DuongDan5,
                                    DuongDan6 = anhTour.DuongDan6,
                                    DuongDan7 = anhTour.DuongDan7,
+                                   soluongcon = 0
                                }).FirstOrDefault();
-
+            tourDetails.soluongcon  =  Helper.Helper.CaculateCustomer(tourEntity, idTour);
             return View("DetailTour", tourDetails);
         }
 

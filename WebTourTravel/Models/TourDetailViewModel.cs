@@ -33,6 +33,8 @@ namespace WebTourTravel.Models
         public string DuongDan5 { get; set; }
         public string DuongDan6 { get; set; }
         public string DuongDan7 { get; set; }
+        public int soluongcon  { get; set; }
+       
     }
 
 }

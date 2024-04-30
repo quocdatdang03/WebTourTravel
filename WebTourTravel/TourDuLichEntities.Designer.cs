@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Học Kỳ 2 năm 3\Thương mại điện tử\WebTourTravel\WebTourTravel\DatabaseModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\LuuGit\WebTourTravel\WebTourTravel\TourDuLichEntities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -126,7 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnhTour.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -136,66 +136,58 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TourController.cs" />
-    <Compile Include="DatabaseModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="DiaDiem.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Helper.cs" />
     <Compile Include="HoaDon.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="HoatDong.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="HuongDanVien.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="LichTrinhTheoNgay.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelLogin.cs" />
     <Compile Include="Models\ModelRegister.cs" />
     <Compile Include="Models\TourDetailViewModel.cs" />
     <Compile Include="NguoiDung.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ThongTinKhachHang.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ThongTinLuuY.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Tour.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TourDuLichEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourDuLichEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TourDuLichEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TourDuLichEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourDuLichEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="TourMau.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -229,16 +221,6 @@
     <Content Include="Content\Login\style.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\styleBooking.css" />
-    <Content Include="DatabaseModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DatabaseModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\fl-bigmug-line.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -440,13 +422,6 @@
     <Content Include="Content\booking\css\.DS_Store" />
     <Content Include="Content\booking\css\bootstrap\.DS_Store" />
     <Content Include="Content\booking\css\css\.DS_Store" />
-    <EntityDeploy Include="DatabaseModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DatabaseModel.edmx.diagram">
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -458,6 +433,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="TourDuLichEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TourDuLichEntities.edmx</DependentUpon>
+      <LastGenOutput>TourDuLichEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="TourDuLichEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TourDuLichEntities.edmx</DependentUpon>
+      <LastGenOutput>TourDuLichEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -477,6 +462,13 @@
     <Content Include="Views\Tour\DetailTour.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Profile\History.cshtml" />
+    <EntityDeploy Include="TourDuLichEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TourDuLichEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="TourDuLichEntities.edmx.diagram">
+      <DependentUpon>TourDuLichEntities.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
