@@ -171,6 +171,7 @@
     </Compile>
     <Compile Include="Models\ModelLogin.cs" />
     <Compile Include="Models\ModelRegister.cs" />
+    <Compile Include="Models\TourDetailViewModel.cs" />
     <Compile Include="NguoiDung.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>

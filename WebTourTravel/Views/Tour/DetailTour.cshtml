@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model WebTourTravel.Models.TourDetailViewModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>SJourney</title>
@@ -51,7 +53,6 @@
         </div>
     </div>
 
-
     <section class="ftco-section" style="padding: 1em;">
         <div class="container">
             <!-- <div class="row"> -->
@@ -60,8 +61,8 @@
                     <div class="col-md-12 ftco-animate">
                         <div class="row" style="text-align: left;">
                             <div class="col-md-9">
-                                <p style="font-size: 14px; color: blue;"><i class="fa fa-ticket" aria-hidden="true"></i> <span>NDSGN3383-014-130424VN-D</span></p>
-                                <p style="font-weight: 600; font-family: Arial, Helvetica, sans-serif; font-size: 25px;"><a href="rooms-single.html">DU LỊCH HUẾ -THIỀN VIỆN TRÚC LÂM BẠCH MÃ - HỘI AN - ĐÀ NẴNG - BÀ NÀ - BẢO TÀNG TRANH 3D [LỄ 30/04]</a></p>
+                                <p style="font-size: 14px; color: blue;"><i class="fa fa-ticket" aria-hidden="true"></i> <span>@Model.IdTour</span></p>
+                                <p style="font-weight: 600; font-family: Arial, Helvetica, sans-serif; font-size: 25px;"><a href="rooms-single.html">@Model.TenTour</a></p>
                             </div>
                             <div class="col-md-3">
                                 <p style="background-color: #FEA116; font-size: 20px; margin-top: 20px; text-align: center"><a href="booking.html" class="" style="color: white; display: inline-block; padding: 15px 0px;">ĐẶT NGAY <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
@@ -69,30 +70,30 @@
                         </div>
                         <div class="single-slider owl-carousel" style="min-width: 1000px; margin-top:0px">
                             <div class="item">
-                                <div class="room-img" style="background-image: url(../../images/dndem.jpg);"></div>
+                                <div class="room-img" style="background-image: url(../../images/images_tour/@Model.DuongDan2);"></div>
                             </div>
                             <div class="item">
-                                <div class="room-img" style="background-image: url(../../images/nhabap.jpg);"></div>
+                                <div class="room-img" style="background-image: url(../../images/images_tour/@Model.DuongDan4);"></div>
                             </div>
                             <div class="item">
-                                <div class="room-img" style="background-image: url(../../images/danang.jpg);"></div>
+                                <div class="room-img" style="background-image: url(../../images/images_tour/@Model.DuongDan6);"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12 room-single mt-4 mb-5 ftco-animate" style="display:flex;">
                         <div style="flex: 40%;">
                             <p style="text-align: justify; font-size: 14px; color: #343434; border: 1px solid gray; width: 100%; height: 223px; overflow-x: hidden; overflow-y: auto; padding: 15px; margin: 0px; ">
-                                Đặc biệt, đến với Đà Nẵng trong thời điểm 02/6 - 08/7/2024, Quý khách không thể bỏ lỡ Lễ Hội Pháo Hoa Quốc Tế Đà Nẵng (DIFF 2024) với chủ đề “Thế Giới không khoảng cách” tôn vinh sự phục hồi du lịch thế giới và là một trong những sự kiện đáng mong chờ nhất trong năm. Đến với lễ hội năm nay, Quý khách sẽ được mãn nhãn với những màn trình diễn tranh tài vô cùng sáng tạo, hoành tráng từ 8 quốc gia: Việt Nam, Phần Lan, Canada, Pháp, Úc, Ý, Ba Lan và Anh. Đồng hành cùng DIFF 2024 là chuỗi hoạt động, sự kiện âm nhạc, lễ hội, ẩm thực… đa dạng, đa văn hóa, hứa hẹn sẽ đem tới cho du khách những trải nghiệm thú vị nhất mùa hè này.
+                                @Model.MoTaTourMau
                             </p>
                             <div class="d-md-flex mt-5 mb-5" style="font-size: 14px; background-color: #f8f5f5; padding: 20px 10px; border-radius: 8px;">
                                 <ul class="list" style="display: flex; flex-direction: column; align-items: flex-start; ">
-                                    <li><span class="per">Khởi hành: </span> <span class="price mr-2" style="font-weight: bold; color: #01b3a7;">22/03/2024</span></li>
-                                    <li><span class="per">Giờ đi: </span> <span class="price mr-2" style="font-weight: bold; color: #01b3a7;">10:12</span></li>
-                                    <li><span class="per">Thời gian: </span> <span class="price mr-2" style="font-weight: bold; color: #01b3a7;">5 ngày</span></li>
+                                    <li><span class="per">Khởi hành: </span> <span class="price mr-2" style="font-weight: bold; color: #01b3a7;">@Model.KhoiHanh.ToString("dd/MM/yyyy")</span></li>
+                                    <li><span class="per">Giờ đi: </span> <span class="price mr-2" style="font-weight: bold; color: #01b3a7;">@Model.KhoiHanh.ToString("HH:mm")</span></li>
+                                    <li><span class="per">Thời gian: </span> <span class="price mr-2" style="font-weight: bold; color: #01b3a7;">@Model.ThoiGianTour</span></li>
                                 </ul>
                                 <ul class="list ml-md-5" style="display: flex; flex-direction: column; align-items: flex-start; ">
-                                    <li><span>Nơi khởi hành: </span><span class="price mr-2" style="font-weight: bold; color: #01b3a7;">Đà Nẵng</span></li>
-                                    <li><span>Số chỗ còn nhận: </span><span class="price mr-2" style="font-weight: bold; color: #01b3a7;">10</span></li>
+                                    <li><span>Nơi khởi hành: </span><span class="price mr-2" style="font-weight: bold; color: #01b3a7;">@Model.NoiKhoiHanh</span></li>
+                                    <li><span>Số chỗ còn nhận: </span><span class="price mr-2" style="font-weight: bold; color: #01b3a7;">@Model.SoLuongToiDa</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -103,56 +104,56 @@
                                         <div><img width="25" height="25" alt="" src="~/images/thoi gian.jpg"></div>
                                         <div style="color: black;">
                                             <div style="font-size: 16px; font-weight: 600;">Thời gian</div>
-                                            <div style="font-size: 12px; color: black;">4 ngày 3 đêm</div>
+                                            <div style="font-size: 12px; color: black;">@Model.ThoiGianTourMau</div>
                                         </div>
                                     </div>
                                     <div class="col-sm-3" style="padding: 0px 10px; margin-bottom: 20px;">
                                         <div><img width="25" height="25" alt="" src="~/images/phuong tien di chuyen.jpg"></div>
                                         <div style="color: black;">
                                             <div style="font-size: 16px; font-weight: 600;">Phương tiện di chuyển</div>
-                                            <div style="font-size: 12px; color: black;">Máy bay</div>
+                                            <div style="font-size: 12px; color: black;">@Model.PhuongTienDiChuyen</div>
                                         </div>
                                     </div>
                                     <div class="col-sm-3" style="padding: 0px 10px; margin-bottom: 20px;">
                                         <div><img width="25" height="25" alt="" src="~/images/diem tham quan.jpg"></div>
                                         <div style="color: black;">
                                             <div style="font-size: 16px; font-weight: 600;">Điểm tham quan</div>
-                                            <div style="font-size: 12px; color: black;">Đà Nẵng, Huế, Đại Nội, Bà Nà, Sơn Trà, Hội An, Động Phong Nha, Chùa Thiên Mụ, Ngũ Hành Sơn</div>
+                                            <div style="font-size: 12px; color: black;">@Model.DiemThamQuan</div>
                                         </div>
                                     </div>
                                     <div class="col-sm-3" style="padding: 0px 10px; margin-bottom: 20px;">
                                         <div><img width="25" height="25" alt="" src="~/images/am thuc.jpg"></div>
                                         <div style="color: black;">
                                             <div style="font-size: 16px; font-weight: 600;">Ẩm thực</div>
-                                            <div style="font-size: 12px; color: black;">Buffet sáng, Theo thực đơn, Đặc sản địa phương</div>
+                                            <div style="font-size: 12px; color: black;">@Model.AmThuc</div>
                                         </div>
                                     </div>
                                     <div class="col-sm-3" style="padding: 0px 10px; margin-bottom: 20px;">
                                         <div><img width="25" height="25" alt="" src="~/images/khach san.jpg"></div>
                                         <div style="color: black;">
                                             <div style="font-size: 16px; font-weight: 600;">Khách sạn</div>
-                                            <div style="font-size: 12px; color: black;">Khách sạn 4 sao</div>
+                                            <div style="font-size: 12px; color: black;">@Model.KhachSan</div>
                                         </div>
                                     </div>
                                     <div class="col-sm-3" style="padding: 0px 10px; margin-bottom: 20px;">
                                         <div><img width="25" height="25" alt="" src="~/images/thoi gian ly tuong.jpg"></div>
                                         <div style="color: black;">
                                             <div style="font-size: 16px; font-weight: 600;">Thời gian lý tưởng</div>
-                                            <div style="font-size: 12px; color: black;">Quanh năm</div>
+                                            <div style="font-size: 12px; color: black;">@Model.ThoiGianLyTuong</div>
                                         </div>
                                     </div>
                                     <div class="col-sm-3" style="padding: 0px 10px; margin-bottom: 20px;">
                                         <div><img width="25" height="25" alt="" src="~/images/doi tuong thich hop.jpg"></div>
                                         <div style="color: black;">
                                             <div style="font-size: 16px; font-weight: 600;">Đối tượng thích hợp</div>
-                                            <div style="font-size: 12px; color: black;">Cặp đôi, Gia đình nhiều thế hệ</div>
+                                            <div style="font-size: 12px; color: black;">@Model.DoiTuongThichHop</div>
                                         </div>
                                     </div>
                                     <div class="col-sm-3" style="padding: 0px 10px; margin-bottom: 20px;">
                                         <div><img width="25" height="25" alt="" src="~/images/uu dai.jpg"></div>
                                         <div style="color: black;">
                                             <div style="font-size: 16px; font-weight: 600;">Ưu đãi</div>
-                                            <div style="font-size: 12px; color: black;">Đã bao gồm ưu đãi trong giá tour</div>
+                                            <div style="font-size: 12px; color: black;">@Model.UuDai</div>
                                         </div>
                                     </div>
                                 </div>
@@ -169,44 +170,44 @@
                 <div class="owl-carousel owl-classic owl-dots-secondary" data-items="1" data-sm-items="2" data-md-items="3" data-lg-items="4" data-xl-items="5" data-xxl-items="6" data-stage-padding="15" data-xxl-stage-padding="0" data-margin="30" data-autoplay="true" data-nav="true" data-dots="true">
                     <!-- Thumbnail Classic-->
                     <article class="thumbnail thumbnail-mary" style="border-radius: 10px; overflow: hidden;">
-                        <div class="thumbnail-mary-figure">
-                            <img src="~/images/danang.jpg" alt="" width="270" height="195" />
+                        <div class="thumbnail-mary-figure" style="width: 270px; height: 190px;">
+                            <img src="~/images/images_tour/@Model.DuongDan1" alt="" style="width: 100%; height: 100%" />
                         </div>
                     </article>
                     <!-- Thumbnail Classic-->
                     <article class="thumbnail thumbnail-mary" style="border-radius: 10px; overflow: hidden;">
-                        <div class="thumbnail-mary-figure">
-                            <img src="~/images/danang.jpg" alt="" width="270" height="195" />
+                        <div class="thumbnail-mary-figure" style="width: 270px; height: 190px;">
+                            <img src="~/images/images_tour/@Model.DuongDan2" alt="" style="width: 100%; height: 100%" />
                         </div>
                     </article>
                     <!-- Thumbnail Classic-->
                     <article class="thumbnail thumbnail-mary" style="border-radius: 10px; overflow: hidden;">
-                        <div class="thumbnail-mary-figure">
-                            <img src="~/images/danang.jpg" alt="" width="270" height="195" />
+                        <div class="thumbnail-mary-figure" style="width: 270px; height: 190px;">
+                            <img src="~/images/images_tour/@Model.DuongDan3" alt=""style="width: 100%; height: 100%" />
                         </div>
                     </article>
                     <!-- Thumbnail Classic-->
                     <article class="thumbnail thumbnail-mary" style="border-radius: 10px; overflow: hidden;">
-                        <div class="thumbnail-mary-figure">
-                            <img src="~/images/danang.jpg" alt="" width="270" height="195" />
+                        <div class="thumbnail-mary-figure" style="width: 270px; height: 190px;">
+                            <img src="~/images/images_tour/@Model.DuongDan4" alt="" style="width: 100%; height: 100%" />
                         </div>
                     </article>
                     <!-- Thumbnail Classic-->
                     <article class="thumbnail thumbnail-mary" style="border-radius: 10px; overflow: hidden;">
-                        <div class="thumbnail-mary-figure">
-                            <img src="~/images/danang.jpg" alt="" width="270" height="195" />
+                        <div class="thumbnail-mary-figure" style="width: 270px; height: 190px;">
+                            <img src="~/images/images_tour/@Model.DuongDan5" alt="" style="width: 100%; height: 100%" />
                         </div>
                     </article>
                     <!-- Thumbnail Classic-->
                     <article class="thumbnail thumbnail-mary" style="border-radius: 10px; overflow: hidden;">
-                        <div class="thumbnail-mary-figure">
-                            <img src="~/images/danang.jpg" alt="" width="270" height="195" />
+                        <div class="thumbnail-mary-figure" style="width: 270px; height: 190px;">
+                            <img src="~/images/images_tour/@Model.DuongDan6" alt="" style="width: 100%; height: 100%" />
                         </div>
                     </article>
                     <!-- Thumbnail Classic-->
                     <article class="thumbnail thumbnail-mary" style="border-radius: 10px; overflow: hidden;">
-                        <div class="thumbnail-mary-figure">
-                            <img src="~/images/danang.jpg" alt="" width="270" height="195" />
+                        <div class="thumbnail-mary-figure" style="width: 270px; height: 190px;">
+                            <img src="~/images/images_tour/@Model.DuongDan7" alt="" style="width: 100%; height: 100%" />
                         </div>
                     </article>
                 </div>
@@ -219,12 +220,26 @@
                         <h2 style="font-family: Arial, Helvetica, sans-serif;"><span>Lịch trình</span></h2>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="background: #f1f2f2; border-radius: 10px; padding: 30px 0px; margin: 0px">
                     <div class="col-sm-4">
-                        <div>Timeline</div>
+                        @foreach (var item in new TourDuLichEntities().LichTrinhTheoNgay.Where(x => x.id_tourmau == Model.IdTourMau))
+                        {
+            <div style="display: flex; margin: 10px 0px">
+                <div class="" style="flex: 20%; color: red; font-size: 14px; font-weight: 600; border-right: dotted 2px #01b3a7">
+                    @Html.DisplayFor(modelItem => item.SoLuongNgay)
+                </div>
+                <div class="" style="flex: 70%; color: black; font-size: 12px; text-align: justify; font-weight: 600; padding-left: 10px">
+                    @Html.DisplayFor(modelItem => item.TenLichTrinh)
+                </div>
+            </div>}
                     </div>
                     <div class="col-sm-8">
-                        <div>Detail Timeline</div>
+                        @foreach (var item in new TourDuLichEntities().LichTrinhTheoNgay.Where(x => x.id_tourmau == Model.IdTourMau))
+                        {
+            <div style="text-align: justify; font-size: 16px; color: black; font-weight: 600">@Html.DisplayFor(modelItem => item.SoLuongNgay) - @Html.DisplayFor(modelItem => item.TenLichTrinh)</div> foreach (var hoatdong in new TourDuLichEntities().HoatDong.Where(x => x.id_lichtrinh == item.id_lichtrinh))
+                            {
+            <div style="border-left: 2px dotted blue; padding-left: 10px; text-align: justify; color:black; font-size: 13px">* @Html.DisplayFor(modelItem => hoatdong.TenHoatDong)</div>}
+                        }
                     </div>
                 </div>
             </div>
@@ -298,212 +313,151 @@
         <div class="col-md-12 room-single ftco-animate mb-5 mt-5">
             <h4 style="font-family: Arial, Helvetica, sans-serif; font-weight: 600;" class="mb-4">Có thể Quý khách sẽ thích</h4>
             <div class="row">
-                <div class="col-sm col-md-3 ftco-animate">
-                    <div class="room">
-                        <a href="rooms.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../../images/nhabap.jpg);">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                        </a>
-                        <div class="text p-3 text-center">
-                            <h6 class="mb-3" style="margin: 0px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; font-family: Arial, Helvetica, sans-serif; font-weight: 600; font-size: 16px; text-align: left">
-                                <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
-                            </h6>
-                            <p style="text-align: left; margin-top: -15px; font-size: 14px"><span>Nơi khởi hành</span> <span>Đà Nẵng</span></p>
-                            <p><span class="price mr-2">20.00 ₫</span></p>
-                            <hr>
-                            <div style="display: flex">
-                                <p style="flex: 30%; background-color: #FEA116; font-size: 12px; text-align: center; margin: 0px; margin-right: 10px; border-radius: 5px;"><a href="booking.html" class="" style="color: white; display: inline-block; padding: 10px 0px;">ĐẶT NGAY</a></p>
-                                <p style="flex: 30%; background-color: white; font-size: 12px; text-align: center; margin: 0px; margin-left: 10px; padding: 10px 0px; border: 1px solid black; border-radius: 5px;" class=""><a href="room-single.html" class="btn-custom">Xem chi tiết <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
+                @foreach (var item in new TourDuLichEntities().Tour.Take(4))
+                {
+    <div class="col-sm col-md-3 ftco-animate">
+        <div class="room">
+            <a href="rooms.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../../images/images_tour/@Html.DisplayFor(modelItem => item.Avata));">
+                <div class="icon d-flex justify-content-center align-items-center">
+                    <i class="fa fa-search" aria-hidden="true"></i>
                 </div>
-                <div class="col-sm col-md-3 ftco-animate">
-                    <div class="room">
-                        <a href="rooms.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../../images/nhabap.jpg);">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                        </a>
-                        <div class="text p-3 text-center">
-                            <h6 class="mb-3" style="margin: 0px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; font-family: Arial, Helvetica, sans-serif; font-weight: 600; font-size: 16px; text-align: left">
-                                <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
-                            </h6>
-                            <p style="text-align: left; margin-top: -15px; font-size: 14px"><span>Nơi khởi hành</span> <span>Đà Nẵng</span></p>
-                            <p><span class="price mr-2">20.00 ₫</span></p>
-                            <hr>
-                            <div style="display: flex">
-                                <p style="flex: 30%; background-color: #FEA116; font-size: 12px; text-align: center; margin: 0px; margin-right: 10px; border-radius: 5px;"><a href="booking.html" class="" style="color: white; display: inline-block; padding: 10px 0px;">ĐẶT NGAY</a></p>
-                                <p style="flex: 30%; background-color: white; font-size: 12px; text-align: center; margin: 0px; margin-left: 10px; padding: 10px 0px; border: 1px solid black; border-radius: 5px;" class=""><a href="room-single.html" class="btn-custom">Xem chi tiết <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
+            </a>
+            <div class="text p-3 text-center">
+                <h6 class="mb-3" style="margin: 0px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; font-family: Arial, Helvetica, sans-serif; font-weight: 600; font-size: 16px; text-align: left">
+                    <a style="color: black;" href="rooms.html">@Html.DisplayFor(modelItem => item.TenTour)</a>
+                </h6>
+                <p style="text-align: left; margin-top: -15px; font-size: 14px"><span>Nơi khởi hành</span> <span>@Html.DisplayFor(modelItem => item.NoiKhoiHanh)</span></p>
+                <p><span class="price mr-2">@(string.Format("{0:0,0} VNĐ", item.GiaNguoiLon))</span></p>
+                <hr>
+                <div style="display: flex">
+                    <p style="flex: 30%; background-color: #FEA116; font-size: 12px; text-align: center; margin: 0px; margin-right: 10px; border-radius: 5px;"><a href="booking.html" class="" style="color: white; display: inline-block; padding: 10px 0px;">ĐẶT NGAY</a></p>
+                    <p style="flex: 30%; background-color: white; font-size: 12px; text-align: center; margin: 0px; margin-left: 10px; padding: 10px 0px; border: 1px solid black; border-radius: 5px;" class=""><a href="./DetailTour?idTour=@Html.DisplayFor(modelItem => item.id_tour)" class="btn-custom">Xem chi tiết <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
                 </div>
-                <div class="col-sm col-md-3 ftco-animate">
-                    <div class="room">
-                        <a href="rooms.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../../images/nhabap.jpg);">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                        </a>
-                        <div class="text p-3 text-center">
-                            <h6 class="mb-3" style="margin: 0px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; font-family: Arial, Helvetica, sans-serif; font-weight: 600; font-size: 16px; text-align: left">
-                                <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
-                            </h6>
-                            <p style="text-align: left; margin-top: -15px; font-size: 14px"><span>Nơi khởi hành</span> <span>Đà Nẵng</span></p>
-                            <p><span class="price mr-2">20.00 ₫</span></p>
-                            <hr>
-                            <div style="display: flex">
-                                <p style="flex: 30%; background-color: #FEA116; font-size: 12px; text-align: center; margin: 0px; margin-right: 10px; border-radius: 5px;"><a href="booking.html" class="" style="color: white; display: inline-block; padding: 10px 0px;">ĐẶT NGAY</a></p>
-                                <p style="flex: 30%; background-color: white; font-size: 12px; text-align: center; margin: 0px; margin-left: 10px; padding: 10px 0px; border: 1px solid black; border-radius: 5px;" class=""><a href="room-single.html" class="btn-custom">Xem chi tiết <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm col-md-3 ftco-animate">
-                    <div class="room">
-                        <a href="rooms.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../../images/nhabap.jpg);">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                        </a>
-                        <div class="text p-3 text-center">
-                            <h6 class="mb-3" style="margin: 0px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; font-family: Arial, Helvetica, sans-serif; font-weight: 600; font-size: 16px; text-align: left">
-                                <a style="color: black;" href="rooms.html">Đà Nẵng - Bà Nà - Cầu Vàng - Sơn Trà - Hội An - Rừng Dừa Bảy Mẫu - Đà Nẵng (Khách sạn 4* trọn tour)</a>
-                            </h6>
-                            <p style="text-align: left; margin-top: -15px; font-size: 14px"><span>Nơi khởi hành</span> <span>Đà Nẵng</span></p>
-                            <p><span class="price mr-2">20.00 ₫</span></p>
-                            <hr>
-                            <div style="display: flex">
-                                <p style="flex: 30%; background-color: #FEA116; font-size: 12px; text-align: center; margin: 0px; margin-right: 10px; border-radius: 5px;"><a href="booking.html" class="" style="color: white; display: inline-block; padding: 10px 0px;">ĐẶT NGAY</a></p>
-                                <p style="flex: 30%; background-color: white; font-size: 12px; text-align: center; margin: 0px; margin-left: 10px; padding: 10px 0px; border: 1px solid black; border-radius: 5px;" class=""><a href="room-single.html" class="btn-custom">Xem chi tiết <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </div>}
             </div>
         </div>
     </section>
 
-        <!-- loader -->
-        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
-        <script src="~/js/bookingJS/jquery.min.js"></script>
-        <script src="~/js/bookingJS/jquery-migrate-3.0.1.min.js"></script>
-        <script src="~/js/bookingJS/popper.min.js"></script>
-        <script src="~/js/bookingJS/bootstrap.min.js"></script>
-        <script src="~/js/bookingJS/jquery.easing.1.3.js"></script>
-        <script src="~/js/bookingJS/jquery.waypoints.min.js"></script>
-        <script src="~/js/bookingJS/jquery.stellar.min.js"></script>
-        <script src="~/js/bookingJS/owl.carousel.min.js"></script>
-        <script src="~/js/bookingJS/jquery.magnific-popup.min.js"></script>
-        <script src="~/js/bookingJS/aos.js"></script>
-        <script src="~/js/bookingJS/jquery.animateNumber.min.js"></script>
-        <script src="~/js/bookingJS/bootstrap-datepicker.js"></script>
-        <script src="~/js/bookingJS/jquery.timepicker.min.js"></script>
-        <script src="~/js/bookingJS/scrollax.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="~/js/bookingJS/google-map.js"></script>
-        <script src="~/js/bookingJS/main.js"></script>
+    <script src="~/js/bookingJS/jquery.min.js"></script>
+    <script src="~/js/bookingJS/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/js/bookingJS/popper.min.js"></script>
+    <script src="~/js/bookingJS/bootstrap.min.js"></script>
+    <script src="~/js/bookingJS/jquery.easing.1.3.js"></script>
+    <script src="~/js/bookingJS/jquery.waypoints.min.js"></script>
+    <script src="~/js/bookingJS/jquery.stellar.min.js"></script>
+    <script src="~/js/bookingJS/owl.carousel.min.js"></script>
+    <script src="~/js/bookingJS/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/bookingJS/aos.js"></script>
+    <script src="~/js/bookingJS/jquery.animateNumber.min.js"></script>
+    <script src="~/js/bookingJS/bootstrap-datepicker.js"></script>
+    <script src="~/js/bookingJS/jquery.timepicker.min.js"></script>
+    <script src="~/js/bookingJS/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="~/js/bookingJS/google-map.js"></script>
+    <script src="~/js/bookingJS/main.js"></script>
 
-        <script>
-            var check = 1;
-            // 1
-            document.getElementById("note-1").onclick = function () {
-                if (check == 1) {
-                    document.getElementById("content-note_1").style.display = "block"
-                    document.getElementById("content-note_2").style.display = "none"
-                    document.getElementById("content-note_3").style.display = "none"
-                    document.getElementById("content-note_4").style.display = "none"
-                    document.getElementById("content-note_5").style.display = "none"
-                    document.getElementById("content-note_6").style.display = "none"
-                    check = 0
-                } else {
-                    document.getElementById("content-note_1").style.display = "none"
-                    check = 1
-                }
+    <script>
+        var check = 1;
+        // 1
+        document.getElementById("note-1").onclick = function () {
+            if (check == 1) {
+                document.getElementById("content-note_1").style.display = "block"
+                document.getElementById("content-note_2").style.display = "none"
+                document.getElementById("content-note_3").style.display = "none"
+                document.getElementById("content-note_4").style.display = "none"
+                document.getElementById("content-note_5").style.display = "none"
+                document.getElementById("content-note_6").style.display = "none"
+                check = 0
+            } else {
+                document.getElementById("content-note_1").style.display = "none"
+                check = 1
             }
-            // 2
-            var check = 1
-            document.getElementById("note-2").onclick = function () {
-                if (check == 1) {
-                    document.getElementById("content-note_2").style.display = "block"
-                    document.getElementById("content-note_1").style.display = "none"
-                    document.getElementById("content-note_3").style.display = "none"
-                    document.getElementById("content-note_4").style.display = "none"
-                    document.getElementById("content-note_5").style.display = "none"
-                    document.getElementById("content-note_6").style.display = "none"
-                    check = 0
-                } else {
-                    document.getElementById("content-note_2").style.display = "none"
-                    check = 1
-                }
+        }
+        // 2
+        var check = 1
+        document.getElementById("note-2").onclick = function () {
+            if (check == 1) {
+                document.getElementById("content-note_2").style.display = "block"
+                document.getElementById("content-note_1").style.display = "none"
+                document.getElementById("content-note_3").style.display = "none"
+                document.getElementById("content-note_4").style.display = "none"
+                document.getElementById("content-note_5").style.display = "none"
+                document.getElementById("content-note_6").style.display = "none"
+                check = 0
+            } else {
+                document.getElementById("content-note_2").style.display = "none"
+                check = 1
             }
-            // 3
-            var check = 1
-            document.getElementById("note-3").onclick = function () {
-                if (check == 1) {
-                    document.getElementById("content-note_3").style.display = "block"
-                    document.getElementById("content-note_1").style.display = "none"
-                    document.getElementById("content-note_2").style.display = "none"
-                    document.getElementById("content-note_4").style.display = "none"
-                    document.getElementById("content-note_5").style.display = "none"
-                    document.getElementById("content-note_6").style.display = "none"
-                    check = 0
-                } else {
-                    document.getElementById("content-note_3").style.display = "none"
-                    check = 1
-                }
+        }
+        // 3
+        var check = 1
+        document.getElementById("note-3").onclick = function () {
+            if (check == 1) {
+                document.getElementById("content-note_3").style.display = "block"
+                document.getElementById("content-note_1").style.display = "none"
+                document.getElementById("content-note_2").style.display = "none"
+                document.getElementById("content-note_4").style.display = "none"
+                document.getElementById("content-note_5").style.display = "none"
+                document.getElementById("content-note_6").style.display = "none"
+                check = 0
+            } else {
+                document.getElementById("content-note_3").style.display = "none"
+                check = 1
             }
-            // 4
-            var check = 1
-            document.getElementById("note-4").onclick = function () {
-                if (check == 1) {
-                    document.getElementById("content-note_4").style.display = "block"
-                    document.getElementById("content-note_1").style.display = "none"
-                    document.getElementById("content-note_2").style.display = "none"
-                    document.getElementById("content-note_3").style.display = "none"
-                    document.getElementById("content-note_5").style.display = "none"
-                    document.getElementById("content-note_6").style.display = "none"
-                    check = 0
-                } else {
-                    document.getElementById("content-note_4").style.display = "none"
-                    check = 1
-                }
+        }
+        // 4
+        var check = 1
+        document.getElementById("note-4").onclick = function () {
+            if (check == 1) {
+                document.getElementById("content-note_4").style.display = "block"
+                document.getElementById("content-note_1").style.display = "none"
+                document.getElementById("content-note_2").style.display = "none"
+                document.getElementById("content-note_3").style.display = "none"
+                document.getElementById("content-note_5").style.display = "none"
+                document.getElementById("content-note_6").style.display = "none"
+                check = 0
+            } else {
+                document.getElementById("content-note_4").style.display = "none"
+                check = 1
             }
-            // 5
-            var check = 1
-            document.getElementById("note-5").onclick = function () {
-                if (check == 1) {
-                    document.getElementById("content-note_5").style.display = "block"
-                    document.getElementById("content-note_1").style.display = "none"
-                    document.getElementById("content-note_2").style.display = "none"
-                    document.getElementById("content-note_3").style.display = "none"
-                    document.getElementById("content-note_4").style.display = "none"
-                    document.getElementById("content-note_6").style.display = "none"
-                    check = 0
-                } else {
-                    document.getElementById("content-note_5").style.display = "none"
-                    check = 1
-                }
+        }
+        // 5
+        var check = 1
+        document.getElementById("note-5").onclick = function () {
+            if (check == 1) {
+                document.getElementById("content-note_5").style.display = "block"
+                document.getElementById("content-note_1").style.display = "none"
+                document.getElementById("content-note_2").style.display = "none"
+                document.getElementById("content-note_3").style.display = "none"
+                document.getElementById("content-note_4").style.display = "none"
+                document.getElementById("content-note_6").style.display = "none"
+                check = 0
+            } else {
+                document.getElementById("content-note_5").style.display = "none"
+                check = 1
             }
-            // 6
-            var check = 1
-            document.getElementById("note-6").onclick = function () {
-                if (check == 1) {
-                    document.getElementById("content-note_6").style.display = "block"
-                    document.getElementById("content-note_1").style.display = "none"
-                    document.getElementById("content-note_2").style.display = "none"
-                    document.getElementById("content-note_3").style.display = "none"
-                    document.getElementById("content-note_4").style.display = "none"
-                    document.getElementById("content-note_5").style.display = "none"
-                    check = 0
-                } else {
-                    document.getElementById("content-note_6").style.display = "none"
-                    check = 1
-                }
+        }
+        // 6
+        var check = 1
+        document.getElementById("note-6").onclick = function () {
+            if (check == 1) {
+                document.getElementById("content-note_6").style.display = "block"
+                document.getElementById("content-note_1").style.display = "none"
+                document.getElementById("content-note_2").style.display = "none"
+                document.getElementById("content-note_3").style.display = "none"
+                document.getElementById("content-note_4").style.display = "none"
+                document.getElementById("content-note_5").style.display = "none"
+                check = 0
+            } else {
+                document.getElementById("content-note_6").style.display = "none"
+                check = 1
             }
-        </script>
+        }
+    </script>
 </body>
 </html>

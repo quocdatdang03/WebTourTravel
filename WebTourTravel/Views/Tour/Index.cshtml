@@ -217,7 +217,7 @@
                                             </a>
                                         </h3>
                                         <p>
-                                            <span class="price mr-2" style="font-size: 22px; color: red;"> @Html.DisplayFor(modelItem => item.GiaNguoiLon) ₫</span>
+                                            <span class="price mr-2" style="font-size: 22px; color: red;">@(string.Format("{0:0,0} VNĐ", item.GiaNguoiLon))</span>
                                             <ul class="list" style="text-align: left;">
                                                 <li style="text-align: center;"><span>Mã tour:<br><i class="fa fa-ticket" aria-hidden="true"></i> </span> @Html.DisplayFor(modelItem => item.id_tourmau)</li>
                                                 <li><span>Ngày đi:</span>  @Html.DisplayFor(modelItem => item.KhoiHanh)</li>

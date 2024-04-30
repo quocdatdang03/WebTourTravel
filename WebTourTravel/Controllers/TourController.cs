@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebTourTravel.Models;
 
 namespace WebTourTravel.Controllers
 {
@@ -18,12 +19,39 @@ namespace WebTourTravel.Controllers
 
         public ActionResult DetailTour(string idTour)
         {
-            if(idTour==null)
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            Tour tbTour = tourEntity.Tour.Find(idTour);
-            if (tbTour == null)
-                return HttpNotFound();
-            return View(tbTour);
+            var tourDetails = (from tour in tourEntity.Tour
+                               join tourMau in tourEntity.TourMau on tour.id_tourmau equals tourMau.id_tourmau
+                               join anhTour in tourEntity.AnhTour on tourMau.id_tourmau equals anhTour.id_tourmau
+                               where tour.id_tour == idTour
+                               select new TourDetailViewModel
+                               {
+                                   IdTour = tour.id_tour,
+                                   IdTourMau = tourMau.id_tourmau,
+                                   TenTour = tour.TenTour,
+                                   KhoiHanh = tour.KhoiHanh,
+                                   NoiKhoiHanh = tour.NoiKhoiHanh,
+                                   ThoiGianTour = tour.ThoiGian,
+                                   TapTrung = tour.TapTrung,
+                                   SoLuongToiDa = tour.SoLuongToiDa,
+                                   MoTaTourMau = tourMau.MoTaTourMau,
+                                   ThoiGianTourMau = tourMau.ThoiGian,
+                                   PhuongTienDiChuyen = tourMau.PhuongTienDiChuyen,
+                                   DiemThamQuan = tourMau.DiemThamQuan,
+                                   AmThuc = tourMau.AmThuc,
+                                   KhachSan = tourMau.KhachSan,
+                                   ThoiGianLyTuong = tourMau.ThoiGianLyTuong,
+                                   DoiTuongThichHop = tourMau.DoiTuongThichHop,
+                                   UuDai = tourMau.UuDai,
+                                   DuongDan1 = anhTour.DuongDan1,
+                                   DuongDan2 = anhTour.DuongDan2,
+                                   DuongDan3 = anhTour.DuongDan3,
+                                   DuongDan4 = anhTour.DuongDan4,
+                                   DuongDan5 = anhTour.DuongDan5,
+                                   DuongDan6 = anhTour.DuongDan6,
+                                   DuongDan7 = anhTour.DuongDan7,
+                               }).FirstOrDefault();
+
+            return View("DetailTour", tourDetails);
         }
 
         /*Pagination*/
@@ -47,6 +75,8 @@ namespace WebTourTravel.Controllers
 
             return View("Index",dataToDisplay);
         }
+
+      
 
         [HttpGet]
         public ActionResult FilterByDepartureDate(DateTime? departureDate, int page = 1, int pageSize = 9)
