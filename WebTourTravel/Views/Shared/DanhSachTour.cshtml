@@ -1,0 +1,250 @@
+﻿@model IEnumerable<WebTourTravel.Tour>
+@{ ViewBag.Title = "TourDuLich";
+    int pageCount = ViewBag.TotalPages; // Số lượng phần tử từ ViewBag
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Deluxe - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/booking/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/booking/css/animate.css">
+
+    <link rel="stylesheet" href="~/Content/booking/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/booking/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/booking/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="~/Content/booking/css/aos.css">
+    <link rel="stylesheet" href="~/Content/booking/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Content/booking/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Content/booking/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="~/Content/booking/css/flaticon.css">
+    <link rel="stylesheet" href="~/Content/booking/css/icomoon.css">
+    <link rel="stylesheet" href="~/Content/booking/css/style.css">
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-Dx0NjHOKIjkaod5a7L2G75KAt7ERWp8H/jjgevyXZd0GdLPMln3PomwqBSJ9v+fq" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+
+    <style>
+        .form-check-label {
+            font-size: 14px;
+        }
+
+
+        .room {
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+
+        .block_paging {
+            text-align: center;
+        }
+
+        .link_paging {
+            display: inline-block;
+            padding: 5px 13px;
+            margin: 0 1px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #f9f9f9;
+            color: #333;
+            text-decoration: none;
+        }
+
+            .link_paging:hover {
+                background-color: #ddd;
+            }
+
+            .link_paging.active {
+                background-color: #007bff;
+                color: #fff;
+                border-color: #007bff;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="hero-wrap" style="background-image: url('../../images/danang.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+                <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                    <div class="text">
+                        <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Trang chủ</a></span> <span>Danh sách Tour</span></p>
+                        <h1 class="mb-4 bread">SJourney's Tour</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ftco-section bg-light" style="padding: 30px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 sidebar" style="flex: 20%; max-width: 20%;">
+                    <div class="sidebar-wrap bg-light ftco-animate">
+                        <h3 class="heading" style="font-size: 17px; margin-bottom: 10px">Lọc theo tỉnh thành</h3>
+                       @Html.Action("Category","Tour")
+                    </div>
+                    <div class="sidebar-wrap bg-light ftco-animate">
+                        <h3 class="heading mb-4">Tìm kiếm nâng cao</h3>
+                        <form action="@Url.Action("FilterByDepartureDate", "Tour")" method="get">
+                            <div class="fields">
+                                <div class="form-group">
+                                    <p>Ngày đi</p>
+                                    <input type="date" name="departureDate" class="form-control" placeholder="Ngày đi">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Lọc</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="@Url.Action("FilterHard","Tour")">
+                            <div class="fields">
+                                <div class="form-group">
+                                    <p>Ngày đi</p>
+                                    <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="Ngày đi" name="ngaydi">
+                                </div>
+                                <div class="form-group">
+                                    <div class="select-wrap one-third">
+                                        <div class="icon"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                                        <select name="quantityDate" id="" class="form-control">
+                                            <option value="1">Số ngày</option>
+                                            <option value="2">1-3 ngày</option>
+                                            <option value="3">4-7 ngày</option>
+                                            <option value="4">8-14 ngày</option>
+                                            <option value="5">trên 14 ngày</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="select-wrap one-third">
+                                        <div class="icon"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                                        <select name="quantitiCus" id="" class="form-control">
+                                            <option value="0">Số người</option>
+                                            <option value="1">1-2 người</option>
+                                            <option value="2">3-4 người</option>
+                                            <option value="3">5-6 người</option>
+                                            <option value="4">trên 6 người</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @*<div class="range-slider">
+                                            <div>Mức giá</div>
+                                            <div style="margin: 0px; padding: 0px;">
+                                                <input style="width: 70px; border: solid black 1px;" type="number" value="0" min="0" max="20000000" />	-
+                                                <input style="width: 70px; border: solid black 1px;" type="number" value="1000000" min="0" max="20000000" />
+                                            </div>
+                                        </div>*@
+                                    <div id="price-range"></div>
+                                    <p>
+                                        Price Range: <span id="price-min"></span> - <span id="price-max"></span>
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Tìm kiếm" class="btn btn-primary py-3 px-5">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-9" style="flex: 80%; max-width: 80%;">
+                    <div class="row">
+                       @RenderBody();
+
+                    </div>
+                    <div class="block_paging">
+                        @if (ViewBag.HasPreviousPage)
+                        {
+                            <a class="link_paging @(ViewBag.CurrentPage == 1 ? "active" : "")" href="@Url.Action("TourDuLich", new { page = ViewBag.CurrentPage - 1 })"><i class="fas fa-chevron-left"></i></a>}
+
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            <a class="link_paging @(ViewBag.CurrentPage == i ? "active" : "")" href="@Url.Action("TourDuLich", new { page = i })">@i</a>}
+
+                        @if (ViewBag.HasNextPage)
+                        {
+                            <a class="link_paging @(ViewBag.CurrentPage == ViewBag.TotalPages ? "active" : "")" href="@Url.Action("TourDuLich", new { page = ViewBag.CurrentPage + 1 })"><i class="fas fa-chevron-right"></i></a>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-sm section-top-0 section-fluid section-relative bg-gray-4" style="margin-top: 50px">
+        <div class="container-fluid">
+            <h2 style="font-family: Arial, Helvetica, sans-serif; padding-top:20px;"><span>Những địa điểm nổi tiếng</span></h2>
+            <!-- Owl Carousel-->
+            <div class="owl-carousel owl-classic owl-dots-secondary" data-items="1" data-sm-items="2" data-md-items="3" data-lg-items="4" data-xl-items="5" data-xxl-items="6" data-stage-padding="15" data-xxl-stage-padding="0" data-margin="30" data-autoplay="true" data-nav="true" data-dots="true">
+                <!-- Thumbnail Classic-->
+                @{
+                    TourDuLichEntities tourEntity = new TourDuLichEntities();
+                }
+                @foreach (var item in tourEntity.AnhTour)
+                {
+                    <article class="thumbnail thumbnail-mary">
+                        <div class="thumbnail-mary-figure" style="width: 270px; height: 195px;">
+                            <img src="~/images/images_tour/@Html.DisplayFor(modelItem => item.DuongDan1)" alt="" style="height:100%; width:100%;" />
+                        </div>
+                    </article>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+    <script src="~/js/bookingJS/jquery.min.js"></script>
+    <script src="~/js/bookingJS/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/js/bookingJS/popper.min.js"></script>
+    <script src="~/js/bookingJS/bootstrap.min.js"></script>
+    <script src="~/js/bookingJS/jquery.easing.1.3.js"></script>
+    <script src="~/js/bookingJS/jquery.waypoints.min.js"></script>
+    <script src="~/js/bookingJS/jquery.stellar.min.js"></script>
+    <script src="~/js/bookingJS/owl.carousel.min.js"></script>
+    <script src="~/js/bookingJS/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/bookingJS/aos.js"></script>
+    <script src="~/js/bookingJS/jquery.animateNumber.min.js"></script>
+    <script src="~/js/bookingJS/bootstrap-datepicker.js"></script>
+    <script src="~/js/bookingJS/jquery.timepicker.min.js"></script>
+    <script src="~/js/bookingJS/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="~/js/bookingJS/google-map.js"></script>
+    <script src="~/js/bookingJS/main.js"></script>
+
+    <script>
+        $(function () {
+            $("#price-range").slider({
+                range: true,
+                min: 0,
+                max: 1000,
+                values: [100, 500], // Giá trị mặc định cho thanh kéo
+                slide: function (event, ui) {
+                    $("#price-min").text("$" + ui.values[0]);
+                    $("#price-max").text("$" + ui.values[1]);
+                }
+            });
+
+            // Đặt giá trị mặc định cho vị trí của các cột hiển thị giá
+            $("#price-min").text("$" + $("#price-range").slider("values", 0));
+            $("#price-max").text("$" + $("#price-range").slider("values", 1));
+        });
+    </script>
+</body>
+</html>

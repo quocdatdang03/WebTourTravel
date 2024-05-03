@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebTourTravel.Models;
 using WebTourTravel.Helper;
+using WebTourTravel.Help;
 
 namespace WebTourTravel.Controllers
 {
@@ -14,8 +15,13 @@ namespace WebTourTravel.Controllers
         // GET: Tour
         public ActionResult Index()
         {
-            var tours = tourEntity.Tour.ToList();
+           var tours = tourEntity.Tour.ToList();
             return View("Index",tours);
+        }
+
+        public ActionResult FilterLoCation(int? idLocation)
+        {
+            return View("Index");
         }
 
         public ActionResult DetailTour(string idTour)
@@ -80,11 +86,10 @@ namespace WebTourTravel.Controllers
             return View("Index",dataToDisplay);
         }
 
-      
-
+    
         [HttpGet]
         public ActionResult FilterByDepartureDate(DateTime? departureDate, int page = 1, int pageSize = 9)
-        {
+        {          
             var filteredTours = tourEntity.Tour
                 .Where(t => t.KhoiHanh >= departureDate)
                 .ToList();
@@ -108,8 +113,37 @@ namespace WebTourTravel.Controllers
             ViewBag.TotalPages = totalPages;
             ViewBag.HasPreviousPage = (page > 1);
             ViewBag.HasNextPage = (page < totalPages);
+            return View("Search", dataToDisplay);
+        }
+        public ActionResult FilterHard(DateTime? ngaydi , int? quantityDate , int? quantitiCus, int page = 1, int pageSize = 9)
+        {
+            var tourSearch = SearchTourHelper.HardSearch(tourEntity, ngaydi, quantityDate, quantitiCus);
+            var totalRecords = tourSearch.Count();
+            var totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
 
-            return View("Index", dataToDisplay);
+            // Đảm bảo rằng trang hiện tại không vượt quá số trang mới tính được
+            if (page > totalPages)
+            {
+                page = totalPages;
+            }
+
+            var dataToDisplay = tourSearch
+                .OrderBy(t => t.id_tour)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.HasPreviousPage = (page > 1);
+            ViewBag.HasNextPage = (page < totalPages);
+
+            return View("Search", dataToDisplay);
+        }
+        public ActionResult Category()
+        {
+            var model = tourEntity.DiaDiem.ToList();
+            return PartialView("_category_DD",model);
         }
     }
 }

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<DiaDiem>
+<form method="post" class="star-rating" style="font-size: 13px;">
+
+    @foreach (var item in Model)
+    {
+        <a class="form-check" style="text-align:left;" href="@Url.Action("FilterLoCation","Tour", new { id = item.id_diadiem})" >
+            <label class="form-check-label" for="exampleCheck1">
+                @item.TenTinh
+            </label>
+        </a>
+    }
+
+
+</form>

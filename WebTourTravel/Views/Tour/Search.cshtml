@@ -1,11 +1,13 @@
-﻿
-@model IEnumerable<WebTourTravel.Tour>
+﻿@model IEnumerable<WebTourTravel.Tour>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/DanhSachTour.cshtml";
 }
 
 
+
+
+<h1 style="text-align: center; align-items: center; font-weight: 500; font-size: 20px;  display: flex; width: 100%;" >Có @Model.ToList().Count  Tour </h1>
 @foreach (var item in Model)
 {
     <!-- Item tour -->
@@ -42,3 +44,5 @@
         </div>
     </div>
 }
+
+

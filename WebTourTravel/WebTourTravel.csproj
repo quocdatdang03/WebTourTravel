@@ -142,7 +142,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helper\Helper.cs" />
+    <Compile Include="Help\Helper.cs" />
+    <Compile Include="Help\SearchTourHelper.cs" />
     <Compile Include="HoaDon.cs">
       <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
@@ -155,6 +156,7 @@
     <Compile Include="LichTrinhTheoNgay.cs">
       <DependentUpon>TourDuLichEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category_DD.cs" />
     <Compile Include="Models\ModelLogin.cs" />
     <Compile Include="Models\ModelRegister.cs" />
     <Compile Include="Models\TourDetailViewModel.cs" />
@@ -469,6 +471,9 @@
     <Content Include="TourDuLichEntities.edmx.diagram">
       <DependentUpon>TourDuLichEntities.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\DanhSachTour.cshtml" />
+    <Content Include="Views\Tour\Search.cshtml" />
+    <Content Include="Views\Tour\_category_DD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
