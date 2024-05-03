@@ -66,97 +66,102 @@
                     int soLuongNguoiLon = 1;
                     int soLuongTreEm = 0;
                 }
-                <form style="margin-top: 25px;">
-                    <div class="row">
-                        <div style="width:50% ; display: flex;justify-content: center; flex-direction:column; align-items: center;">
-                            <h3>Thông tin liên lạc</h3>
-                            <div class="row g-3">
-                                <div class="col-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                        <label for="name">Họ và tên</label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                        <label for="email">Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="select3">
-                                            <option value="1">Thanh toán bằng thẻ nội địa ATM</option>
-                                            <option value="2">Thanh toán bằng Zalo Pay</option>
-                                            <option value="3">Thanh toán bằng Momo</option>
-                                        </select>
-                                        <label for="select3">Phương thức thanh toán</label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="sdt" placeholder="Your phone number">
-                                        <label for="sdt">Số điện thoại</label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="input-group" style="margin:20px 0;">
-                                        <label for="soLuongNguoiLon">Số lượng người lớn</label>
-                                        <div style="display: flex;align-items: center;margin-top: 10px;">
-                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', -1)">-</button>
-                                            <input type="text" class="form-control" id="soLuongNguoiLon" name="soLuongNguoiLon" value="@soLuongNguoiLon" readonly style="text-align: center;">
-                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', 1)">+</button>
+               
+                    <form action="@Url.Action("Index", "Payment")" method="post" style="margin-top: 25px;">
+                        <div class="row">
+                            <div style="width:50% ; display: flex;justify-content: center; flex-direction:column; align-items: center;">
+                                <h3>Thông tin liên lạc</h3>
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="Name" name="Name" placeholder="Your Name">
+                                            <label for="Name">Họ và tên</label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="input-group" style="margin:20px 0;">
-                                        <label for="soLuongTreEm">Số lượng trẻ em (3 - 9 tuổi)</label>
-                                        <div style="display: flex;align-items: center;margin-top: 10px;">
-                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', -1)">-</button>
-                                            <input type="text" class="form-control" id="soLuongTreEm" name="soLuongTreEm" value="@soLuongTreEm" readonly style="text-align: center;">
-                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', 1)">+</button>
+                                    <div class="col-6">
+                                        <div class="form-floating">
+                                            <input name="Email" type="email" class="form-control" id="Email" placeholder="Your Email">
+                                            <label for="email">Email</label>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
-                                        <label for="message">Ghi chú</label>
+                                    <div class="col-6">
+                                        <div class="form-floating">
+                                            <select name="PhuongThucThanhToan" class="form-select" id="select3">
+                                                <option value="1">Thanh toán bằng thẻ nội địa ATM</option>
+                                                <option value="2">Thanh toán bằng Zalo Pay</option>
+                                                <option value="3">Thanh toán bằng Momo</option>
+                                            </select>
+                                            <label for="select3">Phương thức thanh toán</label>
+                                        </div>
                                     </div>
+                                    <div class="col-6">
+                                        <div class="form-floating">
+                                            <input name="PhoneNumber" type="text" class="form-control" id="PhoneNumber" placeholder="Your phone number">
+                                            <label for="PhoneNumber">Số điện thoại</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group" style="margin:20px 0;">
+                                            <label for="soLuongNguoiLon">Số lượng người lớn</label>
+                                            <div style="display: flex;align-items: center;margin-top: 10px;">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', -1)">-</button>
+                                                <input name="SoLuongNguoiLon" type="text" class="form-control" id="soLuongNguoiLon" name="soLuongNguoiLon" value="@soLuongNguoiLon" readonly style="text-align: center;">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', 1)">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group" style="margin:20px 0;">
+                                            <label for="soLuongTreEm">Số lượng trẻ em (3 - 9 tuổi)</label>
+                                            <div style="display: flex;align-items: center;margin-top: 10px;">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', -1)">-</button>
+                                                <input name="SoLuongTreEm" type="text" class="form-control" id="soLuongTreEm" name="soLuongTreEm" value="@soLuongTreEm" readonly style="text-align: center;">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', 1)">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- input chứa id Tour và Tổng tiền -->
+                                    <input type="hidden" value="@Model.id_tour" name="IdTour" />
+                                    <input type="hidden" value="0" name="TongTien" id="totalPriceDataInput" />
+
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea name="GhiChu" class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                            <label for="message">Ghi chú</label>
+                                        </div>
+                                    </div>
+                                    @* <div class="col-12">
+            <button class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
+        </div>*@
                                 </div>
-                                @* <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
-                                    </div>*@
+                            </div>
+                            <div style="width:50% ; display: flex;justify-content: center;">
+                                <div style="width:70%; border:1px solid #b6b6b6;height: 100%;padding: 20px;border-radius: 5px;">
+                                    <h3>Thanh toán</h3>
+                                    <div style="margin-top: 35px;">
+                                        <h4 style="text-align: left;font-size: 17px;margin-bottom: 20px;">Hành khách</h4>
+                                       @*  Hiển thị số lượng và giá của người lớn và trẻ em *@
+                                        <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
+                                            <p>Người lớn</p>
+                                            <p style="margin-top: 0;"><span id="soLuongNguoiLonDisplay">@soLuongNguoiLon</span> x <b>@Html.DisplayFor(model => model.GiaNguoiLon)đ</b></p>
+                                        </div>
+                                        <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
+                                            <p>Trẻ em</p>
+                                            <p style="margin-top: 0;"><span id="soLuongTreEmDisplay">@soLuongTreEm</span> x <b>@Html.DisplayFor(model => model.GiaTreEm)đ</b></p>
+                                        </div>
+                                        <div style="display: flex;align-items: center;justify-content: space-between;margin: 30px 0;">
+                                            <p style="font-weight: bold;font-size: 20px;">Tổng tiền</p>
+                                            <p style="margin-top: 0;color: red;font-weight: bold;font-size: 20px;" id="totalPrice">0đ</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary w-100 py-3" type="submit" style="border-radius: 10px;background: red;">Đặt Ngay</button>
+                                </div>
                             </div>
                         </div>
-                        <div style="width:50% ; display: flex;justify-content: center;">
-                            <div style="width:70%; border:1px solid #b6b6b6;height: 100%;padding: 20px;border-radius: 5px;">
-                                <h3>Thanh toán</h3>
-                                <div style="margin-top: 35px;">
-                                    <h4 style="text-align: left;font-size: 17px;margin-bottom: 20px;">Hành khách</h4>
-                                    <!-- Hiển thị số lượng và giá của người lớn và trẻ em -->
-                                    <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
-                                        <p>Người lớn</p>
-                                        <p style="margin-top: 0;"><span id="soLuongNguoiLonDisplay">@soLuongNguoiLon</span> x <b>@Html.DisplayFor(model => model.GiaNguoiLon)đ</b></p>
-                                    </div>
-                                    <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
-                                        <p>Trẻ em</p>
-                                        <p style="margin-top: 0;"><span id="soLuongTreEmDisplay">@soLuongTreEm</span> x <b>@Html.DisplayFor(model => model.GiaTreEm)đ</b></p>
-                                    </div>
-                                    <div style="display: flex;align-items: center;justify-content: space-between;margin: 30px 0;">
-                                        <p style="font-weight: bold;font-size: 20px;">Tổng tiền</p>
-                                        <p style="margin-top: 0;color: red;font-weight: bold;font-size: 20px;" id="totalPrice">0đ</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary w-100 py-3" type="submit" style="border-radius: 10px;background: red;">Đặt Ngay</button>
-                            </div>
-                        </div>
-                        </div>
-                </form>
+                    </form>
 
-            </div>
+                </div>
         </div>
     </div>
 
@@ -221,7 +226,8 @@
         var tongTienNguoiLon = soLuongNguoiLon * giaNguoiLon;
         var tongTienTreEm = soLuongTreEm * giaTreEm;
         var tongTien = tongTienNguoiLon + tongTienTreEm;
-        document.getElementById('totalPrice').textContent = formatCurrency(tongTien) + 'đ';
+            document.getElementById('totalPrice').textContent = formatCurrency(tongTien) + 'đ';
+            document.getElementById('totalPriceDataInput').value = tongTien
     }
 
     function formatCurrency(value) {
