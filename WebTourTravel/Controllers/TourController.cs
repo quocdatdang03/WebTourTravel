@@ -19,9 +19,32 @@ namespace WebTourTravel.Controllers
             return View("Index",tours);
         }
 
-        public ActionResult FilterLoCation(int? idLocation)
+
+        //Search by location
+        public ActionResult FilterLoCation(string idLocation, int page = 1, int pageSize = 9)
         {
-            return View("Index");
+            var tours = SearchTourHelper.GetTourByLocation( tourEntity,idLocation);
+
+            var totalRecords = tours.Count();
+            var totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            // Đảm bảo rằng trang hiện tại không vượt quá số trang mới tính được
+            if (page > totalPages)
+            {
+                page = totalPages;
+            }
+
+            var dataToDisplay = tours
+                .OrderBy(t => t.id_tour)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.HasPreviousPage = (page > 1);
+            ViewBag.HasNextPage = (page < totalPages);
+            return View("Index", tours);
         }
 
         public ActionResult DetailTour(string idTour)
@@ -64,7 +87,7 @@ namespace WebTourTravel.Controllers
             return View("DetailTour", tourDetails);
         }
 
-        /*Pagination*/
+        //Pagination
         public ActionResult TourDuLich(int page = 1, int pageSize = 9)
         {
             var totalRecords = tourEntity.Tour.Count();
@@ -86,7 +109,7 @@ namespace WebTourTravel.Controllers
             return View("Index",dataToDisplay);
         }
 
-    
+
         [HttpGet]
         public ActionResult FilterByDepartureDate(DateTime? departureDate, int page = 1, int pageSize = 9)
         {          
@@ -115,6 +138,7 @@ namespace WebTourTravel.Controllers
             ViewBag.HasNextPage = (page < totalPages);
             return View("Search", dataToDisplay);
         }
+        //Filter with date , quantityDate , quantity customer
         public ActionResult FilterHard(DateTime? ngaydi , int? quantityDate , int? quantitiCus, int page = 1, int pageSize = 9)
         {
             var tourSearch = SearchTourHelper.HardSearch(tourEntity, ngaydi, quantityDate, quantitiCus);
@@ -140,6 +164,10 @@ namespace WebTourTravel.Controllers
 
             return View("Search", dataToDisplay);
         }
+
+
+
+        //Set UP show Location to Search incategory 
         public ActionResult Category()
         {
             var model = tourEntity.DiaDiem.ToList();

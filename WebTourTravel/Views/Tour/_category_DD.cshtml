@@ -3,7 +3,7 @@
 
     @foreach (var item in Model)
     {
-        <a class="form-check" style="text-align:left;" href="@Url.Action("FilterLoCation","Tour", new { id = item.id_diadiem})" >
+        <a class="form-check" style="text-align:left;" href="@Url.Action("FilterLoCation","Tour", new { idLocation = item.TenTinh})" >
             <label class="form-check-label" for="exampleCheck1">
                 @item.TenTinh
             </label>

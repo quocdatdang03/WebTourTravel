@@ -35,5 +35,30 @@ namespace WebTourTravel.Help
 
             return availableTour;
         }
+
+
+        public static List<Tour> GetTourByLocation(TourDuLichEntities tourDuLichEntities ,string location)
+        {
+            List<Tour> tours = new List<Tour>();
+            List<string> idtourmau = new List<string>();
+            var tourmaus = tourDuLichEntities.TourMau.ToList();
+            foreach(var tourmau in tourmaus)
+            {
+                if(tourmau.DiemThamQuan.Contains(location))
+                {
+                    idtourmau.Add(tourmau.id_tourmau);
+                }
+            }
+
+            foreach(var tour in tourDuLichEntities.Tour.ToList())
+            {
+                if(idtourmau.Contains(tour.id_tourmau))
+                {
+                    tours.Add(tour);
+                }
+            }
+            return tours;
+        }
+
     }
 }
