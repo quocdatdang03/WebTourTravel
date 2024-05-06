@@ -25,6 +25,7 @@ namespace WebTourTravel.Models
         public string ThoiGianLyTuong { get; set; }
         public string DoiTuongThichHop { get; set; }
         public string UuDai { get; set; }
+        public int soluongcon { get; set; }
         public string IdTourMau { get; set; }
         public string DuongDan1 { get; set; }
         public string DuongDan2 { get; set; }

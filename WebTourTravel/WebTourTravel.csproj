@@ -158,6 +158,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Help\Helper.cs" />
+    <Compile Include="Help\SearchTourHelper.cs" />
     <Compile Include="HoaDon.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -171,6 +173,7 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelBooking.cs" />
+    <Compile Include="Models\ModelInfoBooking.cs" />
     <Compile Include="Models\ModelLogin.cs" />
     <Compile Include="Models\ModelRegister.cs" />
     <Compile Include="Models\TourDetailViewModel.cs" />
@@ -480,6 +483,8 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Profile\History.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Tour\_category_DD.cshtml" />
+    <Content Include="Views\Shared\DanhSachTour.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

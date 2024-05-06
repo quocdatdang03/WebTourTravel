@@ -4,21 +4,54 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebTourTravel.Models;
+using WebTourTravel.Helper;
+using WebTourTravel.Help;
 
 namespace WebTourTravel.Controllers
 {
     public class TourController : Controller
     {
-         private TourDuLichEntities tourEntity = new TourDuLichEntities();
+        private TourDuLichEntities tourEntity = new TourDuLichEntities();
+
         // GET: Tour
         public ActionResult Index()
         {
             var tours = tourEntity.Tour.ToList();
-            return View("Index",tours);
+             return View("Index", tours);
+        }
+
+
+        //Search by location
+        public ActionResult FilterLoCation(string idLocation, int page = 1, int pageSize = 9)
+        {
+            var tours = SearchTourHelper.GetTourByLocation(tourEntity, idLocation);
+
+            var totalRecords = tours.Count();
+            var totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            // Đảm bảo rằng trang hiện tại không vượt quá số trang mới tính được
+            if (page > totalPages)
+            {
+                page = totalPages;
+            }
+
+            var dataToDisplay = tours
+                .OrderBy(t => t.id_tour)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.HasPreviousPage = (page > 1);
+            ViewBag.HasNextPage = (page < totalPages);
+            return View("Index", tours);
         }
 
         public ActionResult DetailTour(string idTour)
         {
+
+
             var tourDetails = (from tour in tourEntity.Tour
                                join tourMau in tourEntity.TourMau on tour.id_tourmau equals tourMau.id_tourmau
                                join anhTour in tourEntity.AnhTour on tourMau.id_tourmau equals anhTour.id_tourmau
@@ -49,12 +82,13 @@ namespace WebTourTravel.Controllers
                                    DuongDan5 = anhTour.DuongDan5,
                                    DuongDan6 = anhTour.DuongDan6,
                                    DuongDan7 = anhTour.DuongDan7,
+                                   soluongcon = 0
                                }).FirstOrDefault();
-
+            tourDetails.soluongcon = Helper.Helper.CaculateCustomer(tourEntity, idTour);
             return View("DetailTour", tourDetails);
         }
 
-        /*Pagination*/
+        //Pagination
         public ActionResult TourDuLich(int page = 1, int pageSize = 9)
         {
             var totalRecords = tourEntity.Tour.Count();
@@ -73,19 +107,15 @@ namespace WebTourTravel.Controllers
             ViewBag.HasNextPage = (page < totalPages);
 
 
-            return View("Index",dataToDisplay);
+            return View("Index", dataToDisplay);
         }
 
-      
-
-        [HttpGet]
-        public ActionResult FilterByDepartureDate(DateTime? departureDate, int page = 1, int pageSize = 9)
+        public ActionResult FilterHard(DateTime? ngaydi, int? quantityDate, int? quantitiCus, int page = 1, int pageSize = 9)
         {
-            var filteredTours = tourEntity.Tour
-                .Where(t => t.KhoiHanh >= departureDate)
-                .ToList();
-
-            var totalRecords = filteredTours.Count();
+            var tours = new List<Tour>();
+            tours = SearchTourHelper.HardSearch(tourEntity, ngaydi, quantityDate, quantitiCus);
+            var tourSearch = SearchTourHelper.HardSearch(tourEntity, ngaydi, quantityDate, quantitiCus);
+            var totalRecords = tourSearch.Count();
             var totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
 
             // Đảm bảo rằng trang hiện tại không vượt quá số trang mới tính được
@@ -94,7 +124,7 @@ namespace WebTourTravel.Controllers
                 page = totalPages;
             }
 
-            var dataToDisplay = filteredTours
+            var dataToDisplay = tourSearch
                 .OrderBy(t => t.id_tour)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
@@ -105,7 +135,18 @@ namespace WebTourTravel.Controllers
             ViewBag.HasPreviousPage = (page > 1);
             ViewBag.HasNextPage = (page < totalPages);
 
+
+            //return TourDuLich();
             return View("Index", dataToDisplay);
+        }
+
+
+
+        //Set UP show Location to Search incategory 
+        public ActionResult Category()
+        {
+            var model = tourEntity.DiaDiem.ToList();
+            return PartialView("_category_DD", model);
         }
     }
 }

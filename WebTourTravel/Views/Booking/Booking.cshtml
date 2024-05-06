@@ -1,4 +1,4 @@
-﻿@model WebTourTravel.Tour
+﻿@model WebTourTravel.Models.ModelInfoBooking
 @{
     ViewBag.Title = "BookingTour";
 }
@@ -48,16 +48,16 @@
             <div>
                 <div style="display:flex; margin: 50px 0;">
                     <div style="flex: 1;border-radius: 10px 0 0 10px;overflow: hidden;">
-                        <img src="~/images/images_tour/@Html.DisplayFor(model => model.Avata)" alt="anhChuyenDi" style="width: 100%;height: 100%;object-fit: cover;object-position: center;">
+                        <img src="~/images/images_tour/@Html.DisplayFor(model => model.tour.Avata)" alt="anhChuyenDi" style="width: 100%;height: 100%;object-fit: cover;object-position: center;">
                     </div>
                     <div style="flex: 2; padding: 15px 30px; background-color: #f9f9f9;">
-                        <h3 style="color: #2d4271;font-size: 22px;font-weight: 700;line-height: 28px;text-align: left;">@Html.DisplayFor(model => model.TenTour)</h3>
+                        <h3 style="color: #2d4271;font-size: 22px;font-weight: 700;line-height: 28px;text-align: left;">@Html.DisplayFor(model => model.tour.TenTour)</h3>
                         <div style="text-align: left; padding-top:15px;">
-                            <p class="tour-info">Mã Tour <b>@Html.DisplayFor(model => model.id_tour)</b></p>
-                            <p class="tour-info">Khởi hành <b>@Html.DisplayFor(model => model.KhoiHanh)</b></p>
-                            <p class="tour-info">Thời gian <b>@Html.DisplayFor(model => model.ThoiGian)</b></p>
-                            <p class="tour-info">Nơi khởi hành <b>@Html.DisplayFor(model => model.NoiKhoiHanh)</b></p>
-                            <p class="tour-info">Số chỗ còn nhận <b>@Html.DisplayFor(model => model.SoLuongToiDa)</b></p>
+                            <p class="tour-info">Mã Tour <b>@Html.DisplayFor(model => model.tour.id_tour)</b></p>
+                            <p class="tour-info">Khởi hành <b>@Html.DisplayFor(model => model.tour.KhoiHanh)</b></p>
+                            <p class="tour-info">Thời gian <b>@Html.DisplayFor(model => model.tour.ThoiGian)</b></p>
+                            <p class="tour-info">Nơi khởi hành <b>@Html.DisplayFor(model => model.tour.NoiKhoiHanh)</b></p>
+                            <p class="tour-info">Số chỗ còn nhận <b>@Html.DisplayFor(model => model.soLuongCon)</b></p>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                                     </div>
 
                                     <!-- input chứa id Tour và Tổng tiền -->
-                                    <input type="hidden" value="@Model.id_tour" name="IdTour" />
+                                    <input type="hidden" value="@Model.tour.id_tour" name="IdTour" />
                                     <input type="hidden" value="0" name="TongTien" id="totalPriceDataInput" />
 
                                     <div class="col-12">
@@ -144,11 +144,11 @@
                                        @*  Hiển thị số lượng và giá của người lớn và trẻ em *@
                                         <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
                                             <p>Người lớn</p>
-                                            <p style="margin-top: 0;"><span id="soLuongNguoiLonDisplay">@soLuongNguoiLon</span> x <b>@Html.DisplayFor(model => model.GiaNguoiLon)đ</b></p>
+                                            <p style="margin-top: 0;"><span id="soLuongNguoiLonDisplay">@soLuongNguoiLon</span> x <b>@Html.DisplayFor(model => model.tour.GiaNguoiLon)đ</b></p>
                                         </div>
                                         <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
                                             <p>Trẻ em</p>
-                                            <p style="margin-top: 0;"><span id="soLuongTreEmDisplay">@soLuongTreEm</span> x <b>@Html.DisplayFor(model => model.GiaTreEm)đ</b></p>
+                                            <p style="margin-top: 0;"><span id="soLuongTreEmDisplay">@soLuongTreEm</span> x <b>@Html.DisplayFor(model => model.tour.GiaTreEm)đ</b></p>
                                         </div>
                                         <div style="display: flex;align-items: center;justify-content: space-between;margin: 30px 0;">
                                             <p style="font-weight: bold;font-size: 20px;">Tổng tiền</p>
@@ -178,7 +178,7 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script>
-        var soLuongToiDa = parseInt('@Model.SoLuongToiDa');
+        var soLuongToiDa = parseInt('@Model.soLuongCon');
       
         function changeQuantity(id, change) {
             var soLuongNL = parseInt(document.getElementById('soLuongNguoiLonDisplay').innerText);
@@ -221,8 +221,8 @@
         function calculateTotalPrice() {
         var soLuongNguoiLon = parseInt(document.getElementById('soLuongNguoiLon').value);
         var soLuongTreEm = parseInt(document.getElementById('soLuongTreEm').value);
-        var giaNguoiLon = parseInt('@Model.GiaNguoiLon');
-        var giaTreEm = parseInt('@Model.GiaTreEm');
+        var giaNguoiLon = parseInt('@Model.tour.GiaNguoiLon');
+        var giaTreEm = parseInt('@Model.tour.GiaTreEm');
         var tongTienNguoiLon = soLuongNguoiLon * giaNguoiLon;
         var tongTienTreEm = soLuongTreEm * giaTreEm;
         var tongTien = tongTienNguoiLon + tongTienTreEm;
