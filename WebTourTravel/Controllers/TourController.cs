@@ -12,10 +12,13 @@ namespace WebTourTravel.Controllers
     public class TourController : Controller
     {
          private TourDuLichEntities tourEntity = new TourDuLichEntities();
+
+        private List<Tour> tours = new List<Tour>();
         // GET: Tour
         public ActionResult Index()
         {
-           var tours = tourEntity.Tour.ToList();
+           //var tours = tourEntity.Tour.ToList();
+           tours = tourEntity.Tour.ToList();
             return View("Index",tours);
         }
 
@@ -90,7 +93,7 @@ namespace WebTourTravel.Controllers
         //Pagination
         public ActionResult TourDuLich(int page = 1, int pageSize = 9)
         {
-            var totalRecords = tourEntity.Tour.Count();
+            var totalRecords = /*tourEntity.Tour.Count();*/ tours.Count();
             var totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
 
             // Order the data before applying Skip and Take
@@ -141,28 +144,32 @@ namespace WebTourTravel.Controllers
         //Filter with date , quantityDate , quantity customer
         public ActionResult FilterHard(DateTime? ngaydi , int? quantityDate , int? quantitiCus, int page = 1, int pageSize = 9)
         {
-            var tourSearch = SearchTourHelper.HardSearch(tourEntity, ngaydi, quantityDate, quantitiCus);
-            var totalRecords = tourSearch.Count();
-            var totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+            tours = new List<Tour>();
+            tours = SearchTourHelper.HardSearch(tourEntity, ngaydi, quantityDate, quantitiCus);
+           // var tourSearch = SearchTourHelper.HardSearch(tourEntity, ngaydi, quantityDate, quantitiCus);
+            /*var totalRecords = tourSearch.Count();
+            var totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);*/
 
-            // Đảm bảo rằng trang hiện tại không vượt quá số trang mới tính được
-            if (page > totalPages)
-            {
-                page = totalPages;
-            }
+            /* // Đảm bảo rằng trang hiện tại không vượt quá số trang mới tính được
+             if (page > totalPages)
+             {
+                 page = totalPages;
+             }
 
-            var dataToDisplay = tourSearch
-                .OrderBy(t => t.id_tour)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
+             var dataToDisplay = tourSearch
+                 .OrderBy(t => t.id_tour)
+                 .Skip((page - 1) * pageSize)
+                 .Take(pageSize)
+                 .ToList();
 
-            ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = totalPages;
-            ViewBag.HasPreviousPage = (page > 1);
-            ViewBag.HasNextPage = (page < totalPages);
+             ViewBag.CurrentPage = page;
+             ViewBag.TotalPages = totalPages;
+             ViewBag.HasPreviousPage = (page > 1);
+             ViewBag.HasNextPage = (page < totalPages);
+ */
 
-            return View("Search", dataToDisplay);
+            return TourDuLich();
+          //  return View("Search", dataToDisplay);
         }
 
 

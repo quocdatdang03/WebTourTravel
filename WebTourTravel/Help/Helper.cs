@@ -82,8 +82,6 @@ namespace WebTourTravel.Helper
 
         public static int GetNumberInString(string chuoi)
         {
-
-           
             for (int i = 0; i < chuoi.Length; i++)
             {
                 if (char.IsDigit(chuoi[i]) )

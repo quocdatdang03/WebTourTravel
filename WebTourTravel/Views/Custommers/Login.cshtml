@@ -1,0 +1,133 @@
+﻿@using WebTourTravel.Models
+@model ModelLogin
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/Content/Login/style.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="text-align:center ; margin-top:100px">
+        <h5 style="font-weight:500; line-height:1.2 ;">Chào Mứng đến với </h5>
+        <h1 style="line-height : 1.5 ; font-weight: 700 ; font-size: 60px ">Việt Travel</h1>
+    </div>
+    <!-- Form-->
+    <div class="form" style="margin-top: 20px">
+        <div class="form-toggle" style="width: 30px; height: 30px; top: 20px; right: 10px;"></div>
+        <div class="form-panel one">
+            <div class="form-header">
+                <h1>Đăng Nhập</h1>
+            </div>
+
+            <div class="form-content" style="text-align: center; display: flex; justify-content: center;">
+                <form action="Login" method="post">
+                    <div class="form-group" style="text-align :left ; display: block ">
+                        <label for="username">Số điện thoại hoặc email</label>
+                        <input id="username" type="text" name="UserName" required="required" style="width:100% ; " />
+                    </div>
+                    <div class="form-group" style="text-align :left ; display: block ">
+                        <label for="password">Mật khẩu</label>
+                        <input id="password" type="password" name="PassWorld" required="required" style="width : 100%" />
+                    </div>
+                    <div class="form-group" style="display : block ; text-align : left">
+                        <label class="form-remember" style="display: none">
+                            <input type="checkbox" />Remember Me
+                        </label><a class="form-recovery" href="#">Lấy lại mật khẩu</a>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" style="width: 270px;">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="form-panel two" style=" display:none; background: #a8c9ff;">
+            <div class="form-header">
+                <h1>Đăng kí tài khoản</h1>
+            </div>
+            <div class="form-content">
+                <form action="Register">
+                    <div class="form-group" style="align-content: center;">
+                        <label for="username">Tên tài khoản</label>
+                        <input id="username" type="text" name="username" required="required" style="width: 252px" />
+                    </div>
+                    <div class="form-group" style="align-items: center">
+                        <label for="password">Mật khẩu</label>
+                        <input id="password" type="password" name="password" required="required" style="width: 252px" />
+                    </div>
+                    <div class="form-group" style="align-items: center">
+                        <label for="passwordcf">Nhập lại mật khẩu</label>
+                        <input id="passwordcf" type="password" name="cpassword" required="required" style="width: 252px" />
+                    </div>
+                    <div class="form-group" style="align-items: center">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" required="required" style="width: 252px" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Đăng kí</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var panelOne = document.querySelector(".form-panel.two").offsetHeight,
+                panelTwo = document.querySelector(".form-panel.two").scrollHeight;
+
+            document.querySelector(".form-panel.two")
+                .addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(".form-toggle").classList.add("visible");
+                    document.querySelector(".form-panel.one").classList.add("hidden");
+                    document.querySelector(".form-panel.two").classList.add("active");
+                    animateFormHeight(panelTwo);
+                });
+
+            document.querySelector(".form-toggle").addEventListener("click", function (e) {
+                e.preventDefault();
+                this.classList.remove("visible");
+                document.querySelector(".form-panel.one").classList.remove("hidden");
+                document.querySelector(".form-panel.two").classList.remove("active");
+                animateFormHeight(panelOne);
+            });
+
+            function animateFormHeight(height) {
+                var form = document.querySelector(".form");
+                var currentHeight = parseFloat(window.getComputedStyle(form).height.replace("px", ""));
+                var targetHeight = height;
+                var difference = targetHeight - currentHeight;
+                var speed = 200; // Animation speed in milliseconds
+                var intervalTime = 20; // Interval time in milliseconds
+                var step = difference / (speed / intervalTime);
+
+                var interval = setInterval(function () {
+                    currentHeight += step;
+                    form.style.height = currentHeight + "px";
+
+                    if (step > 0 && currentHeight >= targetHeight) {
+                        clearInterval(interval);
+                        form.style.height = targetHeight + "px";
+                    } else if (step < 0 && currentHeight <= targetHeight) {
+                        clearInterval(interval);
+                        form.style.height = targetHeight + "px";
+                    }
+                }, intervalTime);
+            }
+        });
+
+
+    </script>
+</body>
+</html>

@@ -21,8 +21,7 @@ namespace WebTourTravel.Help
            .Where(t => t.KhoiHanh > ngaydi)
            .ToList();
             var availableTour = new List<Tour>();
-
-
+           //Add price here
            foreach (var tour in tourgets)
             {
                 var quantityleft = Helper.Helper.CaculateCustomer(tourDuLichEntities, tour.id_tour);
@@ -44,6 +43,7 @@ namespace WebTourTravel.Help
             var tourmaus = tourDuLichEntities.TourMau.ToList();
             foreach(var tourmau in tourmaus)
             {
+                if (location.Equals("Quảng Nam")) location = "Hội An";
                 if(tourmau.DiemThamQuan.Contains(location))
                 {
                     idtourmau.Add(tourmau.id_tourmau);

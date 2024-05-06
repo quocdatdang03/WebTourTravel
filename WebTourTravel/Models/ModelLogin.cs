@@ -7,5 +7,7 @@ namespace WebTourTravel.Models
 {
     public class ModelLogin
     {
+        public string UserName;
+        public string PassWorld;
     }
 }

@@ -132,6 +132,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\CustommersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -474,6 +475,8 @@
     <Content Include="TourDuLichEntities.edmx.diagram">
       <DependentUpon>TourDuLichEntities.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Custommers\Login.cshtml" />
+    <Content Include="Views\Custommers\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
