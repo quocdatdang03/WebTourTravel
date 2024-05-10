@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using WebTourTravel.Help
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -12,7 +13,6 @@
     <link rel="stylesheet" href="~/Content/bootstrap.css">
     <link rel="stylesheet" href="~/Content/fonts.css">
     <link rel="stylesheet" href="~/Content/style.css">
-
     <style>
         .ie-panel {
             display: none;
@@ -74,15 +74,80 @@
                                 </div>
                             </div>
                             <div class="rd-navbar-aside-right rd-navbar-collapse">
-                                <ul class="rd-navbar-corporate-contacts">
+                                
 
-                                    <li>
-                                        <div class="unit unit-spacing-xs">
-                                            <div class="unit-left"><span class="icon fa fa-phone"></span></div>
-                                            <div class="unit-body"><a class="link-phone" href="tel:#">+1 323-913-4688</a></div>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    var nd = HelpCustommners.GetNguoiDungByEmail(User.Identity.Name);
+                                    <style>
+                                        .dropbtn_BV {
+                                            background-color: #4CAF50;
+                                            color: white;
+                                            background-image: url("https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/160388349/original/cd7f361e9ad1346a4adc23246ad1463589a26ce1/draw-you-a-cute-portrait-avatar-icon-and-profile-picture.png");
+                                            width: 50px;
+                                            height: 50px;
+                                            font-size: 16px;
+                                            border: none;
+                                            cursor: pointer;
+                                            border-radius: 50%;
+                                            object-fit: contain;
+                                        }
+
+                                        .dropdown_BV {
+                                            position: relative;
+                                            display: inline-block;
+                                        }
+
+                                        .dropdown-content_BV {
+                                            display: none;
+                                            position: absolute;
+                                            background-color: #f9f9f9;
+                                            min-width: 160px;
+                                            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                                            z-index: 1;
+                                        }
+
+                                            .dropdown-content_BV a {
+                                                color: black;
+                                                padding: 12px 16px;
+                                                text-decoration: none;
+                                                display: block;
+                                            }
+
+                                                .dropdown-content_BV a:hover {
+                                                    background-color: pink;
+                                                }
+
+                                        .dropdown_BV:hover .dropdown-content_BV {
+                                            display: block;
+                                        }
+
+                                        .dropdown_BV:hover .dropbtn_BV {
+                                            background-color: #3e8e41;
+                                        }
+                                    </style>
+
+
+                                    <label style=" font-size: 15px; font-weight: 400; margin-right: 26px;">@nd.HoTen</label>
+                                    <div class="dropdown_BV">
+                                        <button class="dropbtn_BV"></button>
+                                        <div class="dropdown-content_BV">
+                                            <a href="/Custommers/LogOut">Log Out</a>
+                                            <a href="#">Profile </a>
+                                            
                                         </div>
-                                    </li>
-                                </ul><a class="button button-md button-default-outline-2 button-ujarak" href="@Url.Action("Index","Login")">Đăng Nhập</a>
+                                    </div>
+
+
+
+                                    // <li>@Html.ActionLink("LogOut", "LogOut", "Custommers")</li>
+
+                                }
+                                else
+                                {
+                                    <a class="button button-md button-default-outline-2 button-ujarak" href="@Url.Action("Login","Custommers")">Đăng Nhập</a>
+                                }
+
                             </div>
                         </div>
                     </div>
@@ -123,7 +188,7 @@
 
         <!-- Section Subscribe-->
         <section class="section bg-default text-center offset-top-50">
-            <div class="parallax-container" style="background-image: url('images/DaNangBannerTo.jpg');">
+            <div class="parallax-container" data-parallax-img="images/DaNangBannerTo.jpg">
                 <div class="parallax-content section-xl section-inset-custom-1 context-dark bg-overlay-2-21">
                     <div class="container">
                         <h2 class="heading-2 oh font-weight-normal wow slideInDown"><span class="d-block font-weight-semi-bold">First-class Impressions</span><span class="d-block font-weight-light">are Waiting for You!</span></h2>

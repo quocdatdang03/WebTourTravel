@@ -1,0 +1,211 @@
+﻿
+@{
+    ViewBag.Title = "Thanh Toán";
+    string userName = ViewBag.UserName != null ? ViewBag.UserName.ToString() : "";
+}
+<style>
+    .grid {
+        width: 100%;
+        display: block; /*đề phòng nếu đối tượng ko phải block vẫn dùng được*/
+        padding: 0;
+    }
+
+        .grid.wide {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+    .block-order {
+        display: flex;
+    }
+
+    .title-order {
+        color: #337ab7;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    .list_order {
+    }
+
+        .list_order > table {
+            width: 100%;
+            height: 80%;
+            border-collapse: collapse;
+        }
+
+        .list_order table th,
+        .list_order table td {
+            text-align: center;
+            border: solid 1px gainsboro;
+            padding: 16px 5px;
+            font-family: Arial;
+            font-size: 14px;
+            font-weight: 100;
+        }
+
+    .form-block {
+        display: flex;
+    }
+
+    .block-order_left {
+        margin-bottom: 20px;
+        flex: 30%;
+    }
+
+    .note_please {
+        margin-bottom: 10px;
+        font-size: 13px;
+        color: gray;
+        font-style: italic;
+        text-align: left;
+        margin-right: 10px;
+    }
+
+    .block-order_right {
+        border: solid 2px black;
+        padding: 20px;
+        margin-bottom: 20px;
+        flex: 70%;
+    }
+
+    .main-order {
+        text-align: left;
+    }
+
+    .lbl-price_order,
+    .price_order {
+        color: black;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-block;
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .price_order {
+        color: red;
+    }
+
+    .pay_option {
+        font-size: 14px;
+        color: black;
+    }
+
+    .note_order {
+        font-size: 14px;
+        color: gray;
+        font-weight: 300;
+    }
+
+    .content-bank {
+        font-size: 13px;
+        color: black;
+        text-align: left;
+    }
+
+    .address-receive {
+        text-align: left;
+        color: black;
+    }
+
+        .address-receive > li {
+            list-style: none;
+        }
+</style>
+
+<div class="grid">
+    <div class="grid wide">
+        <h2>THANH TOÁN</h2>
+
+        <form>
+            <div class="block-order">
+                <div class="block-order_left">
+                    <div class="block-infor_order">
+                        <div class="note_please">Vui lòng ghi "Mã đơn hàng" của bạn trong phần nội dung chuyển khoản để shop xác nhận đơn hàng.</div>
+                        <div class="title-order">THÔNG TIN CHUYỂN KHOẢN</div>
+                        <div class="content-bank">
+                            <p>Tên tài khoản: Trần Văn Hưng</p>
+                            <p>STK: 0368228453</p>
+                            <p>Hoặc</p>
+                            <img width="240px" height="240px" src="~/images/paymomo.jpg" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block-order_right">
+                    <div class="main-order">
+                        <div class="title-order">THÔNG TIN NGƯỜI ĐẶT</div>
+                        <ul class="address-receive"></ul>
+
+                        <div class="title-order">THÔNG TIN ĐƠN HÀNG</div>
+
+                        <div class="list_order"></div>
+
+                        <div class="lbl-price_order">Tổng:</div>
+                        <div class="price_order"></div><br />
+                    </div>
+                </div>
+            </div>
+        </form>
+        @* GET ID USER *@
+        <input type="hidden" class="id_user" value="@userName" />
+    </div>
+</div>
+
+<script>
+    var id_user = document.querySelector(".id_user").value
+    var content_user = ""
+    var content_order = ""
+    var totalprice = 0
+    var listitem = JSON.parse(localStorage.getItem(id_user))
+
+    if (listitem != null) {
+        for (let i = 0; i < listitem.length; i++) {
+            if (listitem[i] != null) {
+                content_user += `<li class="">Họ và tên: ${listitem[i].fullname}</li>
+                                <li class="">Số điện thoại: ${listitem[i].phonenumber}</li>
+                                <li class="">Email: ${listitem[i].email}</li>
+                                <li class="">Ghi chú: ${listitem[i].ghichu}</li>`
+
+                content_order += `<div class="" style="color:black; font-size:14px; font-weight:700;">Mã đơn hàng: #<span style="background-color:yellow;">${listitem[i].id_order}</span></div>
+                                <table>
+                                    <tr>
+                                        <th>Mã tour</th>
+                                        <td>${listitem[i].idtour}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tên tour</th>
+                                        <td>${listitem[i].tentour}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Khởi hành</th>
+                                        <td>${listitem[i].khoihanh}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Thời gian</th>
+                                        <td>${listitem[i].thoigian}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nơi khởi hành</th>
+                                        <td>${listitem[i].noikhoihanh}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Người lớn</th>
+                                        <td>${listitem[i].soluongnguoilon} x${listitem[i].gianguoilon}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Trẻ em</th>
+                                        <td>${listitem[i].soluongtreem} x${listitem[i].giatreem}</td>
+                                    </tr>
+                                </table>`
+
+                totalprice += parseFloat(listitem[i].soluongnguoilon) * parseFloat(listitem[i].gianguoilon) + parseFloat(listitem[i].soluongtreem) * parseFloat(listitem[i].giatreem);
+            }
+        }
+        document.querySelector(".address-receive").innerHTML = content_user
+        document.querySelector(".list_order").innerHTML = content_order
+        document.querySelector(".price_order").innerHTML = totalprice
+    }
+</script>

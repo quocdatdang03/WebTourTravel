@@ -1,6 +1,7 @@
 ﻿@model WebTourTravel.Models.ModelInfoBooking
 @{
     ViewBag.Title = "BookingTour";
+    string userName = ViewBag.UserName != null ? ViewBag.UserName.ToString() : "";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -48,16 +49,16 @@
             <div>
                 <div style="display:flex; margin: 50px 0;">
                     <div style="flex: 1;border-radius: 10px 0 0 10px;overflow: hidden;">
-                        <img src="~/images/images_tour/@Html.DisplayFor(model => model.tour.Avata)" alt="anhChuyenDi" style="width: 100%;height: 100%;object-fit: cover;object-position: center;">
+                        <img class="avata" src="~/images/images_tour/@Html.DisplayFor(model => model.tour.Avata)" alt="anhChuyenDi" style="width: 100%;height: 100%;object-fit: cover;object-position: center;">
                     </div>
                     <div style="flex: 2; padding: 15px 30px; background-color: #f9f9f9;">
-                        <h3 style="color: #2d4271;font-size: 22px;font-weight: 700;line-height: 28px;text-align: left;">@Html.DisplayFor(model => model.tour.TenTour)</h3>
+                        <h3 class="tentour" style="color: #2d4271;font-size: 22px;font-weight: 700;line-height: 28px;text-align: left;">@Html.DisplayFor(model => model.tour.TenTour)</h3>
                         <div style="text-align: left; padding-top:15px;">
-                            <p class="tour-info">Mã Tour <b>@Html.DisplayFor(model => model.tour.id_tour)</b></p>
-                            <p class="tour-info">Khởi hành <b>@Html.DisplayFor(model => model.tour.KhoiHanh)</b></p>
-                            <p class="tour-info">Thời gian <b>@Html.DisplayFor(model => model.tour.ThoiGian)</b></p>
-                            <p class="tour-info">Nơi khởi hành <b>@Html.DisplayFor(model => model.tour.NoiKhoiHanh)</b></p>
-                            <p class="tour-info">Số chỗ còn nhận <b>@Html.DisplayFor(model => model.soLuongCon)</b></p>
+                            <p class="tour-info">Mã Tour <b class="idtour">@Html.DisplayFor(model => model.tour.id_tour)</b></p>
+                            <p class="tour-info">Khởi hành <b class="khoihanh">@Html.DisplayFor(model => model.tour.KhoiHanh)</b></p>
+                            <p class="tour-info">Thời gian <b class="thoigian">@Html.DisplayFor(model => model.tour.ThoiGian)</b></p>
+                            <p class="tour-info">Nơi khởi hành <b class="noikhoihanh">@Html.DisplayFor(model => model.tour.NoiKhoiHanh)</b></p>
+                            <p class="tour-info">Số chỗ còn nhận <b class="soluonggtoida">@Html.DisplayFor(model => model.soLuongCon)</b></p>
                         </div>
                     </div>
                 </div>
@@ -66,102 +67,103 @@
                     int soLuongNguoiLon = 1;
                     int soLuongTreEm = 0;
                 }
-               
-                    <form action="@Url.Action("Index", "Payment")" method="post" style="margin-top: 25px;">
-                        <div class="row">
-                            <div style="width:50% ; display: flex;justify-content: center; flex-direction:column; align-items: center;">
-                                <h3>Thông tin liên lạc</h3>
-                                <div class="row g-3">
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="Name" name="Name" placeholder="Your Name">
-                                            <label for="Name">Họ và tên</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <input name="Email" type="email" class="form-control" id="Email" placeholder="Your Email">
-                                            <label for="email">Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <select name="PhuongThucThanhToan" class="form-select" id="select3">
-                                                <option value="1">Thanh toán bằng thẻ nội địa ATM</option>
-                                                <option value="2">Thanh toán bằng Zalo Pay</option>
-                                                <option value="3">Thanh toán bằng Momo</option>
-                                            </select>
-                                            <label for="select3">Phương thức thanh toán</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <input name="PhoneNumber" type="text" class="form-control" id="PhoneNumber" placeholder="Your phone number">
-                                            <label for="PhoneNumber">Số điện thoại</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="input-group" style="margin:20px 0;">
-                                            <label for="soLuongNguoiLon">Số lượng người lớn</label>
-                                            <div style="display: flex;align-items: center;margin-top: 10px;">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', -1)">-</button>
-                                                <input name="SoLuongNguoiLon" type="text" class="form-control" id="soLuongNguoiLon" name="soLuongNguoiLon" value="@soLuongNguoiLon" readonly style="text-align: center;">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', 1)">+</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="input-group" style="margin:20px 0;">
-                                            <label for="soLuongTreEm">Số lượng trẻ em (3 - 9 tuổi)</label>
-                                            <div style="display: flex;align-items: center;margin-top: 10px;">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', -1)">-</button>
-                                                <input name="SoLuongTreEm" type="text" class="form-control" id="soLuongTreEm" name="soLuongTreEm" value="@soLuongTreEm" readonly style="text-align: center;">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', 1)">+</button>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <!-- input chứa id Tour và Tổng tiền -->
-                                    <input type="hidden" value="@Model.tour.id_tour" name="IdTour" />
-                                    <input type="hidden" value="0" name="TongTien" id="totalPriceDataInput" />
+                <form style="margin-top: 25px;">
+                    <div class="row">
+                        <div style="width:50% ; display: flex;justify-content: center; flex-direction:column; align-items: center;">
+                            <h3>Thông tin liên lạc</h3>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input required type="text" class="form-control txt-fullname" id="Name" name="Name" placeholder="Your Name">
+                                        <label for="Name">Họ và tên</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input required name="Email" type="email" class="form-control txt-email" id="Email" placeholder="Your Email">
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <select name="PhuongThucThanhToan" class="form-select" id="select3">
+                                            <option id="checked_atm" value="1">Thanh toán bằng thẻ nội địa ATM</option>
+                                            <option id="checked_zalopay" value="2">Thanh toán bằng Zalo Pay</option>
+                                            <option id="checked_momo" value="3">Thanh toán bằng Momo</option>
+                                        </select>
+                                        <label for="select3">Phương thức thanh toán</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input required name="PhoneNumber" type="text" class="form-control txt-phonenumber" id="PhoneNumber" placeholder="Your phone number">
+                                        <label for="PhoneNumber">Số điện thoại</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-group" style="margin:20px 0;">
+                                        <label for="soLuongNguoiLon">Số lượng người lớn</label>
+                                        <div style="display: flex;align-items: center;margin-top: 10px;">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', -1)">-</button>
+                                            <input name="SoLuongNguoiLon" type="text" class="form-control" id="soLuongNguoiLon" name="soLuongNguoiLon" value="@soLuongNguoiLon" readonly style="text-align: center;">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongNguoiLon', 1)">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-group" style="margin:20px 0;">
+                                        <label for="soLuongTreEm">Số lượng trẻ em (3 - 9 tuổi)</label>
+                                        <div style="display: flex;align-items: center;margin-top: 10px;">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', -1)">-</button>
+                                            <input name="SoLuongTreEm" type="text" class="form-control" id="soLuongTreEm" name="soLuongTreEm" value="@soLuongTreEm" readonly style="text-align: center;">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="changeQuantity('soLuongTreEm', 1)">+</button>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea name="GhiChu" class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
-                                            <label for="message">Ghi chú</label>
-                                        </div>
+                                <!-- input chứa id Tour và Tổng tiền -->
+                                <input type="hidden" value="@Model.tour.id_tour" name="IdTour" />
+                                <input type="hidden" value="0" name="TongTien" id="totalPriceDataInput" />
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea name="GhiChu" class="form-control ghichu" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Ghi chú</label>
                                     </div>
-                                    @* <div class="col-12">
-            <button class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
-        </div>*@
                                 </div>
-                            </div>
-                            <div style="width:50% ; display: flex;justify-content: center;">
-                                <div style="width:70%; border:1px solid #b6b6b6;height: 100%;padding: 20px;border-radius: 5px;">
-                                    <h3>Thanh toán</h3>
-                                    <div style="margin-top: 35px;">
-                                        <h4 style="text-align: left;font-size: 17px;margin-bottom: 20px;">Hành khách</h4>
-                                       @*  Hiển thị số lượng và giá của người lớn và trẻ em *@
-                                        <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
-                                            <p>Người lớn</p>
-                                            <p style="margin-top: 0;"><span id="soLuongNguoiLonDisplay">@soLuongNguoiLon</span> x <b>@Html.DisplayFor(model => model.tour.GiaNguoiLon)đ</b></p>
-                                        </div>
-                                        <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
-                                            <p>Trẻ em</p>
-                                            <p style="margin-top: 0;"><span id="soLuongTreEmDisplay">@soLuongTreEm</span> x <b>@Html.DisplayFor(model => model.tour.GiaTreEm)đ</b></p>
-                                        </div>
-                                        <div style="display: flex;align-items: center;justify-content: space-between;margin: 30px 0;">
-                                            <p style="font-weight: bold;font-size: 20px;">Tổng tiền</p>
-                                            <p style="margin-top: 0;color: red;font-weight: bold;font-size: 20px;" id="totalPrice">0đ</p>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary w-100 py-3" type="submit" style="border-radius: 10px;background: red;">Đặt Ngay</button>
-                                </div>
+                                @* <div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
+                                    </div>*@
                             </div>
                         </div>
-                    </form>
-
-                </div>
+                        <div style="width:50% ; display: flex;justify-content: center;">
+                            <div style="width:70%; border:1px solid #b6b6b6;height: 100%;padding: 20px;border-radius: 5px;">
+                                <h3>Thanh toán</h3>
+                                <div style="margin-top: 35px;">
+                                    <h4 style="text-align: left;font-size: 17px;margin-bottom: 20px;">Hành khách</h4>
+                                    @*  Hiển thị số lượng và giá của người lớn và trẻ em *@
+                                    <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
+                                        <p>Người lớn</p>
+                                        <p style="margin-top: 0;"><span class="soluongnguoilon" id="soLuongNguoiLonDisplay">@soLuongNguoiLon</span> x <b class="gianguoilon">@Html.DisplayFor(model => model.tour.GiaNguoiLon)đ</b></p>
+                                    </div>
+                                    <div style="display: flex;align-items: center;justify-content: space-between;border-bottom: 1px solid #565353;margin-bottom: 20px;">
+                                        <p>Trẻ em</p>
+                                        <p style="margin-top: 0;"><span class="soluongtreem" id="soLuongTreEmDisplay">@soLuongTreEm</span> x <b class="giatreem">@Html.DisplayFor(model => model.tour.GiaTreEm)đ</b></p>
+                                    </div>
+                                    <div style="display: flex;align-items: center;justify-content: space-between;margin: 30px 0;">
+                                        <p style="font-weight: bold;font-size: 20px;">Tổng tiền</p>
+                                        <p style="margin-top: 0;color: red;font-weight: bold;font-size: 20px;" id="totalPrice">0đ</p>
+                                    </div>
+                                </div>
+                                <button onclick="checkOutHandle()" class="btn btn-primary w-100 py-3" type="button" style="border-radius: 10px;background: red;">Đặt Ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @* GET ID USER *@
+                <input type="hidden" class="id_user" value="@userName" />
+            </div>
         </div>
     </div>
 
@@ -177,9 +179,109 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!--thêm thư viện emailjs-->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
+        // thanh toan
+        function checkOutHandle() {
+            if (document.querySelector('.txt-fullname').value == ""
+                || document.querySelector('.txt-phonenumber').value == ""
+                || document.querySelector('.txt-email').value == "") {
+                window.alert("Vui lòng nhập đầy đủ thông tin!")
+            } else {
+                checkOut();
+            }
+        }
+
+        (function () {
+            emailjs.init('bJw6FDbbGfOHWZbN4'); // Thay YOUR_USER_ID bằng User ID của bạn từ EmailJS
+        })();
+
+        function generateID() {
+            return Math.floor(Math.random() * 9000) + 1000;
+        }
+
+        function checkOut() {
+            //var id_user = document.querySelector(".id_user").textContent
+            var id_user = document.querySelector(".id_user").value;
+            console.log(id_user);
+            localStorage.removeItem(id_user);
+            var selectElement = document.getElementById("select3");
+
+            var item = {
+                id_order: generateID(),
+                fullname: document.querySelector('.txt-fullname').value,
+                phonenumber: document.querySelector('.txt-phonenumber').value,
+                email: document.querySelector('.txt-email').value,
+                ghichu: document.querySelector('.ghichu').value,
+                idtour: document.querySelector('.idtour').textContent,
+                tentour: document.querySelector('.tentour').textContent,
+                khoihanh: document.querySelector('.khoihanh').textContent,
+                thoigian: document.querySelector('.thoigian').textContent,
+                noikhoihanh: document.querySelector('.noikhoihanh').textContent,
+                sochoconnhan: document.querySelector('.soluonggtoida').textContent,
+                avata: document.querySelector('.avata').src,
+                totalPrice: document.getElementById('totalPrice').textContent,
+                soluongtreem: document.querySelector('.soluongtreem').textContent,
+                soluongnguoilon: document.querySelector('.soluongnguoilon').textContent,
+                gianguoilon: document.querySelector('.gianguoilon').textContent,
+                giatreem: document.querySelector('.giatreem').textContent,
+                phuongthucthanhtoan: selectElement.options[selectElement.selectedIndex].text
+            }
+
+            if (localStorage.getItem(id_user) != null) {
+                var listitem = JSON.parse(localStorage.getItem(id_user))
+                listitem.push(item)
+                localStorage.setItem(id_user, JSON.stringify(listitem))
+            } else {
+                var shopuser = []
+                shopuser.push(item)
+                localStorage.setItem(id_user, JSON.stringify(shopuser))
+            }
+
+            // gửi email
+            const dataToSend = {
+                id_order: item.id_order,
+                to_email: item.email,
+                fullname: item.fullname,
+                phonenumber: item.phonenumber,
+                ghichu: item.ghichu,
+                idtour: item.idtour,
+                tentour: item.tentour,
+                khoihanh: item.khoihanh,
+                thoigian: item.thoigian,
+                noikhoihanh: item.noikhoihanh,
+                avata: item.avata,
+                totalPrice: item.totalPrice,
+                soluongtreem: item.soluongtreem,
+                soluongnguoilon: item.soluongnguoilon,
+                gianguoilon: item.gianguoilon,
+                giatreem: item.giatreem,
+                from_email: 'SJourney Team',
+                phuongthucthanhtoan: item.phuongthucthanhtoan,
+            };
+            emailjs.send('service_4kyeysa', 'template_rp1ch7v', dataToSend).then(function (response) {
+                console.log('Email đã được gửi đi!', response.status, response.text);
+            }, function (error) {
+                console.log('Gửi email thất bại:', error);
+            });
+
+            // chuyển hướng thanh toán
+            if (selectElement.value == 1) {
+                window.alert("Email đã được gửi đi!")
+                window.location.href = "/Payment/PayBank";
+            } else if (selectElement.value == 2) {
+                window.alert("Email đã được gửi đi!")
+                window.location.href = "/Payment/PayZalo";
+            } else if (selectElement.value == 3) {
+                window.alert("Email đã được gửi đi!")
+                window.location.href = "/Payment/PayMomo";
+            }
+        }
+        // end thanh toan
+
         var soLuongToiDa = parseInt('@Model.soLuongCon');
-      
+
         function changeQuantity(id, change) {
             var soLuongNL = parseInt(document.getElementById('soLuongNguoiLonDisplay').innerText);
             var soLuongTE = parseInt(document.getElementById('soLuongTreEmDisplay').innerText);

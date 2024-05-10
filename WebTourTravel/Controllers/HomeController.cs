@@ -8,9 +8,10 @@ namespace WebTourTravel.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
+        private TourDuLichEntities tourEntity = new TourDuLichEntities();
+        public ActionResult Index() { 
+            var tours = tourEntity.Tour.Take(3).ToList();
+            return View(tours);
         }
 
         public ActionResult About()

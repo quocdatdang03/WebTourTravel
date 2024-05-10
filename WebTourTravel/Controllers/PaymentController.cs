@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Web.Security;
 using WebTourTravel.Models;
+using WebTourTravel.Help;
 
 namespace WebTourTravel.Controllers
 {
@@ -43,6 +44,38 @@ namespace WebTourTravel.Controllers
 
             return View(model);
         }
+        public ActionResult PayBank()
+        {
+            string cookieName = FormsAuthentication.FormsCookieName;
+            HttpCookie authCookie = HttpContext.Request.Cookies[cookieName];
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+            string Email = ticket.Name;
 
+            var ten = HelpCustommners.GetNguoiDungByEmail(Email);
+            ViewBag.UserName = ten.Gmail;
+            return View();
+        }
+        public ActionResult PayMomo()
+        {
+            string cookieName = FormsAuthentication.FormsCookieName;
+            HttpCookie authCookie = HttpContext.Request.Cookies[cookieName];
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+            string Email = ticket.Name;
+
+            var ten = HelpCustommners.GetNguoiDungByEmail(Email);
+            ViewBag.UserName = ten.Gmail;
+            return View();
+        }
+        public ActionResult PayZalo()
+        {
+            string cookieName = FormsAuthentication.FormsCookieName;
+            HttpCookie authCookie = HttpContext.Request.Cookies[cookieName];
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+            string Email = ticket.Name;
+
+            var ten = HelpCustommners.GetNguoiDungByEmail(Email);
+            ViewBag.UserName = ten.Gmail;
+            return View();
+        }
     }
 }

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebTourTravel.Help;
 using WebTourTravel.Models;
+using WebTourTravel.Help;
 
 namespace WebTourTravel.Controllers
 {
+    [Authorize]
     public class BookingController : Controller
     {
         TourDuLichEntities tourEntity = new TourDuLichEntities();
@@ -30,6 +33,13 @@ namespace WebTourTravel.Controllers
             {
                 return HttpNotFound();
             }
+            string cookieName = FormsAuthentication.FormsCookieName;
+            HttpCookie authCookie = HttpContext.Request.Cookies[cookieName];
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+            string Email = ticket.Name;
+           
+            var ten = HelpCustommners.GetNguoiDungByEmail(Email);
+            ViewBag.UserName = ten.Gmail;
             return View(modelInfoBooking);
         }
     }

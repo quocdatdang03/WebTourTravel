@@ -9,7 +9,6 @@ namespace WebTourTravel.Help
     public static class SearchTourHelper
     {
 
-
         public static   List<Tour> HardSearch( TourDuLichEntities tourDuLichEntities ,DateTime? ngaydi , int? quantityDate, int? quantitiCus)
         {
             if (ngaydi == null) ngaydi = DateTime.Now;
@@ -58,6 +57,28 @@ namespace WebTourTravel.Help
                 }
             }
             return tours;
+        }
+
+        // Hàm hiển thị tour còn chỗ : 
+        public static List<Tour> GetListTourAvailable(TourDuLichEntities tourDuLichEntities)
+        {
+            var listTour = tourDuLichEntities.Tour.ToList();
+            var listHoaDon = tourDuLichEntities.HoaDon.ToList();
+            var listresult = new List<Tour>();
+            foreach (var tour in listTour)
+            {
+                int maxcus = tour.SoLuongToiDa;
+                int caculateCus = 0;
+                foreach (var hoadon in listHoaDon)
+                {
+                    if (hoadon.id_hoadon != tour.id_tour) continue;
+                    caculateCus += hoadon.SoLuongHanhKhach.Value;
+                }
+                if (caculateCus >= maxcus) continue;
+                listresult.Add(tour);
+
+            }
+            return listresult;
         }
 
     }
