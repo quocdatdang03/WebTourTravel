@@ -16,9 +16,9 @@ namespace WebTourTravel.Help
             bool result = nguoiDungs.FirstOrDefault(x => x.Gmail.Equals(email)) != null;
             return result ;
         }
-        public  static NguoiDung LoginCheck( List<NguoiDung> nguoiDungs,string username , string passworld)
+        public  static NguoiDung LoginCheck( List<NguoiDung> nguoiDungs,string gmail , string passworld)
         {
-             var nd = nguoiDungs.FirstOrDefault(x => x.TenTK.Equals(username) && x.MatKhau.Equals(passworld));
+             var nd = nguoiDungs.FirstOrDefault(x => x.Gmail.Equals(gmail) && x.MatKhau.Equals(passworld));
             return nd;
         }
 

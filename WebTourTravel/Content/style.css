@@ -13824,6 +13824,9 @@ html:not(.lt-ie10) .not-animated {
 	text-decoration: none;
 	transition: .45s all ease-in-out;
 	transform: translate3d(0, 100px, 0);
+	display:flex;
+	align-items:center;
+	justify-content: center;
 }
 
 	.ui-to-top:hover {

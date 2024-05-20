@@ -50,7 +50,8 @@
 
                             @*<label for="username">Số điện thoại hoặc email</label>
                             <input id="username" type="text" name="UserName" required="required" style="width:100% ; " />*@
-                            @Html.LabelFor(model => model.UserName)
+                            @*@Html.LabelFor(model => model.UserName)*@
+                            <label>EMAIL</label>
                     @Html.EditorFor(model => model.UserName)
                     @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                             @*<span class="text-danger">@validationUsser</span>*@
@@ -59,7 +60,7 @@
                         <div class="form-group" style="text-align :left ; display: block ">
                             @*<label for="password">Mật khẩu</label>
         <input id="password" type="password" name="PassWorld" required="required" style="width : 100%" />*@
-                            @Html.LabelFor(model => model.PassWorld)
+                            <label>MẬT KHẨU</label>
                             @Html.PasswordFor(model => model.PassWorld)
                             @Html.ValidationMessageFor(model => model.PassWorld, "", new { @class = "text-danger" })
                            @* <span class="text-danger">@validationPassworld</span>*@

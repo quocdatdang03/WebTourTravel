@@ -9,8 +9,8 @@ namespace WebTourTravel.Controllers
     public class ProfileController : Controller
     {
         // GET: Profile
-        public ActionResult History()
-        {
+        public ActionResult History(string idUser)
+        { 
             return View();
         }
     }

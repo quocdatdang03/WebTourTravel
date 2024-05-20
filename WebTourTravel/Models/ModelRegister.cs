@@ -9,8 +9,6 @@ namespace WebTourTravel.Models
     public class ModelRegister
     {
         [Required]
-        public string UserName { get; set; }
-        [Required]
         public string PassWord{ get; set; }
 
         [Required]
@@ -22,9 +20,8 @@ namespace WebTourTravel.Models
 
         public ModelRegister() { }
 
-        public ModelRegister(string username , string passworld ,string passComfirm, string email)
+        public ModelRegister(string passworld ,string passComfirm, string email)
         {
-            this.UserName = username;
             this.PassWord = passworld;
             this.Email = email;
             this.PassWord = passComfirm;

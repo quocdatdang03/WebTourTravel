@@ -126,15 +126,15 @@
                                             background-color: #3e8e41;
                                         }
                                     </style>
-
-
-                                    <label style=" font-size: 15px; font-weight: 400; margin-right: 26px;">@nd.HoTen</label>
                                     <div class="dropdown_BV">
-                                        <button class="dropbtn_BV"></button>
+                                    @{ 
+                                        var nguoiDung = HelpCustommners.GetNguoiDungByEmail(User.Identity.Name);
+                                    }
+                                        <label style=" font-size: 15px; font-weight: 400; margin-right: 7px;color: #5d4d4d;">@nguoiDung.HoTen</label>
+                                        <i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
                                         <div class="dropdown-content_BV">
                                             <a href="/Custommers/LogOut">Log Out</a>
-                                            <a href="#">Profile </a>
-                                            
+                                            <a href="@Url.Action("History","Profile", new { idUser = nguoiDung.Gmail})">Profile </a>
                                         </div>
                                     </div>
 
@@ -162,17 +162,17 @@
                                 </ul>
                                 <!-- RD Navbar Nav-->
                                 <ul class="rd-navbar-nav">
-                                    <li class="rd-nav-item active">
-                                        <a class="rd-nav-link" href="@Url.Action("index","Home")">Trang chủ</a>
+                                    <li class="rd-nav-item">
+                                        <a class="rd-nav-link" href="@Url.Action("index","Home")" style="text-transform:uppercase;">Trang chủ</a>
                                     </li>
                                     <li class="rd-nav-item">
-                                        <a class="rd-nav-link" href="@Url.Action("TourDuLich","Tour", new { page = 1})">Tour du lịch</a>
+                                        <a class="rd-nav-link" href="@Url.Action("TourDuLich","Tour", new { page = 1})" style="text-transform:uppercase;">Tour du lịch</a>
                                     </li>
                                     <li class="rd-nav-item">
-                                        <a class="rd-nav-link" href="typography.html">Typography</a>
+                                        <a class="rd-nav-link" href="typography.html" style="text-transform:uppercase;">Giới thiệu</a>
                                     </li>
                                     <li class="rd-nav-item">
-                                        <a class="rd-nav-link" href="contact-us.html">Contact Us</a>
+                                        <a class="rd-nav-link" href="contact-us.html" style="text-transform:uppercase;">Liên hệ</a>
                                     </li>
                                 </ul>
                             </div>
@@ -186,13 +186,13 @@
 
         @*<a class="banner" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" target="_blank"><img src="images/intense_big_02.jpg" alt="" /></a>*@
 
-        <!-- Section Subscribe-->
+         @*Section Subscribe*@
         <section class="section bg-default text-center offset-top-50">
-            <div class="parallax-container" data-parallax-img="images/DaNangBannerTo.jpg">
+            <div class="parallax-container" style="background-image: url('/images/DaNangBannerTo.jpg'); background-size: cover; background-position: center; ">
                 <div class="parallax-content section-xl section-inset-custom-1 context-dark bg-overlay-2-21">
                     <div class="container">
-                        <h2 class="heading-2 oh font-weight-normal wow slideInDown"><span class="d-block font-weight-semi-bold">First-class Impressions</span><span class="d-block font-weight-light">are Waiting for You!</span></h2>
-                        <p class="text-width-medium text-spacing-75 wow fadeInLeft" data-wow-delay=".1s">Our agency offers travelers various tours and excursions with destinations all over the world. Browse our website to find your dream tour!</p><a class="button button-secondary button-pipaluk" href="@Url.Action("Index","Tour")">Đặt Tour Ngay</a>
+                        <h2 class="heading-2 oh font-weight-normal wow slideInDown"><span class="d-block font-weight-semi-bold">Know better, Book better, Go better</span></h2>
+                        <p class="text-width-medium text-spacing-75 wow fadeInLeft" style="font-size:22px;" data-wow-delay=".1s">Vinh hạnh của chúng tôi là mang đến cho bạn những chuyến đi đáng nhớ.</p><a class="button button-secondary button-pipaluk" href="@Url.Action("FilterLoCation","Tour", new { page=1 })">Đặt Tour Ngay</a>
                     </div>
                 </div>
             </div>
@@ -206,24 +206,24 @@
                         <div class="col-sm-6 col-md-12 col-lg-3 col-xl-4">
                             <div class="oh-desktop">
                                 <div class="wow slideInRight" data-wow-delay="0s">
-                                    <h6 class="text-spacing-100 text-uppercase">Contact us</h6>
+                                    <h6 class="text-spacing-100 text-uppercase">Liên hệ với chúng tôi</h6>
                                     <ul class="footer-contacts d-inline-block d-sm-block">
                                         <li>
                                             <div class="unit">
                                                 <div class="unit-left"><span class="icon fa fa-phone"></span></div>
-                                                <div class="unit-body"><a class="link-phone" href="tel:#">+1 323-913-4688</a></div>
+                                                <div class="unit-body"><a class="link-phone" href="tel:#">+84 323-913-4688</a></div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="unit">
                                                 <div class="unit-left"><span class="icon fa fa-envelope"></span></div>
-                                                <div class="unit-body"><a class="link-aemail" href="mailto:#">info@demolink.org</a></div>
+                                                <div class="unit-body"><a class="link-aemail" href="mailto:#">sjourney@gmail.com</a></div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="unit">
                                                 <div class="unit-left"><span class="icon fa fa-location-arrow"></span></div>
-                                                <div class="unit-body"><a class="link-location" href="#">4730 Crystal Springs Dr, Los Angeles, CA 90027</a></div>
+                                                <div class="unit-body"><a class="link-location" href="#">473 Hải Châu, Đà Nẵng</a></div>
                                             </div>
                                         </li>
                                     </ul>
@@ -233,19 +233,19 @@
                         <div class="col-sm-6 col-md-5 col-lg-3 col-xl-4">
                             <div class="oh-desktop">
                                 <div class="wow slideInDown" data-wow-delay="0s">
-                                    <h6 class="text-spacing-100 text-uppercase">Popular news</h6>
+                                    <h6 class="text-spacing-100 text-uppercase">Tin tức nổi bật</h6>
                                     <!-- Post Minimal 2-->
                                     <article class="post post-minimal-2">
-                                        <p class="post-minimal-2-title"><a href="#">Your Personal Guide to 5 Best Places to Visit on Earth</a></p>
+                                        <p class="post-minimal-2-title"><a href="#">Top 5 địa điểm đáng tham quan nhất Việt Nam</a></p>
                                         <div class="post-minimal-2-time">
-                                            <time datetime="2019-05-04">May 04, 2019</time>
+                                            <time datetime="2019-05-04">04 Tháng 12, 2024</time>
                                         </div>
                                     </article>
                                     <!-- Post Minimal 2-->
                                     <article class="post post-minimal-2">
-                                        <p class="post-minimal-2-title"><a href="#">Top 10 Hotels: Rating by Wonder Tour Travel Experts</a></p>
+                                        <p class="post-minimal-2-title"><a href="#">Top 10 địa điểm hot nhất Đà Nẵng - Hội An - Huế</a></p>
                                         <div class="post-minimal-2-time">
-                                            <time datetime="2019-05-04">May 04, 2019</time>
+                                            <time datetime="2019-05-04">04 Tháng 12, 2024</time>
                                         </div>
                                     </article>
                                 </div>
@@ -254,15 +254,12 @@
                         <div class="col-sm-11 col-md-7 col-lg-5 col-xl-4">
                             <div class="oh-desktop">
                                 <div class="wow slideInLeft" data-wow-delay="0s">
-                                    <h6 class="text-spacing-100 text-uppercase">Quick links</h6>
+                                    <h6 class="text-spacing-100 text-uppercase">Mục khác</h6>
                                     <ul class="row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-2">
-                                        <li><a href="about.html">About us</a></li>
-                                        <li><a href="#">Our Tours</a></li>
-                                        <li><a href="#">Our Team</a></li>
-                                        <li><a href="#">Gallery</a></li>
+                                        <li><a href="about.html">Về chúng tôi</a></li>
+                                        <li><a href="#">Tour của chúng tôi</a></li>
                                         <li><a href="#">Blog</a></li>
                                     </ul>
-                                    <div class="group-md group-middle justify-content-sm-start"><a class="button button-lg button-primary button-ujarak" href="#">Get in touch</a></div>
                                 </div>
                             </div>
                         </div>
@@ -284,10 +281,9 @@
                         </div>
                         <div class="col-sm-6 col-md-4 order-sm-first">
                             <!-- Rights-->
-                            <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Wonder Tour</span>. All Rights Reserved. Design by <a href="https://www.templatemonster.com">TemplateMonster</a></p>
                         </div>
                         <div class="col-sm-6 col-md-4 text-md-right">
-                            <p class="rights"><a href="#">Privacy Policy</a></p>
+                            <p class="rights"><a href="#">Chính sách</a></p>
                         </div>
                     </div>
                 </div>
@@ -298,5 +294,35 @@
     <script src="~/js/core.min.js"></script>
     <script src="~/js/script.js"></script>
     @RenderSection("CustomScripts", required: false) <!-- Section cho JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Lấy tên của trang hiện tại từ URL
+            const currentPath = window.location.pathname;
+
+            // Kiểm tra nếu đã có mục được lưu trữ trước đó
+            const storedPath = localStorage.getItem('activeNavPath');
+            const navItems = document.querySelectorAll('.rd-nav-item');
+
+            navItems.forEach(item => {
+                const link = item.querySelector('.rd-nav-link');
+                const linkPath = new URL(link.href).pathname;
+
+                // Xóa class active hiện tại
+                item.classList.remove('active');
+
+                // Kiểm tra nếu linkPath khớp với storedPath hoặc currentPath
+                if (linkPath === storedPath || linkPath === currentPath) {
+                    item.classList.add('active');
+                }
+
+                // Thêm sự kiện click để lưu trữ đường dẫn vào localStorage
+                link.addEventListener('click', function () {
+                    localStorage.setItem('activeNavPath', linkPath);
+                });
+            });
+        });
+
+
+    </script>
 </body>
 </html>

@@ -103,7 +103,6 @@
                         <form action="@Url.Action("FilterHard","Tour")">
                             <div class="fields">
                                 <div class="form-group">
-                                    <p>Ngày đi</p>
                                     <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="Ngày đi" name="ngaydi">
                                 </div>
                                 <div class="form-group">
@@ -132,16 +131,15 @@
                                 </div>
                                 <div class="form-group">
                                     @*<div class="range-slider">
-                            <div>Mức giá</div>
-                            <div style="margin: 0px; padding: 0px;">
-                                <input style="width: 70px; border: solid black 1px;" type="number" value="0" min="0" max="20000000" />	-
-                                <input style="width: 70px; border: solid black 1px;" type="number" value="1000000" min="0" max="20000000" />
-                            </div>
-                        </div>*@
-                                    <div id="price-range"></div>
-                                    <p>
+                                            <div>Mức giá</div>
+                                            <div style="margin: 0px; padding: 0px;">
+                                                <input style="width: 70px; border: solid black 1px;" type="number" value="0" min="0" max="20000000" />	-
+                                                <input style="width: 70px; border: solid black 1px;" type="number" value="1000000" min="0" max="20000000" />
+                                            </div>
+                                        </div>*@
+                                   @* <p>
                                         Price Range: <span id="price-min"></span> - <span id="price-max"></span>
-                                    </p>
+                                    </p>*@
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Tìm kiếm" class="btn btn-primary py-3 px-5">
@@ -194,15 +192,15 @@
                     <div class="block_paging">
                         @if (ViewBag.HasPreviousPage)
                         {
-                <a class="link_paging @(ViewBag.CurrentPage == 1 ? "active" : "")" href="@Url.Action("TourDuLich", new { page = ViewBag.CurrentPage - 1 })"><i class="fas fa-chevron-left"></i></a>}
+                            <a class="link_paging @(ViewBag.CurrentPage == 1 ? "active" : "")" href="@Url.Action("TourDuLich", new { page = ViewBag.CurrentPage - 1 })"><i class="fas fa-chevron-left"></i></a>}
 
                         @for (int i = 1; i <= ViewBag.TotalPages; i++)
                         {
-                <a class="link_paging @(ViewBag.CurrentPage == i ? "active" : "")" href="@Url.Action("TourDuLich", new { page = i })">@i</a>}
+                            <a class="link_paging @(ViewBag.CurrentPage == i ? "active" : "")" href="@Url.Action("TourDuLich", new { page = i })">@i</a>}
 
                         @if (ViewBag.HasNextPage)
                         {
-                <a class="link_paging @(ViewBag.CurrentPage == ViewBag.TotalPages ? "active" : "")" href="@Url.Action("TourDuLich", new { page = ViewBag.CurrentPage + 1 })"><i class="fas fa-chevron-right"></i></a>}
+                            <a class="link_paging @(ViewBag.CurrentPage == ViewBag.TotalPages ? "active" : "")" href="@Url.Action("TourDuLich", new { page = ViewBag.CurrentPage + 1 })"><i class="fas fa-chevron-right"></i></a>}
                     </div>
                 </div>
             </div>
@@ -214,7 +212,7 @@
             <h2 style="font-family: Arial, Helvetica, sans-serif; padding-top:20px;"><span>Những địa điểm nổi tiếng</span></h2>
             <!-- Owl Carousel-->
             <div class="owl-carousel owl-classic owl-dots-secondary" data-items="1" data-sm-items="2" data-md-items="3" data-lg-items="4" data-xl-items="5" data-xxl-items="6" data-stage-padding="15" data-xxl-stage-padding="0" data-margin="30" data-autoplay="true" data-nav="true" data-dots="true">
-                <!-- Thumbnail Classic-->
+                <!-- ANH TOUR -->
                 @{
                     TourDuLichEntities tourEntity = new TourDuLichEntities();
                 }
@@ -226,7 +224,7 @@
                         </div>
                     </article>
                 }
-                </div>
+            </div>
         </div>
     </section>
 
