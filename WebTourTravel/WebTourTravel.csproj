@@ -178,6 +178,7 @@
     <Compile Include="Models\ModelBooking.cs" />
     <Compile Include="Models\ModelInfoBooking.cs" />
     <Compile Include="Models\ModelLogin.cs" />
+    <Compile Include="Models\ModelOrderTour.cs" />
     <Compile Include="Models\ModelRegister.cs" />
     <Compile Include="Models\TourDetailViewModel.cs" />
     <Compile Include="NguoiDung.cs">
@@ -496,6 +497,8 @@
     <Content Include="Views\Payment\PayBank.cshtml" />
     <Content Include="Views\Payment\PayMomo.cshtml" />
     <Content Include="Views\Payment\PayZalo.cshtml" />
+    <Content Include="Views\Profile\ChoXacNhan.cshtml" />
+    <Content Include="Views\Profile\DaDat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

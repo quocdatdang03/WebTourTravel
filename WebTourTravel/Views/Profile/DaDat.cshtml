@@ -53,7 +53,7 @@
                                         var nguoiDung = HelpCustommners.GetNguoiDungByEmail(User.Identity.Name);
                                     }
                                     <div style="font-weight: 600; font-size: 16px; color: black;">@nguoiDung.HoTen</div>
-                                    <div class="id_user" style="font-size: 11px; color: black;">@nguoiDung.Gmail</div>
+                                    <div style="font-size: 11px; color: black;">@nguoiDung.Gmail</div>
                                 </div>
                             </div>
                             <div class="col-md-12" style="margin-top: 10px; padding: 0px;">
@@ -78,13 +78,6 @@
                                 </div>
                             </form>
                             <div class="row g-3" style="margin-top: 0px">
-                                <div class="col-md-12" style="margin-bottom: 20px">
-                                    <div class="form-floating" style="border: 1px solid rgb(206, 201, 201); padding: 15px; border-radius: 6px;">
-                                        <div class="content_order" style="display: flex;">
-
-                                        </div>
-                                    </div>
-                                </div>
                                 @foreach (var item in Model)
                                 {
                                     <div class="col-md-12" style="margin-bottom: 20px">
@@ -138,43 +131,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script>
-        var id_user = document.querySelector(".id_user").textContent
-        var content_order = ""
-        var content_price = ""
-        var totalprice = 0
-        var listitem = JSON.parse(localStorage.getItem(id_user))
-
-        if (listitem != null) {
-            for (let i = 0; i < listitem.length; i++) {
-                if (listitem[i] != null) {
-                    content_order += `<div style="flex: 30%;">
-                                            <img alt="" src="${listitem[i].avata}" width="100%" height="100%">
-                                        </div>
-                                        <div style="flex: 55%; margin: 0px 10px; text-align: left;">
-                                            <div class="" style="margin-bottom: 10px; font-weight: 600; font-family: Arial, Helvetica, sans-serif; font-size: 16px;"><a href="rooms-single.html">${listitem[i].tentour}</a></div>
-                                            <div style="font-size: 13px; color: blue; margin-bottom: 10px"><i class="fa fa-ticket" aria-hidden="true"></i> <span>${listitem[i].idtour}</span></div>
-                                            <div class="d-md-flex" style="font-size: 12px; margin-bottom: 10px">
-                                                <ul class="list" style="margin: 0px;">
-                                                    <li style="list-style: none;"><span class="per">Số lượng hành khách:</span> <span class="price mr-2">${parseInt(listitem[i].soluongnguoilon) + parseInt(listitem[i].soluongtreem)}</span></li>
-                                                </ul>
-                                                <ul class="list" style="margin: 0px; margin-left: 10px">
-                                                    <li style="list-style: none;"><span>Khởi hành:</span> ${listitem[i].khoihanh}</li>
-                                                </ul>
-                                            </div>
-                                            <div style="font-size: 13px; color: black;"><span class="per">Ngày đặt:</span> <span class="price mr-2">25/04/2024</span></div>
-                                        </div>
-                                        <div style="flex: 15%; text-align: center; color: red; padding: 50px 0px;">
-                                            <div>Tổng tiền</div>
-                                            <div class="total_price"></div>
-                                        </div>`
-                    totalprice += parseFloat(listitem[i].soluongnguoilon) * parseFloat(listitem[i].gianguoilon) + parseFloat(listitem[i].soluongtreem) * parseFloat(listitem[i].giatreem);
-                }
-            }
-            document.querySelector(".content_order").innerHTML = content_order
-            document.querySelector(".total_price").innerHTML = totalprice.toLocaleString('vi-VI', { maximumFractionDigits: 2 })
-        }
-    </script>
 </body>
 
 </html>
