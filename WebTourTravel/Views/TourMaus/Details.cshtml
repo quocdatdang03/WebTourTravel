@@ -1,15 +1,80 @@
 ﻿@model WebTourTravel.TourMau
 
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Details</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            p a {
+                color: #28a745;
+                padding: 10px 20px;
+                background-color: #f8f9fa;
+                border: 1px solid #28a745;
+                border-radius: 4px;
+            }
+
+                p a:hover {
+                    background-color: #28a745;
+                    color: #fff;
+                }
+
+        /* Details list styles */
+        .dl-horizontal {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        dl dt {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        dl dd {
+            margin-left: 0;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <div>
@@ -19,83 +84,83 @@
             <dt>
                 @Html.DisplayNameFor(model => model.TenTourMau)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.TenTourMau)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.ThoiGian)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.ThoiGian)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.PhuongTienDiChuyen)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.PhuongTienDiChuyen)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.DiemThamQuan)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.DiemThamQuan)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.AmThuc)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.AmThuc)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.KhachSan)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.KhachSan)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.ThoiGianLyTuong)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.ThoiGianLyTuong)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.DoiTuongThichHop)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.DoiTuongThichHop)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.UuDai)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.UuDai)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.MoTaTourMau)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.MoTaTourMau)
             </dd>
-    
+
         </dl>
     </div>
     <p>

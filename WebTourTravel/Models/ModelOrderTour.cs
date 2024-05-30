@@ -14,5 +14,6 @@ namespace WebTourTravel.Models
         public Nullable<int> SoLuongHanhKhach { get; set; }
         public string Gmail { get; set; }
         public Nullable<int> TrangThaiDonHang { get; set; }
+        public Nullable<decimal> TongTien { get; set; }
     }
 }

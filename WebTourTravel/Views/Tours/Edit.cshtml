@@ -1,7 +1,7 @@
 ﻿@model WebTourTravel.Tour
-
 @{
-    Layout = null;
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,18 +10,110 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Edit</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h4 {
+            color: #333;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        /* Form styles */
+        .form-horizontal {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .control-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+            .form-control:focus {
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+            }
+
+        .text-danger {
+            color: #dc3545;
+            margin-top: 5px;
+            font-size: 0.875em;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+        /* Back to list link */
+        div {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+            div a {
+                color: #28a745;
+                padding: 10px 20px;
+                background-color: #f8f9fa;
+                border: 1px solid #28a745;
+                border-radius: 4px;
+            }
+
+                div a:hover {
+                    background-color: #28a745;
+                    color: #fff;
+                }
+
+    </style>
 </head>
 <body>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
             <h4>Tour</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.id_tour)
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.id_tourmau, "id_tourmau", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -29,7 +121,7 @@
                     @Html.ValidationMessageFor(model => model.id_tourmau, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.id_hdv, "id_hdv", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -37,7 +129,7 @@
                     @Html.ValidationMessageFor(model => model.id_hdv, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.TenTour, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -45,7 +137,7 @@
                     @Html.ValidationMessageFor(model => model.TenTour, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.KhoiHanh, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -53,7 +145,7 @@
                     @Html.ValidationMessageFor(model => model.KhoiHanh, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.TapTrung, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -61,7 +153,7 @@
                     @Html.ValidationMessageFor(model => model.TapTrung, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.ThoiGian, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -69,7 +161,7 @@
                     @Html.ValidationMessageFor(model => model.ThoiGian, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.NoiKhoiHanh, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -77,7 +169,7 @@
                     @Html.ValidationMessageFor(model => model.NoiKhoiHanh, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.SoLuongToiDa, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -85,7 +177,7 @@
                     @Html.ValidationMessageFor(model => model.SoLuongToiDa, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.GiaNguoiLon, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -93,7 +185,7 @@
                     @Html.ValidationMessageFor(model => model.GiaNguoiLon, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.GiaTreEm, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -101,7 +193,7 @@
                     @Html.ValidationMessageFor(model => model.GiaTreEm, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.DanhGia, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -109,7 +201,7 @@
                     @Html.ValidationMessageFor(model => model.DanhGia, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Avata, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -117,7 +209,7 @@
                     @Html.ValidationMessageFor(model => model.Avata, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
@@ -125,8 +217,8 @@
             </div>
         </div>
     }
-    
-    <div>
+
+    <div style="display: flex; justify-content: center;">
         @Html.ActionLink("Back to List", "Index")
     </div>
 </body>

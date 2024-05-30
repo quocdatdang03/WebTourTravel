@@ -145,7 +145,8 @@ namespace WebTourTravel.Controllers
                             Avata = tour.Avata,
                             SoLuongHanhKhach = hoadon.SoLuongHanhKhach,
                             Gmail = hoadon.Gmail,
-                            TrangThaiDonHang = hoadon.TrangThaiDonHang
+                            TrangThaiDonHang = hoadon.TrangThaiDonHang,
+                            TongTien = hoadon.TongTien
                         };
 
             if (idStatus.HasValue)

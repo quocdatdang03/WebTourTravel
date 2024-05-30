@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebTourTravel;
 
-namespace WebTourTravel
+namespace WebTourTravel.Controllers
 {
     public class NguoiDungsController : Controller
     {
@@ -64,7 +65,9 @@ namespace WebTourTravel
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NguoiDung nguoiDung = db.NguoiDung.Find(id);
+            // Giải mã ID
+            string decodedId = HttpUtility.UrlDecode(id);
+            NguoiDung nguoiDung = db.NguoiDung.Find(decodedId);
             if (nguoiDung == null)
             {
                 return HttpNotFound();
