@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebTourTravel.Help;
 
 namespace WebTourTravel
 {
@@ -46,7 +49,7 @@ namespace WebTourTravel
         // POST: Tours/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+     /*   [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id_tour,id_tourmau,id_hdv,TenTour,KhoiHanh,TapTrung,ThoiGian,NoiKhoiHanh,SoLuongToiDa,GiaNguoiLon,GiaTreEm,DanhGia,Avata")] Tour tour)
         {
@@ -60,6 +63,33 @@ namespace WebTourTravel
             ViewBag.id_hdv = new SelectList(db.HuongDanVien, "id_hdv", "HoTen", tour.id_hdv);
             ViewBag.id_tourmau = new SelectList(db.TourMau, "id_tourmau", "TenTourMau", tour.id_tourmau);
             return View(tour);
+        }
+*/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Tour tbTour, HttpPostedFileBase imageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (imageFile != null)
+                {
+                    // Lưu ảnh vào thư mục trên server, bạn có thể thay đổi đường dẫn tùy ý
+                    string imagePath = Path.Combine(Server.MapPath("~/images/images_tour"), Path.GetFileName(imageFile.FileName));
+                    imageFile.SaveAs(imagePath);
+
+                    // Gán đường dẫn của ảnh cho thuộc tính HINHANH của model
+                    tbTour.Avata = imageFile.FileName;
+                }
+
+                Debug.WriteLine("Đường dẫn ảnh: " + tbTour.Avata);
+                db.Tour.Add(tbTour);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.id_hdv = new SelectList(db.HuongDanVien, "id_hdv", "HoTen", tbTour.id_hdv);
+            ViewBag.id_tourmau = new SelectList(db.TourMau, "id_tourmau", "TenTourMau", tbTour.id_tourmau);
+            return View(tbTour);
         }
 
         // GET: Tours/Edit/5
@@ -82,7 +112,7 @@ namespace WebTourTravel
         // POST: Tours/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+      /*  [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id_tour,id_tourmau,id_hdv,TenTour,KhoiHanh,TapTrung,ThoiGian,NoiKhoiHanh,SoLuongToiDa,GiaNguoiLon,GiaTreEm,DanhGia,Avata")] Tour tour)
         {
@@ -95,6 +125,39 @@ namespace WebTourTravel
             ViewBag.id_hdv = new SelectList(db.HuongDanVien, "id_hdv", "HoTen", tour.id_hdv);
             ViewBag.id_tourmau = new SelectList(db.TourMau, "id_tourmau", "TenTourMau", tour.id_tourmau);
             return View(tour);
+        }*/
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Tour tbTour, HttpPostedFileBase imageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                    // Nếu có file mới được chọn, lưu vào thư mục và cập nhật đường dẫn hình ảnh mới
+                    string imagePath = Path.Combine(Server.MapPath("~/images/images_tour"), Path.GetFileName(imageFile.FileName));
+                    imageFile.SaveAs(imagePath);
+
+                    // Gán đường dẫn của ảnh cho thuộc tính HINHANH của model
+                    tbTour.Avata = imageFile.FileName;
+                }
+                else
+                {
+                    // Nếu không có file mới, giữ nguyên đường dẫn hình ảnh cũ từ trường ẩn
+                    tbTour.Avata = tbTour.Avata;
+                }
+
+                // Update thông tin sản phẩm và lưu vào CSDL
+                db.Entry(tbTour).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            ViewBag.id_hdv = new SelectList(db.HuongDanVien, "id_hdv", "HoTen", tbTour.id_hdv);
+            ViewBag.id_tourmau = new SelectList(db.TourMau, "id_tourmau", "TenTourMau", tbTour.id_tourmau);
+            // Nếu ModelState không hợp lệ, trả về view để hiển thị thông báo lỗi
+            return View(tbTour);
         }
 
         // GET: Tours/Delete/5

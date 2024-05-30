@@ -84,24 +84,24 @@
             }
 
         /* Back to list link */
-        div {
-            margin-top: 20px;
-            text-align: left;
+        .back-to-list {
+            margin: 20px 0;
+            text-align: center;
         }
 
-            div a {
+            .back-to-list a {
                 color: #28a745;
                 padding: 10px 20px;
                 background-color: #f8f9fa;
                 border: 1px solid #28a745;
                 border-radius: 4px;
+                text-decoration: none;
             }
 
-                div a:hover {
+                .back-to-list a:hover {
                     background-color: #28a745;
                     color: #fff;
                 }
-
 
     </style>
 </head>
@@ -210,8 +210,8 @@
         </div>
     }
 
-    <div style="display: flex; justify-content: center;">
-        @Html.ActionLink("Back to List", "Index")
+    <div class="back-to-list">
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "back-to-list-link" })
     </div>
 </body>
 </html>

@@ -83,20 +83,21 @@
             }
 
         /* Back to list link */
-        div {
-            margin-top: 20px;
-            text-align: left;
+        .back-to-list {
+            margin: 20px 0;
+            text-align: center;
         }
 
-            div a {
+            .back-to-list a {
                 color: #28a745;
                 padding: 10px 20px;
                 background-color: #f8f9fa;
                 border: 1px solid #28a745;
                 border-radius: 4px;
+                text-decoration: none;
             }
 
-                div a:hover {
+                .back-to-list a:hover {
                     background-color: #28a745;
                     color: #fff;
                 }
@@ -104,7 +105,7 @@
     </style>
 </head>
 <body>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "Tours", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -141,7 +142,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.KhoiHanh, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.KhoiHanh, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.KhoiHanh, "{0:yyyy-MM-ddTHH:mm}", new { @class = "form-control", type = "datetime-local" })
                     @Html.ValidationMessageFor(model => model.KhoiHanh, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -149,7 +150,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.TapTrung, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.TapTrung, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.TapTrung, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
                     @Html.ValidationMessageFor(model => model.TapTrung, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -205,7 +206,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Avata, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Avata, new { htmlAttributes = new { @class = "form-control" } })
+                    <input type="file" name="imageFile" id="imageFile" class="form-control" />
                     @Html.ValidationMessageFor(model => model.Avata, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -218,8 +219,8 @@
         </div>
     }
 
-    <div style="display: flex; justify-content: center;">
-        @Html.ActionLink("Back to List", "Index")
+    <div class="back-to-list">
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "back-to-list-link" })
     </div>
 </body>
 </html>
