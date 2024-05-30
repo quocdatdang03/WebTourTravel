@@ -39,6 +39,7 @@
     <Property Name="TenNganHang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="TrangThaiDonHang" Type="Int32" />
     <Property Name="HinhThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
     <NavigationProperty Name="NguoiDung" Relationship="Self.FK__HoaDon__Gmail__571DF1D5" FromRole="HoaDon" ToRole="NguoiDung" />
     <NavigationProperty Name="Tour" Relationship="Self.FK__HoaDon__id_tour__5629CD9C" FromRole="HoaDon" ToRole="Tour" />
     <NavigationProperty Name="ThongTinKhachHang" Relationship="Self.FK__ThongTinK__id_ho__59FA5E80" FromRole="HoaDon" ToRole="ThongTinKhachHang" />
@@ -91,16 +92,6 @@
     <Property Name="TrangThai" Type="Int32" Nullable="false" />
     <NavigationProperty Name="HoaDon" Relationship="Self.FK__HoaDon__Gmail__571DF1D5" FromRole="NguoiDung" ToRole="HoaDon" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="Tour">
     <Key>
       <PropertyRef Name="id_tour" />
@@ -136,7 +127,7 @@
     <Property Name="ThoiGianLyTuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DoiTuongThichHop" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="UuDai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MoTaTourMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MoTaTourMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="AnhTour" Relationship="Self.FK__AnhTour__id_tour__440B1D61" FromRole="TourMau" ToRole="AnhTour" />
     <NavigationProperty Name="LichTrinhTheoNgay" Relationship="Self.FK__LichTrinh__id_to__3C69FB99" FromRole="TourMau" ToRole="LichTrinhTheoNgay" />
     <NavigationProperty Name="Tour" Relationship="Self.FK__Tour__id_tourmau__4D94879B" FromRole="TourMau" ToRole="Tour" />
@@ -161,7 +152,7 @@
     <Property Name="id_thongtinluuy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="id_tourmau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="TenThongTin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="TourMau" Relationship="Self.FK__ThongTinL__id_to__398D8EEE" FromRole="ThongTinLuuY" ToRole="TourMau" />
   </EntityType>
   <Association Name="FK__AnhTour__id_tour__440B1D61">
@@ -284,7 +275,6 @@
     <EntitySet Name="HuongDanVien" EntityType="Self.HuongDanVien" />
     <EntitySet Name="LichTrinhTheoNgay" EntityType="Self.LichTrinhTheoNgay" />
     <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Tour" EntityType="Self.Tour" />
     <EntitySet Name="TourMau" EntityType="Self.TourMau" />
     <EntitySet Name="ThongTinKhachHang" EntityType="Self.ThongTinKhachHang" />
@@ -329,46 +319,5 @@
       <End Role="DiaDiem" EntitySet="DiaDiem" />
       <End Role="TourMau" EntitySet="TourMau" />
     </AssociationSet>
-    <FunctionImport Name="sp_alterdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_creatediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_dropdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TourDuLichModel.sp_helpdiagramdefinition_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TourDuLichModel.sp_helpdiagrams_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_renamediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="new_diagramname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
-  </ComplexType>
 </Schema>

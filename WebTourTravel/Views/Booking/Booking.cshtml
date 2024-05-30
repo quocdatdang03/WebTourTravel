@@ -1,4 +1,5 @@
-﻿@model WebTourTravel.Models.ModelInfoBooking
+﻿@using WebTourTravel.Help
+@model WebTourTravel.Models.ModelInfoBooking
 @{
     ViewBag.Title = "BookingTour";
     string userName = ViewBag.UserName != null ? ViewBag.UserName.ToString() : "";
@@ -33,6 +34,46 @@
     <style>
         .tour-info {
             font-size: 14px;
+        }
+
+        .user-info_button {
+            width: 100%;
+            height: 100%;
+            padding: 12px 0;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: inline-block;
+            background-color: #31b0d5;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            transition: all ease 0.2s;
+        }
+
+            .user-info_button:hover {
+                color: white;
+                text-decoration: none;
+                background-color: #337ab7;
+            }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+        }
+
+        .info-label {
+            font-size: 14px;
+            color: black;
+            font-weight: bold;
+        }
+
+        * + .row {
+            margin: 20px 0;
+        }
+
+        .text-secondary {
+            color: black;
         }
     </style>
 </head>
@@ -79,9 +120,12 @@
                                         <label for="Name">Họ và tên</label>
                                     </div>
                                 </div>
+                                @{
+                                    var nguoiDung = HelpCustommners.GetNguoiDungByEmail(User.Identity.Name);
+                                }
                                 <div class="col-6">
                                     <div class="form-floating">
-                                        <input required name="Email" type="email" class="form-control txt-email" id="Email" placeholder="Your Email">
+                                        <input readonly required name="Email" type="email" class="form-control txt-email" id="Email" placeholder="Your Email" value="@nguoiDung.Gmail">
                                         <label for="email">Email</label>
                                     </div>
                                 </div>

@@ -57,10 +57,10 @@
                                 </div>
                             </div>
                             <div class="col-md-12" style="margin-top: 10px; padding: 0px;">
-                                <div><a href="" style="color: black; font-weight: 600; cursor: pointer;">Tài khoản</a></div>
+                                <div><a href="@Url.Action("ShowEditAccount","Profile")" style="color: black; font-weight: 600; cursor: pointer;">Thông tin cá nhân</a></div>
                             </div>
                             <div class="col-md-12" style="margin-top: 10px; padding: 0px;">
-                                <div><a href="" style="color: black; font-weight: 600; cursor: pointer;">Lịch sử đặt Tour</a></div>
+                                <div><a href="@Url.Action("History","Profile", new { idUser = nguoiDung.Gmail})" style="color: black; font-weight: 600; cursor: pointer;">Lịch sử đặt Tour</a></div>
                             </div>
                         </div>
                     </div>

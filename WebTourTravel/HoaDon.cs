@@ -30,6 +30,7 @@ namespace WebTourTravel
         public string TenNganHang { get; set; }
         public Nullable<int> TrangThaiDonHang { get; set; }
         public string HinhThucThanhToan { get; set; }
+        public Nullable<decimal> TongTien { get; set; }
     
         public virtual NguoiDung NguoiDung { get; set; }
         public virtual Tour Tour { get; set; }

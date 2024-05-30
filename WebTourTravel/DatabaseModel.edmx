@@ -50,6 +50,7 @@
           <Property Name="TenNganHang" Type="varchar" MaxLength="50" />
           <Property Name="TrangThaiDonHang" Type="int" />
           <Property Name="HinhThucThanhToan" Type="nvarchar" MaxLength="50" />
+          <Property Name="TongTien" Type="money" />
         </EntityType>
         <EntityType Name="HoatDong">
           <Key>
@@ -94,16 +95,6 @@
           <Property Name="TenTK" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="TrangThai" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Tour">
           <Key>
             <PropertyRef Name="id_tour" />
@@ -136,7 +127,7 @@
           <Property Name="ThoiGianLyTuong" Type="nvarchar" MaxLength="50" />
           <Property Name="DoiTuongThichHop" Type="nvarchar" MaxLength="100" />
           <Property Name="UuDai" Type="nvarchar" MaxLength="50" />
-          <Property Name="MoTaTourMau" Type="text" />
+          <Property Name="MoTaTourMau" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ThongTinKhachHang">
           <Key>
@@ -155,7 +146,7 @@
           <Property Name="id_thongtinluuy" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="id_tourmau" Type="varchar" MaxLength="50" />
           <Property Name="TenThongTin" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="MoTa" Type="text" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK__AnhTour__id_tour__440B1D61">
           <End Role="TourMau" Type="Self.TourMau" Multiplicity="0..1" />
@@ -289,37 +280,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="TourDuLichModelStoreContainer">
           <EntitySet Name="AnhTour" EntityType="Self.AnhTour" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiaDiem" EntityType="Self.DiaDiem" Schema="dbo" store:Type="Tables" />
@@ -329,7 +289,6 @@
           <EntitySet Name="HuongDanVien" EntityType="Self.HuongDanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LichTrinhTheoNgay" EntityType="Self.LichTrinhTheoNgay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TourMau" EntityType="Self.TourMau" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongTinKhachHang" EntityType="Self.ThongTinKhachHang" Schema="dbo" store:Type="Tables" />
@@ -423,6 +382,7 @@
           <Property Name="TenNganHang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TrangThaiDonHang" Type="Int32" />
           <Property Name="HinhThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="NguoiDung" Relationship="Self.FK__HoaDon__Gmail__571DF1D5" FromRole="HoaDon" ToRole="NguoiDung" />
           <NavigationProperty Name="Tour" Relationship="Self.FK__HoaDon__id_tour__5629CD9C" FromRole="HoaDon" ToRole="Tour" />
           <NavigationProperty Name="ThongTinKhachHang" Relationship="Self.FK__ThongTinK__id_ho__59FA5E80" FromRole="HoaDon" ToRole="ThongTinKhachHang" />
@@ -475,16 +435,6 @@
           <Property Name="TrangThai" Type="Int32" Nullable="false" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK__HoaDon__Gmail__571DF1D5" FromRole="NguoiDung" ToRole="HoaDon" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Tour">
           <Key>
             <PropertyRef Name="id_tour" />
@@ -520,7 +470,7 @@
           <Property Name="ThoiGianLyTuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DoiTuongThichHop" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UuDai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MoTaTourMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MoTaTourMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AnhTour" Relationship="Self.FK__AnhTour__id_tour__440B1D61" FromRole="TourMau" ToRole="AnhTour" />
           <NavigationProperty Name="LichTrinhTheoNgay" Relationship="Self.FK__LichTrinh__id_to__3C69FB99" FromRole="TourMau" ToRole="LichTrinhTheoNgay" />
           <NavigationProperty Name="Tour" Relationship="Self.FK__Tour__id_tourmau__4D94879B" FromRole="TourMau" ToRole="Tour" />
@@ -545,7 +495,7 @@
           <Property Name="id_thongtinluuy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="id_tourmau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TenThongTin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="TourMau" Relationship="Self.FK__ThongTinL__id_to__398D8EEE" FromRole="ThongTinLuuY" ToRole="TourMau" />
         </EntityType>
         <Association Name="FK__AnhTour__id_tour__440B1D61">
@@ -668,7 +618,6 @@
           <EntitySet Name="HuongDanVien" EntityType="Self.HuongDanVien" />
           <EntitySet Name="LichTrinhTheoNgay" EntityType="Self.LichTrinhTheoNgay" />
           <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tour" EntityType="Self.Tour" />
           <EntitySet Name="TourMau" EntityType="Self.TourMau" />
           <EntitySet Name="ThongTinKhachHang" EntityType="Self.ThongTinKhachHang" />
@@ -713,48 +662,7 @@
             <End Role="DiaDiem" EntitySet="DiaDiem" />
             <End Role="TourMau" EntitySet="TourMau" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TourDuLichModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TourDuLichModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -799,6 +707,7 @@
                 <ScalarProperty Name="TenNganHang" ColumnName="TenNganHang" />
                 <ScalarProperty Name="TrangThaiDonHang" ColumnName="TrangThaiDonHang" />
                 <ScalarProperty Name="HinhThucThanhToan" ColumnName="HinhThucThanhToan" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -846,17 +755,6 @@
                 <ScalarProperty Name="STK" ColumnName="STK" />
                 <ScalarProperty Name="TenTK" ColumnName="TenTK" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="TourDuLichModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -925,30 +823,6 @@
               <ScalarProperty Name="id_tourmau" ColumnName="id_tourmau" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="TourDuLichModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="TourDuLichModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="TourDuLichModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="TourDuLichModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TourDuLichModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="TourDuLichModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TourDuLichModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TourDuLichModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TourDuLichModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

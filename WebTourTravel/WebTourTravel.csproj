@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -184,16 +184,8 @@
     <Compile Include="NguoiDung.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NguoiDungsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ThongTinKhachHang.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -206,6 +198,8 @@
     <Compile Include="TourMau.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TourMausController.cs" />
+    <Compile Include="ToursController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\booking\bootstrap.min.css" />
@@ -499,6 +493,22 @@
     <Content Include="Views\Payment\PayZalo.cshtml" />
     <Content Include="Views\Profile\ChoXacNhan.cshtml" />
     <Content Include="Views\Profile\DaDat.cshtml" />
+    <Content Include="Views\NguoiDungs\Create.cshtml" />
+    <Content Include="Views\NguoiDungs\Delete.cshtml" />
+    <Content Include="Views\NguoiDungs\Details.cshtml" />
+    <Content Include="Views\NguoiDungs\Edit.cshtml" />
+    <Content Include="Views\NguoiDungs\Index.cshtml" />
+    <Content Include="Views\Tours\Create.cshtml" />
+    <Content Include="Views\Tours\Delete.cshtml" />
+    <Content Include="Views\Tours\Details.cshtml" />
+    <Content Include="Views\Tours\Edit.cshtml" />
+    <Content Include="Views\Tours\Index.cshtml" />
+    <Content Include="Views\TourMaus\Create.cshtml" />
+    <Content Include="Views\TourMaus\Delete.cshtml" />
+    <Content Include="Views\TourMaus\Details.cshtml" />
+    <Content Include="Views\TourMaus\Edit.cshtml" />
+    <Content Include="Views\TourMaus\Index.cshtml" />
+    <Content Include="Views\Profile\ThongTinTaiKhoan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

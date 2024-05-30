@@ -126,8 +126,8 @@
                         <div class="note_please">Vui lòng ghi "Mã đơn hàng" của bạn trong phần nội dung chuyển khoản để shop xác nhận đơn hàng.</div>
                         <div class="title-order">THÔNG TIN CHUYỂN KHOẢN</div>
                         <div class="content-bank">
-                            <p>Tên tài khoản: Đào Đức Mạnh</p>
-                            <p>Số điện thoại: 0779569834</p>
+                            <p>Tên tài khoản: <b>Đào Đức Mạnh</b></p>
+                            <p>Số điện thoại: <b>0779569834</b></p>
                             <p>Hoặc</p>
                             <img width="240px" height="240px" src="~/images/payzalo.jpg" />
                         </div>
@@ -144,7 +144,7 @@
                         <div class="list_order"></div>
 
                         <div class="lbl-price_order">Tổng:</div>
-                        <div class="price_order"></div><br />
+                        <div class="price_order"></div> <b>VNĐ</b><br />
                     </div>
                 </div>
             </div>
@@ -166,10 +166,10 @@
     if (listitem != null) {
         for (let i = 0; i < listitem.length; i++) {
             if (listitem[i] != null) {
-                content_user += `<li class="">Họ và tên: ${listitem[i].fullname}</li>
-                                <li class="">Số điện thoại: ${listitem[i].phonenumber}</li>
-                                <li class="">Email: ${listitem[i].email}</li>
-                                <li class="">Ghi chú: ${listitem[i].ghichu}</li>`
+                content_user += `<li class="">Họ và tên: <b>${listitem[i].fullname}</b></li>
+                                <li class="">Số điện thoại: <b>${listitem[i].phonenumber}</b></li>
+                                <li class="">Email: <b>${listitem[i].email}</b></li>
+                                <li class="">Ghi chú: <b>${listitem[i].ghichu}</b></li>`
 
                 content_order += `<div class="" style="color:black; font-size:14px; font-weight:700;">Mã đơn hàng: #<span style="background-color:yellow;">${listitem[i].id_order}</span></div>
                                 <table>

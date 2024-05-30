@@ -1,0 +1,82 @@
+﻿@model WebTourTravel.NguoiDung
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>NguoiDung</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MatKhau)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HoTen)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SDT)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.STK)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.STK)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TenTK)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TenTK)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TrangThai)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Gmail }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
